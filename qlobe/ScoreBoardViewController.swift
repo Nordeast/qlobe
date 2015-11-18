@@ -1,0 +1,61 @@
+//
+//  ScoreBoardViewController.swift
+//  qlobe
+//
+//  Created by allen rand on 11/17/15.
+//  Copyright © 2015 qlobe. All rights reserved.
+//
+
+import UIKit
+
+class ScoreBoardViewController: UIViewController {
+    var segues : [String] = ["Trivia", "TapRace"]
+    var rand = 0
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // background
+        view.backgroundColor = UIColor(netHex:0x2c3e50)
+        // nextGameLabel label styling
+        nextGameLabel.font = UIFont(name: "Kankin", size: 80.0)
+        nextGameLabel.textColor = UIColor(netHex: 0xeeeeee)
+        nextGameLabel.textAlignment = NSTextAlignment.Center
+        
+        rand = Int(arc4random_uniform(UInt32(segues.count)))
+        
+      
+        print("random segue \(segues[rand]), \(rand)")
+        nextGameLabel.text = segues[rand]
+        
+        
+        // Do any additional setup after loading the view.
+    }
+    override func viewDidAppear(animated: Bool) {
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "segueToNextGame",
+            userInfo: nil, repeats: false)
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    func segueToNextGame(){
+        
+        
+        performSegueWithIdentifier(segues[rand], sender: self)
+    }
+    
+    @IBOutlet weak var nextGameLabel: UILabel!
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
