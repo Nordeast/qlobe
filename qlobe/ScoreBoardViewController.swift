@@ -9,7 +9,7 @@
 import UIKit
 
 class ScoreBoardViewController: UIViewController {
-    var segues : [String] = ["Trivia", "TapRace"]
+    var segues : [String] = ["Trivia", "TapRace", "SimonSays"]
     var rand = 0
     
     // MARK: ViewControler functions
