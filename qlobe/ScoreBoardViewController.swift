@@ -11,11 +11,14 @@ import UIKit
 class ScoreBoardViewController: UIViewController {
     var segues : [String] = ["Trivia", "TapRace"]
     var rand = 0
+    
+    // MARK: ViewControler functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // background
+        // background color
         view.backgroundColor = UIColor(netHex:0x2c3e50)
+        
         // nextGameLabel label styling
         nextGameLabel.font = UIFont(name: "Kankin", size: 80.0)
         nextGameLabel.textColor = UIColor(netHex: 0xeeeeee)
@@ -32,6 +35,7 @@ class ScoreBoardViewController: UIViewController {
     }
     override func viewDidAppear(animated: Bool) {
         
+        // after the set amount of time segue to a random view
         _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "segueToNextGame",
             userInfo: nil, repeats: false)
     }
@@ -41,10 +45,12 @@ class ScoreBoardViewController: UIViewController {
     }
     func segueToNextGame(){
         
-        
+        // segue to the random next game
         performSegueWithIdentifier(segues[rand], sender: self)
     }
     
+    
+    // MARK: Outlets
     @IBOutlet weak var nextGameLabel: UILabel!
     
 

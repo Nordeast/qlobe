@@ -9,6 +9,7 @@
 import UIKit
 
 class TapRaceViewController: UIViewController {
+    
     // MARK: Class variables
     var P1Taps : Int = 0 // number of taps for P1
     var P2Taps : Int = 0 // number of taps for P2
@@ -17,42 +18,54 @@ class TapRaceViewController: UIViewController {
     var CS1Position: CGFloat = 0 // holds the current position of P1 racer
     var CS2Position: CGFloat = 0 // holds the current position of P1 racer
     let WIN_TAPS = 3 //number of taps needed to win 43
+    var WinningPlayer : Int = 0 // player that wins the game is stored here
     // ready set go animation times
     let DELAY = 0.7
     let DURATION = 0.5
     let DURATION2 = 0.3
-    // MARK: Outlets
     
+    // MARK: Outlets
+    //used for animation
     @IBOutlet weak var RSG1X: NSLayoutConstraint!
     @IBOutlet weak var RSG2X: NSLayoutConstraint!
+    // displays ready set go
     @IBOutlet weak var readySetGo1: UILabel!
     @IBOutlet weak var readySetGo2: UILabel!
+    
+    //place holder label
     @IBOutlet weak var TapRace: UILabel!
+    
+    // used for when the game is over to display the winner
+    @IBOutlet weak var GameOverLabelBottom: UILabel!
+    @IBOutlet weak var GameOverLabelTop: UILabel!
     
     // MARK: Button Actions
     
    @IBAction func Player1Tap(sender: AnyObject) {
         // button that P1 taps
-    
+        // increase the tap count
         P1Taps++
-    
+        // move the racer
         P1Animate()
     
         // if P1 gets to 50 taps then call winner
            if(P1Taps == WIN_TAPS){
-            winner(1)
+            WinningPlayer = 1
+            winner()
         }
     
     }
     @IBAction func Player2Tap(sender: AnyObject) {
-        // button that P1 taps
+        // button that P2 taps
+        // increase the tap count
         P2Taps++
-        
+        // move the racer
         P2Animate()
         
         // if P1 gets to  taps then call winner
         if(P2Taps == WIN_TAPS){
-            winner(2)
+            WinningPlayer = 2
+            winner()
             
             // hide the tap buttons
 
@@ -67,9 +80,11 @@ class TapRaceViewController: UIViewController {
         super.viewDidLoad()
                 // Do any additional setup after loading the view.
         
-        
+        // set up the game buttions
         Player1ButtonSetUp()
         Player2ButtonSetUp()
+        
+        //make sure nothing is visable until it should be
         Player2Tap.alpha = 0
         Player1Tap.alpha = 0
         coloredSquare2.alpha = 0
@@ -77,13 +92,22 @@ class TapRaceViewController: UIViewController {
         TapRace.alpha = 0
         readySetGo1.alpha = 0
         readySetGo2.alpha = 0
+        GameOverLabelBottom.alpha = 0
+        GameOverLabelTop.alpha = 0
         
-        // background
+        // set the background color
         view.backgroundColor = UIColor(netHex:0x2c3e50)
-        // TapRace label styling
-        TapRace.font = UIFont(name: "Kankin", size: 80.0)
-        TapRace.textColor = UIColor(netHex: 0xeeeeee)
-        TapRace.textAlignment = NSTextAlignment.Center
+        
+        
+        // GameOverLabelTop label styling
+        GameOverLabelTop.font = UIFont(name: "Kankin", size: 40.0)
+        GameOverLabelTop.textColor = UIColor(netHex: 0xeeeeee)
+        GameOverLabelTop.textAlignment = NSTextAlignment.Center
+        
+        // GameOverLabelTop label styling
+        GameOverLabelBottom.font = UIFont(name: "Kankin", size: 40.0)
+        GameOverLabelBottom.textColor = UIColor(netHex: 0xeeeeee)
+        GameOverLabelBottom.textAlignment = NSTextAlignment.Center
         
         // readySetGo1 styling
         
@@ -104,13 +128,14 @@ class TapRaceViewController: UIViewController {
         self.RSG2X.constant += self.view.bounds.width
         // set the bottom label off the screen to the right
         self.RSG1X.constant -= self.view.bounds.width
+        // flip the ready set go label
         readySetGo2.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
     }
     
     override func viewDidAppear(animated: Bool) {
-        
+        // set up the animation to display ready set go.
         readySetGoAnimation()
-        animationSetUp()
+        racerSetUp()
 
     }
     override func didReceiveMemoryWarning() {
@@ -120,14 +145,15 @@ class TapRaceViewController: UIViewController {
 
     
     // MARK: Helper Functons
+    
     func readySetGoAnimation(){
         // displays ready set go before the start of the race
 
-
+        // make the label to show ready set go visable
         self.readySetGo1.alpha = 1
         self.readySetGo2.alpha = 1
 
-       
+        // timers to controll when the animations should start
         _ = NSTimer.scheduledTimerWithTimeInterval(0, target: self, selector: "animateReady",
             userInfo: nil, repeats: false)
         
@@ -142,7 +168,7 @@ class TapRaceViewController: UIViewController {
         
     }
     func showGame(){
-        //fades the game in
+        //fades the game in after ready,set,go has been displayed
         
         Player2Tap.fadeIn(0.3)
         Player1Tap.fadeIn(0.3)
@@ -153,7 +179,7 @@ class TapRaceViewController: UIViewController {
         
     }
     func animateReady(){
-        // animates text sliding in and then out for text ready
+        // animates text sliding in and then out for text "ready"
         
         readySetGo2.text = "Ready"
         readySetGo1.text = "Ready"
@@ -187,7 +213,7 @@ class TapRaceViewController: UIViewController {
     }
     func animateSet(){
         
-        // animates text sliding in and then out for text set
+        // animates text sliding in and then out for text "set"
         
         readySetGo2.text = "Set"
         readySetGo1.text = "Set"
@@ -223,11 +249,12 @@ class TapRaceViewController: UIViewController {
     }
     func animateGo(){
         
-        // animates text sliding in and then out for text go
+        // animates text sliding in and then out for text "go"
 
         
         readySetGo2.text = "Go!"
         readySetGo1.text = "Go!"
+        
         // animate the top label in and then out
         UIView.animateWithDuration(self.DURATION, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
             self.readySetGo2.alpha = 1
@@ -260,45 +287,83 @@ class TapRaceViewController: UIViewController {
 
 
     
-    func winner(player : Int){
-        // clear the view to display the winner
+    func winner(){
+        // clear the view to display the winner, this is called when the racers makes it across the screen
+        // i.e. when the player reaches the WINTAPS amount
         
+        // fad out everything in view
         Player1Tap.fadeOut(1.0, delay: 0, completion: {_ in self.Player1Tap.removeFromSuperview()})
         Player2Tap.fadeOut(1.0, delay: 0, completion: {_ in self.Player2Tap.removeFromSuperview()})
         coloredSquare1.fadeOut(1.0, delay: 0, completion: {_ in  self.coloredSquare1.removeFromSuperview()})
         coloredSquare2.fadeOut(1.0, delay: 0, completion: {_ in  self.coloredSquare2.removeFromSuperview()})
+
+        GameOverLabelTop.flipUpSideDown()
+        
+        
         // display who won
-        TapRace.text = "P\(player) Wins!"
-        TapRace.fadeIn(1.0, delay: 2.0)
-        UIView.animateWithDuration(1.0, delay: 4.0, options: [],
+        // display the players distance
+        _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "displayWinner",
+            userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "displayDistance",
+            userInfo: nil, repeats: false)
+        
+        _ = NSTimer.scheduledTimerWithTimeInterval(8, target: self, selector: "segue",
+            userInfo: nil, repeats: false)
+    }
+    func displayWinner(){
+        
+        UIView.animateWithDuration(1.0, delay: 0, options: [],
             
-            animations: { self.TapRace.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-            
+            animations: {
+                self.GameOverLabelTop.alpha = 1
+                self.GameOverLabelBottom.alpha = 1
+                
+                self.GameOverLabelTop.text = "P\(self.WinningPlayer) Wins!"
+                self.GameOverLabelBottom.text = "P\(self.WinningPlayer) Wins!"
+                
             },
             
             completion: { _ in
-                UIView.animateWithDuration(1.0, delay: 4.0, options: [], animations: {
-                    self.TapRace.text = "Total Taps \(self.P1Taps)"
-                },
-                    completion: { _ in
-                        
-                        self.performSegueWithIdentifier("ScoreBoardFromTapRace", sender: self)
-                        
-                        
-                })
-            
-        })
+                
+                self.GameOverLabelBottom.fadeOut()
+                self.GameOverLabelTop.fadeOut()
+                }
+        )
         
     }
-        
-        
-       
-        
+    func displayDistance(){
+        //animate the distance the players went
+        self.GameOverLabelBottom.fadeIn()
+        self.GameOverLabelTop.fadeIn()
+        UIView.animateWithDuration(1.0, delay: 0, options: [], animations: {
 
-    func animationSetUp(){
+            self.GameOverLabelTop.text = "Your distance: \((self.P2Taps) * 200) feet."
+            self.GameOverLabelBottom.text = "Your distance: \((self.P1Taps) * 200) feet."
+            },
+            completion: { _ in
+                self.GameOverLabelTop.fadeOut(1.0, delay: 0, completion:
+                    {_ in self.GameOverLabelTop.removeFromSuperview()})
+                
+                self.GameOverLabelBottom.fadeOut(1.0, delay: 0, completion:
+                    {_ in self.GameOverLabelBottom.removeFromSuperview()})
+
+                
+
+            })
         
-        // Create and add a colored square
+    }
+    func segue(){
+        // segue to scoreboard view controller
+        self.performSegueWithIdentifier("ScoreBoardFromTapRace", sender: self)
+    }
+    
+    
+    
+
+    func racerSetUp(){
         
+        // Create and add both the racers
         
         // set background color to green
         coloredSquare2.backgroundColor = UIColor.greenColor()
@@ -324,7 +389,7 @@ class TapRaceViewController: UIViewController {
     
     func P1Animate(){
         
-        // do the animation when a button is pressed. Move it across the screen 1/50th at a time
+        // do the animation when a button is pressed. Move the racer across the screen 1/50th at a time
         
         UIView.animateWithDuration(0.5, animations: {
             
@@ -349,7 +414,7 @@ class TapRaceViewController: UIViewController {
     
     func P2Animate(){
         
-        // do the animation when a button is pressed. Move it across the screen 1/50th at a time
+        // do the animation when a button is pressed. Move the racer across the screen 1/50th at a time
         
         UIView.animateWithDuration(0.5, animations: {
             if self.coloredSquare2.backgroundColor == UIColor.greenColor(){
@@ -380,19 +445,24 @@ class TapRaceViewController: UIViewController {
         // set up and add the button programically
         Player1Tap = UIButton(type: UIButtonType.System) // .System
         
+        // set button title
         Player1Tap.setTitle("TAP!", forState: UIControlState.Normal)
 
-        Player1Tap.titleLabel?.font = UIFont.systemFontOfSize(45)
-        Player1Tap.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        // button text color, background and font
+        Player1Tap.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
         Player1Tap.backgroundColor = UIColor.redColor()
-        
-        Player1Tap.titleLabel?.font = UIFont(name: "HelveticaNeue-Thin", size: 40.0)
-        
+        Player1Tap.titleLabel!.font = UIFont(name: "Kankin", size: 50.0)
+
+        // add the action
         Player1Tap.addTarget(self, action: Selector("Player1Tap:"), forControlEvents: UIControlEvents.TouchUpInside)
 
+        // add the button to the view
         self.view.addSubview(Player1Tap)
         
+        // disable all other autolayout constraints for this button
         Player1Tap.translatesAutoresizingMaskIntoConstraints = false
+        
+        // create the autolayout constraints programically
         // left edge
         let leftButtonEdgeConstraint = NSLayoutConstraint(item: Player1Tap, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.LeadingMargin, multiplier: 1.0, constant: 0)
         // right edge
@@ -415,24 +485,24 @@ class TapRaceViewController: UIViewController {
     func Player2ButtonSetUp() {
         // set up and add the button programically
         Player2Tap = UIButton(type: UIButtonType.System) // .System
-        
+        // set button title
         Player2Tap.setTitle("TAP!", forState: UIControlState.Normal)
         
-
-        Player2Tap.titleLabel?.font = UIFont.systemFontOfSize(45)
-        Player2Tap.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-
+        // button text color, background and font
+        Player2Tap.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
         Player2Tap.backgroundColor = UIColor.blueColor()
+        Player2Tap.titleLabel!.font = UIFont(name: "Kankin", size: 50.0)
         
-        Player2Tap.titleLabel?.font = UIFont.systemFontOfSize(17)
-        
-        
+        // add the action
         Player2Tap.addTarget(self, action: Selector("Player2Tap:"), forControlEvents: UIControlEvents.TouchUpInside)
-        Player2Tap.titleLabel?.font = UIFont(name: "HelveticaNeue-Thin", size: 40.0)
         
+        // add the button to the view
         self.view.addSubview(Player2Tap)
         
+        // disable all other autolayout constraints for this button
         Player2Tap.translatesAutoresizingMaskIntoConstraints = false
+        
+        // create the autolayout constraints programically
         // left edge
         let leftButtonEdgeConstraint = NSLayoutConstraint(item: Player2Tap, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.LeadingMargin, multiplier: 1.0, constant: 0)
         // right edge
@@ -446,12 +516,13 @@ class TapRaceViewController: UIViewController {
         // add all constraints
         self.view.addConstraints([leftButtonEdgeConstraint, rightButtonEdgeConstraint, bottomButtonConstraint, topButtonConstraint])
         
+        // flip the button
         Player2Tap.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
     }
 
 
 
-        /*
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

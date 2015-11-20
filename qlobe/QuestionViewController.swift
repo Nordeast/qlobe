@@ -115,7 +115,7 @@ class QuestionViewController: UIViewController {
        
         if (P1DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP1 = (Player1Button1.titleLabel?.text)!// grab the answer
-            Player1Button1.backgroundColor = UIColorFromRGB(UInt(ColorPlayerSelect)) // change the background color to show selecte answer
+            Player1Button1.titleLabel!.textColor = UIColor(netHex: 0x2980b9) // change the background color to show selected answer
         }
         P1DidSelectAnAnswer = true // set to true so the no other anwers can be selected
         
@@ -125,7 +125,7 @@ class QuestionViewController: UIViewController {
         
         if (P1DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP1 = (Player1Button2.titleLabel?.text)! // grab the answer
-            Player1Button2.backgroundColor = UIColorFromRGB(UInt(ColorPlayerSelect))  // change the background color to show selecte answer
+            Player1Button2.titleLabel!.textColor = UIColor(netHex: 0x2980b9)  // change the background color to show selected answer
         }
         P1DidSelectAnAnswer = true // set to true so the no other anwers can be selected
         
@@ -136,7 +136,7 @@ class QuestionViewController: UIViewController {
         
         if (P1DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP1 = (Player1Button3.titleLabel?.text)!// grab the answer
-            Player1Button3.backgroundColor = UIColorFromRGB(UInt(ColorPlayerSelect))  // change the background color to show selecte answer
+            Player1Button3.titleLabel!.textColor = UIColor(netHex: 0x2980b9)  // change the background color to show selected answer
         }
         P1DidSelectAnAnswer = true // set to true so the no other anwers can be selected
         
@@ -157,10 +157,11 @@ class QuestionViewController: UIViewController {
         
         if (P2DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP2 = (Player2Button1.titleLabel?.text)! // grab the answer
-            Player2Button1.backgroundColor = UIColorFromRGB(UInt(ColorPlayerSelect))  // change the background color to show selecte answer
+            Player2Button1.titleLabel!.textColor = UIColor(netHex: 0x2980b9)   // change the background color to show selected answer
+        
+        
         }
         P2DidSelectAnAnswer = true // set to true so the no other anwers can be selected
-        
         
     }
     
@@ -170,7 +171,8 @@ class QuestionViewController: UIViewController {
         
         if (P2DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP2 = (Player2Button2.titleLabel?.text)! // grab the answer
-            Player2Button2.backgroundColor = UIColorFromRGB(UInt(ColorPlayerSelect))  // change the background color to show selecte answer
+            Player2Button2.titleLabel!.textColor = UIColor(netHex: 0x2980b9)
+                    // change the background color to show selected answer
         }
         P2DidSelectAnAnswer = true // set to true so the no other anwers can be selected
         
@@ -182,7 +184,8 @@ class QuestionViewController: UIViewController {
         
         if (P2DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP2 = (Player2Button3.titleLabel?.text)!// grab the answer
-            Player2Button3.backgroundColor = UIColorFromRGB(UInt(ColorPlayerSelect))  // change the background color to show selecte answer
+            Player2Button3.titleLabel!.textColor = UIColor(netHex: 0x2980b9)
+  // change the background color to show selected answer
         }
         P2DidSelectAnAnswer = true // set to true so the no other anwers can be selected
         
@@ -243,41 +246,54 @@ class QuestionViewController: UIViewController {
     
     func showCorrectAnswer(){
         if(Player1Button1.titleLabel!.text == curQuestion.Answer){
+            Player1Button1.titleLabel?.textColor = UIColor(netHex: 0x27ae60)
             if(answerP1 != curQuestion.Answer){
+                
                 buttonBouncing(Player1Button1)
+                
             }
-            Player1Button1.backgroundColor = UIColorFromRGB(UInt(ColorCorrectAnswer))
+            
         }
         else if(Player1Button2.titleLabel!.text == curQuestion.Answer){
+            Player1Button2.titleLabel?.textColor = UIColor(netHex: 0x27ae60)
             if(answerP1 != curQuestion.Answer){
+                
                 buttonBouncing(Player1Button2)
             }
-            Player1Button2.backgroundColor = UIColorFromRGB(UInt(ColorCorrectAnswer))
+            
         }
-        else if(Player1Button3.titleLabel!.text == curQuestion.Answer){
+        else if(Player1Button3.titleLabel?.text == curQuestion.Answer){
+            Player1Button3.titleLabel?.textColor = UIColor(netHex: 0x27ae60)
             if(answerP1 != curQuestion.Answer){
+                
                 buttonBouncing(Player1Button3)
             }
-            Player1Button3.backgroundColor = UIColorFromRGB(UInt(ColorCorrectAnswer))
+           
         }
         
         if(Player2Button1.titleLabel!.text == curQuestion.Answer){
+            Player2Button1.titleLabel?.textColor = UIColor(netHex: 0x27ae60)
+
             if(answerP2 != curQuestion.Answer){
                 buttonBouncing(Player2Button1)
             }
-            Player2Button1.backgroundColor = UIColorFromRGB(UInt(ColorCorrectAnswer))
+            
         }
         else if(Player2Button2.titleLabel!.text == curQuestion.Answer){
+            Player2Button2.titleLabel?.textColor = UIColor(netHex: 0x27ae60)
             if(answerP2 != curQuestion.Answer){
+               
                 buttonBouncing(Player2Button2)
             }
-            Player2Button2.backgroundColor = UIColorFromRGB(UInt(ColorCorrectAnswer))
+            
         }
         else if(Player2Button3.titleLabel!.text == curQuestion.Answer){
+            Player2Button3.titleLabel?.textColor = UIColor(netHex: 0x27ae60)
             if(answerP2 != curQuestion.Answer){
+                
                 buttonBouncing(Player2Button3)
             }
-            Player2Button3.backgroundColor = UIColorFromRGB(UInt(ColorCorrectAnswer))
+            
         }
     }
     
@@ -314,39 +330,72 @@ class QuestionViewController: UIViewController {
         answerP2 = ""
         
         //Timer
-        timerLabel1.textColor = UIColorFromRGB(UInt(ColorTimer))
-        timerLabel2.textColor = UIColorFromRGB(UInt(ColorTimer))
+        timerLabel1.font = UIFont(name: "Kankin", size: 30.0)
+        timerLabel1.textColor = UIColor(netHex: 0xeeeeee)
+        timerLabel1.textAlignment = NSTextAlignment.Center
         
+        timerLabel2.font = UIFont(name: "Kankin", size: 30.0)
+        timerLabel2.textColor = UIColor(netHex: 0xeeeeee)
+        timerLabel2.textAlignment = NSTextAlignment.Center
         //Score
-        Player1ScoreLabel.textColor = UIColorFromRGB(UInt(ColorScoreLabel))
-        Player1ScoreValue.textColor = UIColorFromRGB(UInt(ColorScoreValue))
         
-        Player2ScoreLabel.textColor = UIColorFromRGB(UInt(ColorScoreLabel))
-        Player2ScoreValue.textColor = UIColorFromRGB(UInt(ColorScoreValue))
+        Player1ScoreLabel.font = UIFont(name: "Kankin", size: 30.0)
+        Player1ScoreLabel.textColor = UIColor(netHex: 0xeeeeee)
+        Player1ScoreLabel.textAlignment = NSTextAlignment.Center
+        
+        Player1ScoreValue.font = UIFont(name: "Kankin", size: 30.0)
+        Player1ScoreValue.textColor = UIColor(netHex: 0xeeeeee)
+        Player1ScoreValue.textAlignment = NSTextAlignment.Center
+        
+        Player2ScoreLabel.font = UIFont(name: "Kankin", size: 30.0)
+        Player2ScoreLabel.textColor = UIColor(netHex: 0xeeeeee)
+        Player2ScoreLabel.textAlignment = NSTextAlignment.Center
+        
+        Player2ScoreValue.font = UIFont(name: "Kankin", size: 30.0)
+        Player2ScoreValue.textColor = UIColor(netHex: 0xeeeeee)
+        Player2ScoreValue.textAlignment = NSTextAlignment.Center
+        
+        
+        
+        
         
         //Questions
-        question.backgroundColor = UIColorFromRGB(UInt(ColorQuestion))
-        questionUpsideDown.backgroundColor = UIColorFromRGB(UInt(ColorQuestion))
-        question.textColor = UIColor.whiteColor()
-        questionUpsideDown.textColor = UIColor.whiteColor()
+        
+        question.font = UIFont(name: "Kankin", size: 30.0)
+        question.textColor = UIColor(netHex: 0xeeeeee)
+        question.textAlignment = NSTextAlignment.Center
+        
+        questionUpsideDown.font = UIFont(name: "Kankin", size: 30.0)
+        questionUpsideDown.textColor = UIColor(netHex: 0xeeeeee)
+        questionUpsideDown.textAlignment = NSTextAlignment.Center
+        
         
         // p1 buttons
-        Player1Button1.backgroundColor = UIColorFromRGB(UInt(ColorAnsInit))
-        Player1Button2.backgroundColor = UIColorFromRGB(UInt(ColorAnsInit))
-        Player1Button3.backgroundColor = UIColorFromRGB(UInt(ColorAnsInit))
+        Player1Button1.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
+        Player1Button1.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
         
-        Player1Button1.setTitleColor(UIColorFromRGB(UInt(ColorTextColor)), forState: UIControlState.Normal)
-        Player1Button2.setTitleColor(UIColorFromRGB(UInt(ColorTextColor)), forState: UIControlState.Normal)
-        Player1Button3.setTitleColor(UIColorFromRGB(UInt(ColorTextColor)), forState: UIControlState.Normal)
         
+        Player1Button2.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
+        Player1Button2.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
+        
+        
+        Player1Button3.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
+        Player1Button3.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
+        
+
+
         // p2 buttons
-        Player2Button1.backgroundColor = UIColorFromRGB(UInt(ColorAnsInit))
-        Player2Button2.backgroundColor = UIColorFromRGB(UInt(ColorAnsInit))
-        Player2Button3.backgroundColor = UIColorFromRGB(UInt(ColorAnsInit))
+        Player2Button1.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
+        Player2Button1.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
         
-        Player2Button1.setTitleColor(UIColorFromRGB(UInt(ColorTextColor)), forState: UIControlState.Normal)
-        Player2Button2.setTitleColor(UIColorFromRGB(UInt(ColorTextColor)), forState: UIControlState.Normal)
-        Player2Button3.setTitleColor(UIColorFromRGB(UInt(ColorTextColor)), forState: UIControlState.Normal)
+        
+        Player2Button2.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
+        Player2Button2.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
+        
+    
+        Player2Button3.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
+        Player2Button3.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
+        
     }
     
     func flipButton(){
@@ -402,18 +451,24 @@ class QuestionViewController: UIViewController {
     // end helper functions //
     //////////////////////////
     
-    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
     
     func buttonBouncing(button: UIButton){
-        button.center.x = self.view.frame.width + 30
-        UIView.animateWithDuration(1.0, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 30, options: UIViewAnimationOptions.CurveEaseIn, animations: ({button.center.x = self.view.frame.width/2}), completion: nil)
+        // three nested animations to bounce it to the left then to the right then back
+        UIView.animateWithDuration(0.1, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 30, options: UIViewAnimationOptions.CurveEaseIn, animations:
+            
+        ({button.center.x = button.center.x + 5})
+            
+            , completion: {_ in UIView.animateWithDuration(0.1, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 30, options: UIViewAnimationOptions.CurveEaseIn, animations:
+                
+                ({button.center.x = button.center.x - 10})
+                
+                , completion: {_ in UIView.animateWithDuration(0.1, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 30, options: UIViewAnimationOptions.CurveEaseIn, animations:
+                    
+                    ({button.center.x = self.view.frame.width/2})
+                    
+                    , completion: nil)
+            })
+        })
     }
     
     /////////////////
@@ -434,6 +489,8 @@ class QuestionViewController: UIViewController {
         flipButton()
         
         runTimer() // start the timeer when the view loads
+        
+        
         
     }
     
