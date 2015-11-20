@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FC7F3491BFFE63E00C12689 /* ArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F3451BFFE63E00C12689 /* ArcLayer.swift */; };
+		9FC7F34A1BFFE63E00C12689 /* OvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F3461BFFE63E00C12689 /* OvalLayer.swift */; };
+		9FC7F34B1BFFE63E00C12689 /* RectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F3471BFFE63E00C12689 /* RectangleLayer.swift */; };
+		9FC7F34C1BFFE63E00C12689 /* TriangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F3481BFFE63E00C12689 /* TriangleLayer.swift */; };
+		9FC7F34E1BFFE68100C12689 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F34D1BFFE68100C12689 /* Colors.swift */; };
+		9FC7F3501BFFE6B900C12689 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F34F1BFFE6B900C12689 /* HolderView.swift */; };
 		AC1A05D81BFFCD08000A6541 /* SimonSaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */; };
 		AC1A05DA1BFFCD39000A6541 /* airplanding.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC1A05D91BFFCD39000A6541 /* airplanding.wav */; };
 		AC961FE51BFFCA500099225B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC961FE41BFFCA500099225B /* UIColorExtensions.swift */; };
@@ -61,6 +67,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9FC7F3451BFFE63E00C12689 /* ArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcLayer.swift; sourceTree = "<group>"; };
+		9FC7F3461BFFE63E00C12689 /* OvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvalLayer.swift; sourceTree = "<group>"; };
+		9FC7F3471BFFE63E00C12689 /* RectangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleLayer.swift; sourceTree = "<group>"; };
+		9FC7F3481BFFE63E00C12689 /* TriangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleLayer.swift; sourceTree = "<group>"; };
+		9FC7F34D1BFFE68100C12689 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		9FC7F34F1BFFE6B900C12689 /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
 		AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimonSaysViewController.swift; sourceTree = "<group>"; };
 		AC1A05D91BFFCD39000A6541 /* airplanding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = airplanding.wav; sourceTree = "<group>"; };
 		AC961FE41BFFCA500099225B /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
@@ -186,6 +198,12 @@
 				AC961FE41BFFCA500099225B /* UIColorExtensions.swift */,
 				AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */,
 				D61B50D21BFC585200248DD9 /* AppDelegate.swift */,
+				9FC7F3451BFFE63E00C12689 /* ArcLayer.swift */,
+				9FC7F3461BFFE63E00C12689 /* OvalLayer.swift */,
+				9FC7F3471BFFE63E00C12689 /* RectangleLayer.swift */,
+				9FC7F34F1BFFE6B900C12689 /* HolderView.swift */,
+				9FC7F34D1BFFE68100C12689 /* Colors.swift */,
+				9FC7F3481BFFE63E00C12689 /* TriangleLayer.swift */,
 				D61B51001BFC589300248DD9 /* LoadMainViewController.swift */,
 				D61B512E1BFC5EBB00248DD9 /* ViewController.swift */,
 				D61B51301BFC60D400248DD9 /* ScoreBoardViewController.swift */,
@@ -355,17 +373,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FC7F3491BFFE63E00C12689 /* ArcLayer.swift in Sources */,
 				AC1A05D81BFFCD08000A6541 /* SimonSaysViewController.swift in Sources */,
 				D61B512F1BFC5EBB00248DD9 /* ViewController.swift in Sources */,
 				D61B51331BFC61D300248DD9 /* UIViewExtensions.swift in Sources */,
 				D61B51011BFC589300248DD9 /* LoadMainViewController.swift in Sources */,
+				9FC7F34A1BFFE63E00C12689 /* OvalLayer.swift in Sources */,
+				9FC7F34C1BFFE63E00C12689 /* TriangleLayer.swift in Sources */,
 				D61B50D31BFC585200248DD9 /* AppDelegate.swift in Sources */,
 				D61B51351BFC61DC00248DD9 /* TapRaceViewController.swift in Sources */,
+				9FC7F34E1BFFE68100C12689 /* Colors.swift in Sources */,
 				D61B51311BFC60D400248DD9 /* ScoreBoardViewController.swift in Sources */,
+				9FC7F34B1BFFE63E00C12689 /* RectangleLayer.swift in Sources */,
 				D61B512D1BFC5DAE00248DD9 /* triviaQuestion.swift in Sources */,
 				D61B51391BFC61ED00248DD9 /* Player.swift in Sources */,
 				D61B51371BFC61E300248DD9 /* QuestionViewController.swift in Sources */,
 				AC961FE51BFFCA500099225B /* UIColorExtensions.swift in Sources */,
+				9FC7F3501BFFE6B900C12689 /* HolderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
