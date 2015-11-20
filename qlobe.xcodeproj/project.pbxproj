@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC961FE51BFFCA500099225B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC961FE41BFFCA500099225B /* UIColorExtensions.swift */; };
 		D61B50D31BFC585200248DD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B50D21BFC585200248DD9 /* AppDelegate.swift */; };
 		D61B50D81BFC585200248DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61B50D61BFC585200248DD9 /* Main.storyboard */; };
 		D61B50DA1BFC585200248DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D61B50D91BFC585200248DD9 /* Assets.xcassets */; };
@@ -15,7 +16,6 @@
 		D61B50F31BFC585200248DD9 /* qlobeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B50F21BFC585200248DD9 /* qlobeUITests.swift */; };
 		D61B51011BFC589300248DD9 /* LoadMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B51001BFC589300248DD9 /* LoadMainViewController.swift */; };
 		D61B51071BFC5A7B00248DD9 /* Kankin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D61B51061BFC5A7B00248DD9 /* Kankin.ttf */; };
-		D61B512B1BFC5D9900248DD9 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B512A1BFC5D9900248DD9 /* UIColorExtensions.swift */; };
 		D61B512D1BFC5DAE00248DD9 /* triviaQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B512C1BFC5DAE00248DD9 /* triviaQuestion.swift */; };
 		D61B512F1BFC5EBB00248DD9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B512E1BFC5EBB00248DD9 /* ViewController.swift */; };
 		D61B51311BFC60D400248DD9 /* ScoreBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B51301BFC60D400248DD9 /* ScoreBoardViewController.swift */; };
@@ -59,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC961FE41BFFCA500099225B /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		D61B50CF1BFC585200248DD9 /* qlobe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qlobe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61B50D21BFC585200248DD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D61B50D71BFC585200248DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,7 +74,6 @@
 		D61B50F41BFC585200248DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D61B51001BFC589300248DD9 /* LoadMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMainViewController.swift; sourceTree = "<group>"; };
 		D61B51061BFC5A7B00248DD9 /* Kankin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kankin.ttf; sourceTree = "<group>"; };
-		D61B512A1BFC5D9900248DD9 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtensions.swift; path = "../../../qlobe_games-master/UIColorExtensions.swift"; sourceTree = "<group>"; };
 		D61B512C1BFC5DAE00248DD9 /* triviaQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = triviaQuestion.swift; sourceTree = "<group>"; };
 		D61B512E1BFC5EBB00248DD9 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D61B51301BFC60D400248DD9 /* ScoreBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreBoardViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +179,7 @@
 		D61B50D11BFC585200248DD9 /* qlobe */ = {
 			isa = PBXGroup;
 			children = (
+				AC961FE41BFFCA500099225B /* UIColorExtensions.swift */,
 				D61B50D21BFC585200248DD9 /* AppDelegate.swift */,
 				D61B51001BFC589300248DD9 /* LoadMainViewController.swift */,
 				D61B512E1BFC5EBB00248DD9 /* ViewController.swift */,
@@ -189,7 +190,6 @@
 				D61B50D91BFC585200248DD9 /* Assets.xcassets */,
 				D61B50DE1BFC585200248DD9 /* Info.plist */,
 				D61B51061BFC5A7B00248DD9 /* Kankin.ttf */,
-				D61B512A1BFC5D9900248DD9 /* UIColorExtensions.swift */,
 				D61B512C1BFC5DAE00248DD9 /* triviaQuestion.swift */,
 				D61B51321BFC61D300248DD9 /* UIViewExtensions.swift */,
 				D61B50DB1BFC585200248DD9 /* LaunchScreen.storyboard */,
@@ -352,12 +352,12 @@
 				D61B51331BFC61D300248DD9 /* UIViewExtensions.swift in Sources */,
 				D61B51011BFC589300248DD9 /* LoadMainViewController.swift in Sources */,
 				D61B50D31BFC585200248DD9 /* AppDelegate.swift in Sources */,
-				D61B512B1BFC5D9900248DD9 /* UIColorExtensions.swift in Sources */,
 				D61B51351BFC61DC00248DD9 /* TapRaceViewController.swift in Sources */,
 				D61B51311BFC60D400248DD9 /* ScoreBoardViewController.swift in Sources */,
 				D61B512D1BFC5DAE00248DD9 /* triviaQuestion.swift in Sources */,
 				D61B51391BFC61ED00248DD9 /* Player.swift in Sources */,
 				D61B51371BFC61E300248DD9 /* QuestionViewController.swift in Sources */,
+				AC961FE51BFFCA500099225B /* UIColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
