@@ -15,6 +15,7 @@
 		9FC7F3501BFFE6B900C12689 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F34F1BFFE6B900C12689 /* HolderView.swift */; };
 		AC1A05D81BFFCD08000A6541 /* SimonSaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */; };
 		AC1A05DA1BFFCD39000A6541 /* airplanding.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC1A05D91BFFCD39000A6541 /* airplanding.wav */; };
+		AC4DB3EF1C01030C00883700 /* elevatording.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC4DB3EE1C01030C00883700 /* elevatording.wav */; };
 		AC961FE51BFFCA500099225B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC961FE41BFFCA500099225B /* UIColorExtensions.swift */; };
 		D61B50D31BFC585200248DD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B50D21BFC585200248DD9 /* AppDelegate.swift */; };
 		D61B50D81BFC585200248DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61B50D61BFC585200248DD9 /* Main.storyboard */; };
@@ -75,6 +76,7 @@
 		9FC7F34F1BFFE6B900C12689 /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
 		AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimonSaysViewController.swift; sourceTree = "<group>"; };
 		AC1A05D91BFFCD39000A6541 /* airplanding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = airplanding.wav; sourceTree = "<group>"; };
+		AC4DB3EE1C01030C00883700 /* elevatording.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = elevatording.wav; sourceTree = "<group>"; };
 		AC961FE41BFFCA500099225B /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		D61B50CF1BFC585200248DD9 /* qlobe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qlobe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61B50D21BFC585200248DD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -196,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				AC961FE41BFFCA500099225B /* UIColorExtensions.swift */,
-				AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */,
 				D61B50D21BFC585200248DD9 /* AppDelegate.swift */,
 				9FC7F3451BFFE63E00C12689 /* ArcLayer.swift */,
 				9FC7F3461BFFE63E00C12689 /* OvalLayer.swift */,
@@ -208,11 +209,13 @@
 				D61B512E1BFC5EBB00248DD9 /* ViewController.swift */,
 				D61B51301BFC60D400248DD9 /* ScoreBoardViewController.swift */,
 				D61B51341BFC61DC00248DD9 /* TapRaceViewController.swift */,
+				AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */,
 				D61B51361BFC61E300248DD9 /* QuestionViewController.swift */,
 				D61B50D61BFC585200248DD9 /* Main.storyboard */,
 				D61B50D91BFC585200248DD9 /* Assets.xcassets */,
 				D61B50DE1BFC585200248DD9 /* Info.plist */,
 				D61B51061BFC5A7B00248DD9 /* Kankin.ttf */,
+				AC4DB3EE1C01030C00883700 /* elevatording.wav */,
 				AC1A05D91BFFCD39000A6541 /* airplanding.wav */,
 				D61B512C1BFC5DAE00248DD9 /* triviaQuestion.swift */,
 				D61B51321BFC61D300248DD9 /* UIViewExtensions.swift */,
@@ -346,6 +349,7 @@
 			files = (
 				D61B50DD1BFC585200248DD9 /* LaunchScreen.storyboard in Resources */,
 				D61B50DA1BFC585200248DD9 /* Assets.xcassets in Resources */,
+				AC4DB3EF1C01030C00883700 /* elevatording.wav in Resources */,
 				D61B51071BFC5A7B00248DD9 /* Kankin.ttf in Resources */,
 				AC1A05DA1BFFCD39000A6541 /* airplanding.wav in Resources */,
 				D61B50D81BFC585200248DD9 /* Main.storyboard in Resources */,
