@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewDidAppear(animated: Bool) {
-        
+        blinkingButtons()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,21 +55,39 @@ class ViewController: UIViewController {
         // lets begin button
         letsBegin.titleLabel!.font = UIFont(name: "Kankin", size: 50)!
         letsBegin.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        letsBegin.backgroundColor = UIColor(netHex: 0x464a53)
+        //letsBegin.backgroundColor = UIColor(netHex: 0x464a53)
         letsBegin.titleLabel!.text = "Let's Begin"
       
         
         // settings button
         settings.titleLabel!.font = UIFont(name: "Kankin", size: 30)!
         settings.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        settings.backgroundColor = UIColor(netHex: 0x464a53)
+        //settings.backgroundColor = UIColor(netHex: 0x464a53)
         settings.titleLabel!.text = "Settings"
         
         // help button
         help.titleLabel!.font = UIFont(name: "Kankin", size: 30)!
         help.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        help.backgroundColor = UIColor(netHex: 0x464a53)
+        //help.backgroundColor = UIColor(netHex: 0x464a53)
         help.titleLabel!.text = "Help"
+    }
+    
+    func blinkingButtons(){
+        
+        
+        UIView.animateWithDuration(0.6, delay: 0, options: [.Repeat, .Autoreverse],
+            
+            animations: {
+                
+                self.letsBegin.transform = CGAffineTransformMakeScale(1.1,1.1)
+                
+            },
+            
+            completion: nil)
+        
+        
+        
+        
     }
     
 }
