@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class TapRaceViewController: UIViewController {
     
@@ -21,8 +22,15 @@ class TapRaceViewController: UIViewController {
     var WinningPlayer : Int = 0 // player that wins the game is stored here
     // ready set go animation times
     let DELAY = 0.7
-    let DURATION = 0.5
+    let DURATION = 0.3
     let DURATION2 = 0.3
+    
+    // MARK: Sound effect variables
+    var coundownAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("mk64_countdown", ofType: "wav")!))
+    
+    var backgroundAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("tapRace_background", ofType: "mp3")!))
+    
+    var victoryAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("tapRace_victory", ofType: "mp3")!))
     
     // MARK: Outlets
     //used for animation
@@ -79,6 +87,9 @@ class TapRaceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 // Do any additional setup after loading the view.
+        
+        // play the beginning sound effect
+        //raceAudioPlayer!.play()
         
         // set up the game buttions
         Player1ButtonSetUp()
@@ -152,6 +163,9 @@ class TapRaceViewController: UIViewController {
         // make the label to show ready set go visable
         self.readySetGo1.alpha = 1
         self.readySetGo2.alpha = 1
+        
+        //Start countdown sound effect
+        coundownAudio!.play()
 
         // timers to controll when the animations should start
         _ = NSTimer.scheduledTimerWithTimeInterval(0, target: self, selector: "animateReady",
@@ -176,6 +190,9 @@ class TapRaceViewController: UIViewController {
         coloredSquare1.fadeIn(0.3)
         readySetGo1.removeFromSuperview()
         readySetGo2.removeFromSuperview()
+        
+        //play the background music
+        backgroundAudio!.play()
         
     }
     func animateReady(){
@@ -288,6 +305,13 @@ class TapRaceViewController: UIViewController {
 
     
     func winner(){
+        
+        // Stop the background music
+        backgroundAudio!.stop()
+        
+        // Play the victory music
+        victoryAudio!.play()
+        
         // clear the view to display the winner, this is called when the racers makes it across the screen
         // i.e. when the player reaches the WINTAPS amount
         
