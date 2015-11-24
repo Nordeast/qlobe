@@ -20,6 +20,7 @@
 
 import UIKit
 import Parse
+import AVFoundation
 
 let TimerStartValue = 5
 
@@ -55,6 +56,8 @@ class QuestionViewController: UIViewController {
     var Player2AnsTime  = TimerStartValue
     
     var curQuestion = triviaQuestion()
+    
+    var countDownAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("trivia_countdown", ofType: "mp3")!))
     /////////////////////////
     // end class variables //
     /////////////////////////
@@ -114,8 +117,8 @@ class QuestionViewController: UIViewController {
         
        
         if (P1DidSelectAnAnswer == false){ // check if an answer has been chosen yet
-            answerP1 = (Player1Button1.titleLabel?.text)!// grab the answer
-            Player1Button1.titleLabel!.textColor = UIColor(netHex: 0x2980b9) // change the background color to show selected answer
+            answerP1 = (Player1Button1.titleLabel?.text)! // grab the answer
+            setButtonStyle(Player1Button1, fontName: "Kankin", fontSize: 20.0, fontColor: 0x2980b9)  // change the background color to show selected answer
         }
         P1DidSelectAnAnswer = true // set to true so the no other anwers can be selected
         
@@ -125,7 +128,7 @@ class QuestionViewController: UIViewController {
         
         if (P1DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP1 = (Player1Button2.titleLabel?.text)! // grab the answer
-            Player1Button2.titleLabel!.textColor = UIColor(netHex: 0x2980b9)  // change the background color to show selected answer
+            setButtonStyle(Player1Button2, fontName: "Kankin", fontSize: 20.0, fontColor: 0x2980b9)  // change the background color to show selected answer
         }
         P1DidSelectAnAnswer = true // set to true so the no other anwers can be selected
         
@@ -136,7 +139,7 @@ class QuestionViewController: UIViewController {
         
         if (P1DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP1 = (Player1Button3.titleLabel?.text)!// grab the answer
-            Player1Button3.titleLabel!.textColor = UIColor(netHex: 0x2980b9)  // change the background color to show selected answer
+            setButtonStyle(Player1Button3, fontName: "Kankin", fontSize: 20.0, fontColor: 0x2980b9)  // change the background color to show selected answer
         }
         P1DidSelectAnAnswer = true // set to true so the no other anwers can be selected
         
@@ -157,8 +160,7 @@ class QuestionViewController: UIViewController {
         
         if (P2DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP2 = (Player2Button1.titleLabel?.text)! // grab the answer
-            Player2Button1.titleLabel!.textColor = UIColor(netHex: 0x2980b9)   // change the background color to show selected answer
-        
+            setButtonStyle(Player2Button1, fontName: "Kankin", fontSize: 20.0, fontColor: 0x2980b9)  // change the background color to show selected answer
         
         }
         P2DidSelectAnAnswer = true // set to true so the no other anwers can be selected
@@ -171,8 +173,7 @@ class QuestionViewController: UIViewController {
         
         if (P2DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP2 = (Player2Button2.titleLabel?.text)! // grab the answer
-            Player2Button2.titleLabel!.textColor = UIColor(netHex: 0x2980b9)
-                    // change the background color to show selected answer
+            setButtonStyle(Player2Button1, fontName: "Kankin", fontSize: 20.0, fontColor: 0x2980b9)  // change the background color to show selected answer
         }
         P2DidSelectAnAnswer = true // set to true so the no other anwers can be selected
         
@@ -184,8 +185,7 @@ class QuestionViewController: UIViewController {
         
         if (P2DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP2 = (Player2Button3.titleLabel?.text)!// grab the answer
-            Player2Button3.titleLabel!.textColor = UIColor(netHex: 0x2980b9)
-  // change the background color to show selected answer
+            setButtonStyle(Player2Button3, fontName: "Kankin", fontSize: 20.0, fontColor: 0x2980b9)  // change the background color to show selected answer
         }
         P2DidSelectAnAnswer = true // set to true so the no other anwers can be selected
         
@@ -320,6 +320,17 @@ class QuestionViewController: UIViewController {
         Player2ScoreValue.text =  "\(Player2.score)"
     }
     
+    func setLabelStyle(inLabel: UILabel, fontName: String, fontSize: CGFloat, fontColor:  Int){
+        inLabel.font = UIFont(name: fontName, size: fontSize)
+        inLabel.textColor = UIColor(netHex: fontColor)
+        inLabel.textAlignment = NSTextAlignment.Center
+    }
+    
+    func setButtonStyle(inButton: UIButton, fontName: String, fontSize: CGFloat, fontColor:  Int){
+        inButton.titleLabel!.font = UIFont(name: fontName, size: fontSize)!
+        inButton.setTitleColor(UIColor(netHex: fontColor), forState: UIControlState.Normal)
+    }
+    
     func resetAll(){
         // players have not yet selected an anwser
         P1DidSelectAnAnswer = false
@@ -329,73 +340,35 @@ class QuestionViewController: UIViewController {
         answerP1 = ""
         answerP2 = ""
         
+        
         //Timer
-        timerLabel1.font = UIFont(name: "Kankin", size: 30.0)
-        timerLabel1.textColor = UIColor(netHex: 0xeeeeee)
-        timerLabel1.textAlignment = NSTextAlignment.Center
+        setLabelStyle(timerLabel1, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
+        setLabelStyle(timerLabel2, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
         
-        timerLabel2.font = UIFont(name: "Kankin", size: 30.0)
-        timerLabel2.textColor = UIColor(netHex: 0xeeeeee)
-        timerLabel2.textAlignment = NSTextAlignment.Center
+
         //Score
-        
-        Player1ScoreLabel.font = UIFont(name: "Kankin", size: 30.0)
-        Player1ScoreLabel.textColor = UIColor(netHex: 0xeeeeee)
-        Player1ScoreLabel.textAlignment = NSTextAlignment.Center
-        
-        Player1ScoreValue.font = UIFont(name: "Kankin", size: 30.0)
-        Player1ScoreValue.textColor = UIColor(netHex: 0xeeeeee)
-        Player1ScoreValue.textAlignment = NSTextAlignment.Center
-        
-        Player2ScoreLabel.font = UIFont(name: "Kankin", size: 30.0)
-        Player2ScoreLabel.textColor = UIColor(netHex: 0xeeeeee)
-        Player2ScoreLabel.textAlignment = NSTextAlignment.Center
-        
-        Player2ScoreValue.font = UIFont(name: "Kankin", size: 30.0)
-        Player2ScoreValue.textColor = UIColor(netHex: 0xeeeeee)
-        Player2ScoreValue.textAlignment = NSTextAlignment.Center
-        
-        
-        
+        setLabelStyle(Player1ScoreLabel, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
+        setLabelStyle(Player1ScoreValue, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
+
+        setLabelStyle(Player2ScoreLabel, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
+        setLabelStyle(Player2ScoreValue, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
         
         
         //Questions
-        
-        question.font = UIFont(name: "Kankin", size: 30.0)
-        question.textColor = UIColor(netHex: 0xeeeeee)
-        question.textAlignment = NSTextAlignment.Center
-        
-        questionUpsideDown.font = UIFont(name: "Kankin", size: 30.0)
-        questionUpsideDown.textColor = UIColor(netHex: 0xeeeeee)
-        questionUpsideDown.textAlignment = NSTextAlignment.Center
+        setLabelStyle(question, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
+        setLabelStyle(questionUpsideDown, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
         
         
         // p1 buttons
-        Player1Button1.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
-        Player1Button1.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
+        setButtonStyle(Player1Button1, fontName: "Kankin", fontSize: 20.0, fontColor: 0xeeeeee)
+        setButtonStyle(Player1Button2, fontName: "Kankin", fontSize: 20.0, fontColor: 0xeeeeee)
+        setButtonStyle(Player1Button3, fontName: "Kankin", fontSize: 20.0, fontColor: 0xeeeeee)
         
-        
-        Player1Button2.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
-        Player1Button2.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        
-        
-        Player1Button3.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
-        Player1Button3.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        
-
 
         // p2 buttons
-        Player2Button1.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
-        Player2Button1.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        
-        
-        Player2Button2.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
-        Player2Button2.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        
-    
-        Player2Button3.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
-        Player2Button3.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        
+        setButtonStyle(Player2Button1, fontName: "Kankin", fontSize: 20.0, fontColor: 0xeeeeee)
+        setButtonStyle(Player2Button2, fontName: "Kankin", fontSize: 20.0, fontColor: 0xeeeeee)
+        setButtonStyle(Player2Button3, fontName: "Kankin", fontSize: 20.0, fontColor: 0xeeeeee)
     }
     
     func flipButton(){
@@ -432,6 +405,9 @@ class QuestionViewController: UIViewController {
             
             showCorrectAnswer()
             updatePlayerScore()
+            
+            _ = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "segue",
+                userInfo: nil, repeats: false)
         }
     }
     
@@ -490,7 +466,8 @@ class QuestionViewController: UIViewController {
         
         runTimer() // start the timeer when the view loads
         
-        
+        countDownAudio!.currentTime = 5.2
+        countDownAudio!.play()
         
     }
     
@@ -498,6 +475,12 @@ class QuestionViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func segue(){
+        // segue to scoreboard view controller
+        self.performSegueWithIdentifier("ScoreBoardFromTrivia", sender: self)
+    }
+    
     /////////////////////
     // end view set up //
     /////////////////////

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F04CAEA1C03E26300F2B01B /* trivia.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F04CAE91C03E26300F2B01B /* trivia.wav */; };
+		9F04CAEE1C03E9AD00F2B01B /* trivia_countdown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F04CAED1C03E9AD00F2B01B /* trivia_countdown.mp3 */; };
+		9F04CAF01C03EC0B00F2B01B /* tapRace_background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F04CAEF1C03EC0B00F2B01B /* tapRace_background.mp3 */; };
+		9F04CAF21C03EF4500F2B01B /* tapRace_victory.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F04CAF11C03EF4500F2B01B /* tapRace_victory.mp3 */; };
+		9F9CEEE41C03922900E2EB13 /* mk64_racestart.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F9CEEE21C03922900E2EB13 /* mk64_racestart.wav */; };
+		9F9CEEE51C03922900E2EB13 /* mk64_countdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F9CEEE31C03922900E2EB13 /* mk64_countdown.wav */; };
 		9FC7F3491BFFE63E00C12689 /* ArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F3451BFFE63E00C12689 /* ArcLayer.swift */; };
 		9FC7F34A1BFFE63E00C12689 /* OvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F3461BFFE63E00C12689 /* OvalLayer.swift */; };
 		9FC7F34B1BFFE63E00C12689 /* RectangleLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F3471BFFE63E00C12689 /* RectangleLayer.swift */; };
@@ -67,6 +73,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F04CAE91C03E26300F2B01B /* trivia.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trivia.wav; sourceTree = "<group>"; };
+		9F04CAED1C03E9AD00F2B01B /* trivia_countdown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trivia_countdown.mp3; sourceTree = "<group>"; };
+		9F04CAEF1C03EC0B00F2B01B /* tapRace_background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tapRace_background.mp3; sourceTree = "<group>"; };
+		9F04CAF11C03EF4500F2B01B /* tapRace_victory.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tapRace_victory.mp3; sourceTree = "<group>"; };
+		9F9CEEE21C03922900E2EB13 /* mk64_racestart.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mk64_racestart.wav; sourceTree = "<group>"; };
+		9F9CEEE31C03922900E2EB13 /* mk64_countdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mk64_countdown.wav; sourceTree = "<group>"; };
 		9FC7F3451BFFE63E00C12689 /* ArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcLayer.swift; sourceTree = "<group>"; };
 		9FC7F3461BFFE63E00C12689 /* OvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvalLayer.swift; sourceTree = "<group>"; };
 		9FC7F3471BFFE63E00C12689 /* RectangleLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleLayer.swift; sourceTree = "<group>"; };
@@ -156,6 +168,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F9CEEE11C0391F400E2EB13 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				9F9CEEE21C03922900E2EB13 /* mk64_racestart.wav */,
+				9F04CAED1C03E9AD00F2B01B /* trivia_countdown.mp3 */,
+				9F04CAE91C03E26300F2B01B /* trivia.wav */,
+				9F04CAEF1C03EC0B00F2B01B /* tapRace_background.mp3 */,
+				9F04CAF11C03EF4500F2B01B /* tapRace_victory.mp3 */,
+				9F9CEEE31C03922900E2EB13 /* mk64_countdown.wav */,
+			);
+			name = Audio;
+			sourceTree = "<group>";
+		};
 		D61B50C61BFC585200248DD9 = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +220,7 @@
 		D61B50D11BFC585200248DD9 /* qlobe */ = {
 			isa = PBXGroup;
 			children = (
+				9F9CEEE11C0391F400E2EB13 /* Audio */,
 				AC961FE41BFFCA500099225B /* UIColorExtensions.swift */,
 				AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */,
 				D61B50D21BFC585200248DD9 /* AppDelegate.swift */,
@@ -345,10 +371,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				D61B50DD1BFC585200248DD9 /* LaunchScreen.storyboard in Resources */,
+				9F04CAF21C03EF4500F2B01B /* tapRace_victory.mp3 in Resources */,
 				D61B50DA1BFC585200248DD9 /* Assets.xcassets in Resources */,
+				9F9CEEE51C03922900E2EB13 /* mk64_countdown.wav in Resources */,
+				9F04CAF01C03EC0B00F2B01B /* tapRace_background.mp3 in Resources */,
+				9F9CEEE41C03922900E2EB13 /* mk64_racestart.wav in Resources */,
 				D61B51071BFC5A7B00248DD9 /* Kankin.ttf in Resources */,
+				9F04CAEA1C03E26300F2B01B /* trivia.wav in Resources */,
 				AC1A05DA1BFFCD39000A6541 /* airplanding.wav in Resources */,
 				D61B50D81BFC585200248DD9 /* Main.storyboard in Resources */,
+				9F04CAEE1C03E9AD00F2B01B /* trivia_countdown.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
