@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -91,6 +91,7 @@
                                 </constraints>
                                 <state key="normal" title="Let's Begin"/>
                                 <connections>
+                                    <action selector="LetsBegin:" destination="07e-RH-l9R" eventType="touchUpInside" id="lH4-Fi-XIO"/>
                                     <segue destination="5QN-8R-htx" kind="presentation" id="28S-l9-W5d"/>
                                 </connections>
                             </button>
@@ -218,17 +219,37 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wLv-fu-9Dg">
+                                <rect key="frame" x="20" y="241" width="40" height="40"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Vpk-jU-hYB"/>
+                                    <constraint firstAttribute="height" constant="40" id="fyQ-UL-7gD"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Chs-iD-Q8a">
+                                <rect key="frame" x="20" y="318" width="40" height="40"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Wyt-5T-KX1"/>
+                                    <constraint firstAttribute="height" constant="40" id="aWp-59-0DM"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Cee-W7-Hpp" firstAttribute="top" secondItem="lAD-PB-lp7" secondAttribute="bottom" constant="240" id="5hc-DS-VYS"/>
                             <constraint firstItem="cx3-6A-SZq" firstAttribute="centerX" secondItem="JXx-7m-5cX" secondAttribute="centerX" id="6KY-uJ-JJe"/>
+                            <constraint firstItem="Chs-iD-Q8a" firstAttribute="leading" secondItem="JXx-7m-5cX" secondAttribute="leadingMargin" id="DT4-VV-pdE"/>
+                            <constraint firstItem="MSz-ZU-OCQ" firstAttribute="top" secondItem="Chs-iD-Q8a" secondAttribute="bottom" constant="242" id="Fa6-mN-KWd"/>
+                            <constraint firstItem="wLv-fu-9Dg" firstAttribute="top" secondItem="lAD-PB-lp7" secondAttribute="bottom" constant="221" id="ITv-Ie-2Po"/>
                             <constraint firstItem="VP6-JM-url" firstAttribute="centerY" secondItem="JXx-7m-5cX" secondAttribute="centerY" id="QMZ-FU-1ag"/>
                             <constraint firstItem="kax-yt-LYS" firstAttribute="top" secondItem="lAD-PB-lp7" secondAttribute="bottom" constant="113" id="T1s-cr-gyV"/>
                             <constraint firstItem="Cee-W7-Hpp" firstAttribute="centerX" secondItem="JXx-7m-5cX" secondAttribute="centerX" id="Zuv-vg-o1w"/>
                             <constraint firstItem="kax-yt-LYS" firstAttribute="centerX" secondItem="JXx-7m-5cX" secondAttribute="centerX" id="i6z-3r-Y6z"/>
                             <constraint firstItem="RsJ-lf-qxV" firstAttribute="centerX" secondItem="JXx-7m-5cX" secondAttribute="centerX" id="nND-vo-iTx"/>
+                            <constraint firstItem="wLv-fu-9Dg" firstAttribute="leading" secondItem="JXx-7m-5cX" secondAttribute="leadingMargin" id="q4P-1f-kvV"/>
                             <constraint firstItem="RsJ-lf-qxV" firstAttribute="top" secondItem="Cee-W7-Hpp" secondAttribute="bottom" constant="37" id="vMQ-kk-7e7"/>
                             <constraint firstItem="VP6-JM-url" firstAttribute="centerX" secondItem="JXx-7m-5cX" secondAttribute="centerX" id="wZo-Wn-AYN"/>
                             <constraint firstItem="MSz-ZU-OCQ" firstAttribute="top" secondItem="cx3-6A-SZq" secondAttribute="bottom" constant="133" id="ynn-UR-ewA"/>
@@ -238,6 +259,12 @@
                     <connections>
                         <outlet property="GameOverLabelBottom" destination="cx3-6A-SZq" id="5t5-59-Q3X"/>
                         <outlet property="GameOverLabelTop" destination="kax-yt-LYS" id="he8-zg-ZzM"/>
+                        <outlet property="P1Image" destination="Chs-iD-Q8a" id="hqj-wi-isA"/>
+                        <outlet property="P1ImageConstraint" destination="DT4-VV-pdE" id="a5r-2m-A7b"/>
+                        <outlet property="P1ImageConstraintBottom" destination="Fa6-mN-KWd" id="fmp-Wf-XBa"/>
+                        <outlet property="P2Image" destination="wLv-fu-9Dg" id="Ipw-0h-ZGY"/>
+                        <outlet property="P2ImageConstaintTop" destination="ITv-Ie-2Po" id="E98-vv-GLZ"/>
+                        <outlet property="P2ImageConstraint" destination="q4P-1f-kvV" id="afN-gJ-GaY"/>
                         <outlet property="RSG1X" destination="nND-vo-iTx" id="A5x-2i-pqc"/>
                         <outlet property="RSG2X" destination="Zuv-vg-o1w" id="shw-Hn-CEv"/>
                         <outlet property="TapRace" destination="VP6-JM-url" id="CaI-CD-VnQ"/>
@@ -480,16 +507,6 @@
                                     <action selector="P1BlueButton:" destination="9Xb-Lb-ROg" eventType="touchUpInside" id="CFT-bF-oiQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9I-6Z-b7t">
-                                <rect key="frame" x="328" y="379" width="100" height="100"/>
-                                <animations/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="P1GreenButton:" destination="9Xb-Lb-ROg" eventType="touchUpInside" id="lj1-lJ-Ito"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90r-9D-8R2">
                                 <rect key="frame" x="173" y="480" width="100" height="100"/>
                                 <animations/>
@@ -555,6 +572,16 @@
                                     <action selector="P2RedButton:" destination="9Xb-Lb-ROg" eventType="touchUpInside" id="OmC-Y6-0N9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9I-6Z-b7t">
+                                <rect key="frame" x="328" y="379" width="100" height="100"/>
+                                <animations/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="P1GreenButton:" destination="9Xb-Lb-ROg" eventType="touchUpInside" id="lj1-lJ-Ito"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -584,6 +611,6 @@
         <image name="qlobe_logo@1x" width="516" height="441"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OPF-rQ-OyT"/>
+        <segue reference="28S-l9-W5d"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,6 +13,7 @@ class ScoreBoardViewController: UIViewController {
     //var segues : [String] = ["Trivia", "TapRace", "SimonSays"]
     var segues : [String] = ["Trivia", "TapRace"]
     //var segues : [String] = ["TapRace"]
+    //var segues : [String] = ["Trivia"]
     var rand = 0
     
     var tapRaceAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("mk64_racestart", ofType: "wav")!))

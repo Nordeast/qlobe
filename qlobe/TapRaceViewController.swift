@@ -11,6 +11,7 @@ import AVFoundation
 
 class TapRaceViewController: UIViewController {
     
+    
     // MARK: Class variables
     var P1Taps : Int = 0 // number of taps for P1
     var P2Taps : Int = 0 // number of taps for P2
@@ -18,8 +19,12 @@ class TapRaceViewController: UIViewController {
     let coloredSquare2 = UIView()// square that races across th screen for P2
     var CS1Position: CGFloat = 0 // holds the current position of P1 racer
     var CS2Position: CGFloat = 0 // holds the current position of P1 racer
-    let WIN_TAPS = 3 //number of taps needed to win 43
+    let WIN_TAPS = 43 //number of taps needed to win 43
     var WinningPlayer : Int = 0 // player that wins the game is stored here
+    
+    var imagesP1: [String] = ["runner1@1x.png", "runner2@1x.png", "runner3@1x.png", "runner4@1x.png"]
+    var imageP1 = 0
+    
     // ready set go animation times
     let DELAY = 0.7
     let DURATION = 0.3
@@ -34,15 +39,21 @@ class TapRaceViewController: UIViewController {
     
     // MARK: Outlets
     //used for animation
+    @IBOutlet weak var P2ImageConstraint: NSLayoutConstraint!
     @IBOutlet weak var RSG1X: NSLayoutConstraint!
     @IBOutlet weak var RSG2X: NSLayoutConstraint!
     // displays ready set go
+    @IBOutlet weak var P2ImageConstaintTop: NSLayoutConstraint!
+    @IBOutlet weak var P1ImageConstraint: NSLayoutConstraint!
+    @IBOutlet weak var P1ImageConstraintBottom: NSLayoutConstraint!
     @IBOutlet weak var readySetGo1: UILabel!
     @IBOutlet weak var readySetGo2: UILabel!
     
+    @IBOutlet weak var P2Image: UIImageView!
     //place holder label
     @IBOutlet weak var TapRace: UILabel!
     
+    @IBOutlet weak var P1Image: UIImageView!
     // used for when the game is over to display the winner
     @IBOutlet weak var GameOverLabelBottom: UILabel!
     @IBOutlet weak var GameOverLabelTop: UILabel!
@@ -366,10 +377,10 @@ class TapRaceViewController: UIViewController {
             self.GameOverLabelBottom.text = "Your distance: \((self.P1Taps) * 200) feet."
             },
             completion: { _ in
-                self.GameOverLabelTop.fadeOut(1.0, delay: 0, completion:
+                self.GameOverLabelTop.fadeOut(1.0, delay: 3, completion:
                     {_ in self.GameOverLabelTop.removeFromSuperview()})
                 
-                self.GameOverLabelBottom.fadeOut(1.0, delay: 0, completion:
+                self.GameOverLabelBottom.fadeOut(1.0, delay: 3, completion:
                     {_ in self.GameOverLabelBottom.removeFromSuperview()})
 
                 
@@ -382,54 +393,51 @@ class TapRaceViewController: UIViewController {
         self.performSegueWithIdentifier("ScoreBoardFromTapRace", sender: self)
     }
     
-    
-    
 
+    
+    var image1 = UIImageView()
     func racerSetUp(){
         
         // Create and add both the racers
         
         // set background color to green
-        coloredSquare2.backgroundColor = UIColor.greenColor()
+        coloredSquare2.backgroundColor = UIColor(patternImage: UIImage(imageLiteral: "runner1@1x.png"))
         
         // set frame (position and size) of the square
+        P2ImageConstaintTop.constant = self.view.bounds.height/2 + 60
 
-        coloredSquare2.frame = CGRect(x: 0, y: view.bounds.height/2 - 78, width: 50, height: 50)
-        
+        coloredSquare2.frame = CGRect(x: 0, y: view.bounds.height/2 - 78, width: 40, height: 40)
+       
         // finally, add the square to the screen
-        self.view.addSubview(coloredSquare2)
+        //self.view.addSubview(coloredSquare2)
         
-        
-        // set background color to green
-        coloredSquare1.backgroundColor = UIColor.greenColor()
+        P1ImageConstraintBottom.constant = self.view.bounds.height/2 - 60
+        P1Image.image = UIImage(named: imagesP1[imageP1])
         
         // set frame (position and size) of the square
-        coloredSquare1.frame = CGRect(x: 0, y: view.bounds.height/2 + 30, width: 50, height: 50)
+        //coloredSquare1.frame = CGRect(x: 0, y: view.bounds.height/2 + 30, width: 40, height: 40)
         
         // finally, add the square to the screen
-        self.view.addSubview(coloredSquare1)
+        //self.view.addSubview(coloredSquare1)
         
     }
     
     func P1Animate(){
         
         // do the animation when a button is pressed. Move the racer across the screen 1/50th at a time
+        imageP1 = (imageP1 + 1) % 4
+        print(imageP1)
         
         UIView.animateWithDuration(0.5, animations: {
             
             
-            if self.coloredSquare1.backgroundColor == UIColor.greenColor(){
-                self.coloredSquare1.backgroundColor = UIColor.redColor()
-            }
-            else{
-                self.coloredSquare1.backgroundColor = UIColor.greenColor()
-            }
             // increment the distance of where the image is.
             self.CS1Position = self.CS1Position + self.view.bounds.width / 50
 
             // if statement will stop the animation from going off the screen
-            if(self.CS1Position <= self.view.bounds.width - 50){
-                self.coloredSquare1.frame = CGRect(x: self.CS1Position, y: self.coloredSquare1.center.y - 25, width: 50, height: 50)
+            if(self.CS1Position <= self.view.bounds.width - 60){
+                self.P1ImageConstraint.constant = self.CS1Position
+                self.P1Image.image = UIImage(named: self.imagesP1[self.imageP1])
             }
             
         })
@@ -452,10 +460,12 @@ class TapRaceViewController: UIViewController {
 
             
             // if statement will stop the animation from going off the screen
-            if(self.CS2Position <= self.view.bounds.width - 50){
+            if(self.CS2Position <= self.view.bounds.width - 40){
                 self.coloredSquare2.frame = CGRect(x: self.CS2Position, y: self.coloredSquare2.center.y - 25, width: 50, height: 50)
             }
-        })
+            }, completion: {_ in
+                
+            })
         
     }
     

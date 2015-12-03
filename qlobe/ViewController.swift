@@ -31,6 +31,11 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var spacer2: UILabel!
 
+    @IBAction func LetsBegin(sender: AnyObject) {
+        // kill all the animations when the button is pressed
+        view.layer.removeAllAnimations()
+    }
+    
     // MARK: ViewControler functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +80,7 @@ class ViewController: UIViewController {
     func blinkingButtons(){
         
         
-        UIView.animateWithDuration(0.6, delay: 0, options: [.Repeat, .Autoreverse],
+        UIView.animateWithDuration(0.6, delay: 0, options: [.Repeat, .Autoreverse, .AllowUserInteraction],
             
             animations: {
                 
