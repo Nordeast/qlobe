@@ -70,8 +70,9 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var timerLabel1: UILabel!
     @IBOutlet weak var timerLabel2: UILabel!
     
-    @IBOutlet weak var question: UILabel!
-    @IBOutlet weak var questionUpsideDown: UILabel!
+    @IBOutlet weak var questionUpsideDown: UITextView!
+    @IBOutlet weak var question: UITextView!
+
     
     
     // score labels
@@ -339,7 +340,8 @@ class QuestionViewController: UIViewController {
         // dummy answers
         answerP1 = ""
         answerP2 = ""
-        
+        Player1ScoreLabel.text = ""
+        Player2ScoreLabel.text = ""
         
         //Timer
         setLabelStyle(timerLabel1, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
@@ -355,9 +357,26 @@ class QuestionViewController: UIViewController {
         
         
         //Questions
-        setLabelStyle(question, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
-        setLabelStyle(questionUpsideDown, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
+        question.selectable = true
+        question.editable = true
+        questionUpsideDown.selectable = true
+        questionUpsideDown.editable = true
         
+        question.font = UIFont(name: "Kankin", size: 25.0)
+        question.textColor = UIColor(netHex: 0xf1c40f)
+        question.textAlignment = NSTextAlignment.Center
+        question.backgroundColor = UIColor(netHex:0x2c3e50)
+        
+        questionUpsideDown.font = UIFont(name: "Kankin", size: 25.0)
+        questionUpsideDown.textColor = UIColor(netHex: 0xf1c40f)
+        questionUpsideDown.textAlignment = NSTextAlignment.Center
+        questionUpsideDown.backgroundColor = UIColor(netHex:0x2c3e50)
+        
+        
+        question.selectable = false
+        question.editable = false
+        questionUpsideDown.selectable = false
+        questionUpsideDown.editable = false
         
         // p1 buttons
         setButtonStyle(Player1Button1, fontName: "Kankin", fontSize: 20.0, fontColor: 0xeeeeee)

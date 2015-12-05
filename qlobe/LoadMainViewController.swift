@@ -28,7 +28,7 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
     var holderView = HolderView(frame: CGRectZero)
     
     //create new pfQuery - This is the bridge between our app and Parse: "trivia" is our class name on Parse
-    let queryTrivia: PFQuery = PFQuery(className:"trivia")
+    let queryTrivia: PFQuery = PFQuery(className:"Trivia")
     var didLoad = false
     
     
@@ -65,27 +65,17 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
             
             // Loop through the objects array
             for triviaObject in objects!{
-                //                if(self.label1.text == "Loading..."){
-                //                    self.label1.text = "Loadng"
-                //                }else if self.label1.text == "Loading"{
-                //                    self.label1.text = "Loadng."
-                //                }else if self.label1.text == "Loading."{
-                //                    self.label1.text = "Loadng.."
-                //                }else if self.label1.text == "Loading.."{
-                //                    self.label1.text = "Loadng..."
-                //                }else {
-                //                    self.label1.text = "Loadng..."
-                //                }
+               
                 // Retrieve data for each object (key, question, ans2, ans3, correctAns)
-                let triviaQuest : String? = (triviaObject as PFObject)["question"] as? String
-                let triviaAns2 : String? = (triviaObject as PFObject)["ans2"] as? String
-                let triviaAns3 : String? = (triviaObject as PFObject)["ans3"] as? String
-                let triviaAns : String? = (triviaObject as PFObject)["correctAns"] as? String
-                let triviaKey : Int? = (triviaObject as PFObject)["key"] as? Int
+                let triviaQuestion_ : String? = (triviaObject as PFObject)["Question"] as? String
+                let triviaWrongAnswer1 : String? = (triviaObject as PFObject)["WrongAnswer1"] as? String
+                let triviaWrongAnswer2 : String? = (triviaObject as PFObject)["WrongAnswer2"] as? String
+                let triviaAnswer : String? = (triviaObject as PFObject)["Answer"] as? String
+                let triviaKey : Int? = (triviaObject as PFObject)["Key"] as? Int
                 
                 //Check that items are not nil, and create trivia object, add to triviaQuestions Array
-                if ( triviaKey != nil && triviaQuest != nil && triviaAns2 != nil &&  triviaAns3 != nil && triviaAns != nil){
-                    let trivia = triviaQuestion(Key: triviaKey!, Question: triviaQuest!, Answer: triviaAns!, WrongAnswer:  triviaAns2!, WrongAnswer2:  triviaAns3!)
+                if ( triviaKey != nil && triviaQuestion_ != nil && triviaWrongAnswer1 != nil &&  triviaWrongAnswer2 != nil && triviaAnswer != nil){
+                    let trivia = triviaQuestion(Key: triviaKey!, Question: triviaQuestion_!, Answer: triviaAnswer!, WrongAnswer:  triviaWrongAnswer1!, WrongAnswer2:  triviaWrongAnswer2!)
                     triviaQuestions.append(trivia) // append to the global array of trivia questions
                     self.didLoad = true
                     
