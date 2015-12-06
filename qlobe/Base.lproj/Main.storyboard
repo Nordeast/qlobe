@@ -577,9 +577,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yqn-Pr-8dA">
-                                <rect key="frame" x="328" y="28" width="100" height="100"/>
+                                <rect key="frame" x="290" y="40" width="100" height="100"/>
                                 <animations/>
-                                <state key="normal" title="Button">
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
                                     <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -587,9 +588,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYc-R2-5z5">
-                                <rect key="frame" x="173" y="129" width="100" height="100"/>
+                                <rect key="frame" x="182" y="148" width="100" height="100"/>
                                 <animations/>
-                                <state key="normal" title="Button">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -597,25 +599,26 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcp-7X-l7Q">
-                                <rect key="frame" x="328" y="129" width="100" height="100"/>
+                                <rect key="frame" x="290" y="148" width="100" height="100"/>
                                 <animations/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="P2BlueButton:" destination="9Xb-Lb-ROg" eventType="touchUpInside" id="fB9-zH-r6y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J47-og-CQD">
-                                <rect key="frame" x="173" y="379" width="100" height="100"/>
+                                <rect key="frame" x="182" y="383" width="100" height="100"/>
                                 <animations/>
-                                <state key="normal" title="Button"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="P1BlueButton:" destination="9Xb-Lb-ROg" eventType="touchUpInside" id="CFT-bF-oiQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90r-9D-8R2">
-                                <rect key="frame" x="173" y="480" width="100" height="100"/>
+                                <rect key="frame" x="182" y="491" width="100" height="100"/>
                                 <animations/>
-                                <state key="normal" title="Button">
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
                                     <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -623,9 +626,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Nu-Zj-Ch5">
-                                <rect key="frame" x="328" y="480" width="100" height="100"/>
+                                <rect key="frame" x="290" y="491" width="100" height="100"/>
                                 <animations/>
-                                <state key="normal" title="Button">
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -633,44 +637,38 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYP-qs-RNy">
-                                <rect key="frame" x="46" y="178" width="11" height="21"/>
+                                <rect key="frame" x="35" y="178" width="22" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZo-hJ-dfQ">
-                                <rect key="frame" x="58" y="404" width="50" height="21"/>
+                                <rect key="frame" x="44" y="404" width="64" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXV-T0-zMP">
-                                <rect key="frame" x="124" y="404" width="11" height="21"/>
+                                <rect key="frame" x="124" y="404" width="23" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShH-7P-llN">
-                                <rect key="frame" x="71" y="178" width="50" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Cz-Sv-1dU">
-                                <rect key="frame" x="295" y="289" width="11" height="21"/>
+                                <rect key="frame" x="71" y="178" width="64" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfU-Qe-AF0">
-                                <rect key="frame" x="152" y="28" width="100" height="100"/>
+                                <rect key="frame" x="182" y="40" width="100" height="100"/>
                                 <animations/>
-                                <state key="normal" title="Button">
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -678,15 +676,37 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9I-6Z-b7t">
-                                <rect key="frame" x="328" y="379" width="100" height="100"/>
+                                <rect key="frame" x="290" y="383" width="100" height="100"/>
                                 <animations/>
-                                <state key="normal" title="Button">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
                                     <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="P1GreenButton:" destination="9Xb-Lb-ROg" eventType="touchUpInside" id="lj1-lJ-Ito"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Atg-vK-7LB">
+                                <rect key="frame" x="182" y="348" width="208" height="27"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LS4-vW-ulj">
+                                <rect key="frame" x="182" y="254" width="208" height="27"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0Cz-Sv-1dU">
+                                <rect key="frame" x="240" y="283" width="93" height="59"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -694,17 +714,19 @@
                     <connections>
                         <outlet property="P1BlueButton" destination="J47-og-CQD" id="u8l-Cj-q1l"/>
                         <outlet property="P1GreenButton" destination="H9I-6Z-b7t" id="w23-eA-sd1"/>
+                        <outlet property="P1Message" destination="Atg-vK-7LB" id="90p-ae-2gr"/>
                         <outlet property="P1RedButton" destination="1Nu-Zj-Ch5" id="kfm-vS-974"/>
                         <outlet property="P1YellowButton" destination="90r-9D-8R2" id="sXG-8G-hhT"/>
                         <outlet property="P2BlueButton" destination="dcp-7X-l7Q" id="GOQ-ae-093"/>
                         <outlet property="P2GreenButton" destination="hYc-R2-5z5" id="z9v-ho-PoY"/>
+                        <outlet property="P2Message" destination="LS4-vW-ulj" id="zst-0q-Lsy"/>
                         <outlet property="P2RedButton" destination="qfU-Qe-AF0" id="6cj-ZM-Mdb"/>
                         <outlet property="P2YellowButton" destination="yqn-Pr-8dA" id="0py-Xm-oyl"/>
                         <outlet property="Player1ScoreLabel" destination="fZo-hJ-dfQ" id="mC8-QE-ATR"/>
                         <outlet property="Player1ScoreValue" destination="LXV-T0-zMP" id="sbq-uo-jd3"/>
                         <outlet property="Player2ScoreLabel" destination="ShH-7P-llN" id="eTA-hw-T3e"/>
                         <outlet property="Player2ScoreValue" destination="uYP-qs-RNy" id="5Qm-oQ-VX8"/>
-                        <outlet property="countDown" destination="0Cz-Sv-1dU" id="EAb-LV-Cqn"/>
+                        <outlet property="countDown_Reward" destination="0Cz-Sv-1dU" id="TTq-Ku-QNg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imj-kA-hUd" userLabel="First Responder" sceneMemberID="firstResponder"/>

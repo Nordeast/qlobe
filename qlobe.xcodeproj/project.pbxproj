@@ -21,6 +21,7 @@
 		9FC7F3501BFFE6B900C12689 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F34F1BFFE6B900C12689 /* HolderView.swift */; };
 		AC1A05D81BFFCD08000A6541 /* SimonSaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */; };
 		AC1A05DA1BFFCD39000A6541 /* airplanding.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC1A05D91BFFCD39000A6541 /* airplanding.wav */; };
+		AC6C2EFF1C13A62E00EC759D /* elevatording.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC6C2EFE1C13A62E00EC759D /* elevatording.wav */; };
 		AC961FE51BFFCA500099225B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC961FE41BFFCA500099225B /* UIColorExtensions.swift */; };
 		D61B50D31BFC585200248DD9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B50D21BFC585200248DD9 /* AppDelegate.swift */; };
 		D61B50D81BFC585200248DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D61B50D61BFC585200248DD9 /* Main.storyboard */; };
@@ -87,6 +88,7 @@
 		9FC7F34F1BFFE6B900C12689 /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
 		AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimonSaysViewController.swift; sourceTree = "<group>"; };
 		AC1A05D91BFFCD39000A6541 /* airplanding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = airplanding.wav; sourceTree = "<group>"; };
+		AC6C2EFE1C13A62E00EC759D /* elevatording.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = elevatording.wav; sourceTree = "<group>"; };
 		AC961FE41BFFCA500099225B /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		D61B50CF1BFC585200248DD9 /* qlobe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qlobe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D61B50D21BFC585200248DD9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				D61B50D91BFC585200248DD9 /* Assets.xcassets */,
 				D61B50DE1BFC585200248DD9 /* Info.plist */,
 				D61B51061BFC5A7B00248DD9 /* Kankin.ttf */,
+				AC6C2EFE1C13A62E00EC759D /* elevatording.wav */,
 				AC1A05D91BFFCD39000A6541 /* airplanding.wav */,
 				D61B512C1BFC5DAE00248DD9 /* triviaQuestion.swift */,
 				D61B51321BFC61D300248DD9 /* UIViewExtensions.swift */,
@@ -378,6 +381,7 @@
 				9F9CEEE41C03922900E2EB13 /* mk64_racestart.wav in Resources */,
 				D61B51071BFC5A7B00248DD9 /* Kankin.ttf in Resources */,
 				9F04CAEA1C03E26300F2B01B /* trivia.wav in Resources */,
+				AC6C2EFF1C13A62E00EC759D /* elevatording.wav in Resources */,
 				AC1A05DA1BFFCD39000A6541 /* airplanding.wav in Resources */,
 				D61B50D81BFC585200248DD9 /* Main.storyboard in Resources */,
 				9F04CAEE1C03E9AD00F2B01B /* trivia_countdown.mp3 in Resources */,
