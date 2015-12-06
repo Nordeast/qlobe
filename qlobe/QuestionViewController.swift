@@ -46,6 +46,8 @@ class QuestionViewController: UIViewController {
     var timerRunning = false
     var timer = NSTimer()
     
+    var randIndex = 0
+    
     var P1DidSelectAnAnswer = false
     var P2DidSelectAnAnswer = false
     
@@ -72,7 +74,7 @@ class QuestionViewController: UIViewController {
     
     @IBOutlet weak var questionUpsideDown: UITextView!
     @IBOutlet weak var question: UITextView!
-
+    
     
     
     // score labels
@@ -116,7 +118,7 @@ class QuestionViewController: UIViewController {
     
     @IBAction func Player1Button1(sender: AnyObject) {
         
-       
+        
         if (P1DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP1 = (Player1Button1.titleLabel?.text)! // grab the answer
             setButtonStyle(Player1Button1, fontName: "Kankin", fontSize: 20.0, fontColor: 0x2980b9)  // change the background color to show selected answer
@@ -162,7 +164,7 @@ class QuestionViewController: UIViewController {
         if (P2DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP2 = (Player2Button1.titleLabel?.text)! // grab the answer
             setButtonStyle(Player2Button1, fontName: "Kankin", fontSize: 20.0, fontColor: 0x2980b9)  // change the background color to show selected answer
-        
+            
         }
         P2DidSelectAnAnswer = true // set to true so the no other anwers can be selected
         
@@ -174,7 +176,7 @@ class QuestionViewController: UIViewController {
         
         if (P2DidSelectAnAnswer == false){ // check if an answer has been chosen yet
             answerP2 = (Player2Button2.titleLabel?.text)! // grab the answer
-            setButtonStyle(Player2Button1, fontName: "Kankin", fontSize: 20.0, fontColor: 0x2980b9)  // change the background color to show selected answer
+            setButtonStyle(Player2Button2, fontName: "Kankin", fontSize: 20.0, fontColor: 0x2980b9)  // change the background color to show selected answer
         }
         P2DidSelectAnAnswer = true // set to true so the no other anwers can be selected
         
@@ -204,7 +206,7 @@ class QuestionViewController: UIViewController {
     
     //generates a random trivia object from global triviaQuestions
     func getRandomTrivia() -> triviaQuestion{
-        let randIndex = Int(arc4random_uniform(UInt32(triviaQuestions.count-1)))
+        randIndex = Int(arc4random_uniform(UInt32(triviaQuestions.count-1)))
         return triviaQuestions[randIndex]
     }
     
@@ -269,12 +271,12 @@ class QuestionViewController: UIViewController {
                 
                 buttonBouncing(Player1Button3)
             }
-           
+            
         }
         
         if(Player2Button1.titleLabel!.text == curQuestion.Answer){
             Player2Button1.titleLabel?.textColor = UIColor(netHex: 0x27ae60)
-
+            
             if(answerP2 != curQuestion.Answer){
                 buttonBouncing(Player2Button1)
             }
@@ -283,7 +285,7 @@ class QuestionViewController: UIViewController {
         else if(Player2Button2.titleLabel!.text == curQuestion.Answer){
             Player2Button2.titleLabel?.textColor = UIColor(netHex: 0x27ae60)
             if(answerP2 != curQuestion.Answer){
-               
+                
                 buttonBouncing(Player2Button2)
             }
             
@@ -299,7 +301,7 @@ class QuestionViewController: UIViewController {
     }
     
     func updatePlayerScore(){
-
+        
         
         if(answerP1 == curQuestion.getAnswer()){
             Player1.getQuestionsCorrect()
@@ -347,11 +349,11 @@ class QuestionViewController: UIViewController {
         setLabelStyle(timerLabel1, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
         setLabelStyle(timerLabel2, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
         
-
+        
         //Score
         setLabelStyle(Player1ScoreLabel, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
         setLabelStyle(Player1ScoreValue, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
-
+        
         setLabelStyle(Player2ScoreLabel, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
         setLabelStyle(Player2ScoreValue, fontName: "Kankin", fontSize: 30.0, fontColor: 0xeeeeee)
         
@@ -383,7 +385,7 @@ class QuestionViewController: UIViewController {
         setButtonStyle(Player1Button2, fontName: "Kankin", fontSize: 20.0, fontColor: 0xeeeeee)
         setButtonStyle(Player1Button3, fontName: "Kankin", fontSize: 20.0, fontColor: 0xeeeeee)
         
-
+        
         // p2 buttons
         setButtonStyle(Player2Button1, fontName: "Kankin", fontSize: 20.0, fontColor: 0xeeeeee)
         setButtonStyle(Player2Button2, fontName: "Kankin", fontSize: 20.0, fontColor: 0xeeeeee)
@@ -425,8 +427,20 @@ class QuestionViewController: UIViewController {
             showCorrectAnswer()
             updatePlayerScore()
             
-            _ = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "segue",
-                userInfo: nil, repeats: false)
+            //remove current question from list so it wont be asked again (no repeats)
+            triviaQuestions.removeAtIndex(randIndex)
+            
+            //segue to scoreboard for next random game after 5 rounds of trivia
+            triviaGameCount += 1
+            if(triviaGameCount == 5){
+                _ = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "segue",
+                    userInfo: nil, repeats: false)
+            }
+            else{
+                print("\(triviaGameCount)")
+                _ = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "viewDidLoad",
+                    userInfo: nil, repeats: false)
+            }
         }
     }
     
@@ -451,7 +465,7 @@ class QuestionViewController: UIViewController {
         // three nested animations to bounce it to the left then to the right then back
         UIView.animateWithDuration(0.1, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 30, options: UIViewAnimationOptions.CurveEaseIn, animations:
             
-        ({button.center.x = button.center.x + 5})
+            ({button.center.x = button.center.x + 5})
             
             , completion: {_ in UIView.animateWithDuration(0.1, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 30, options: UIViewAnimationOptions.CurveEaseIn, animations:
                 
@@ -471,10 +485,10 @@ class QuestionViewController: UIViewController {
     /////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // background
         view.backgroundColor = UIColor(netHex:0x2c3e50)
-
+        
         resetAll()
         
         // set the content of all buttons labels

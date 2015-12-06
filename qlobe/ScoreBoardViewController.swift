@@ -9,11 +9,13 @@
 import UIKit
 import AVFoundation
 
+var triviaGameCount = 0
+
 class ScoreBoardViewController: UIViewController {
     //var segues : [String] = ["Trivia", "TapRace", "SimonSays"]
-    //var segues : [String] = ["Trivia", "TapRace"]
+    var segues : [String] = ["Trivia"]
     //var segues : [String] = ["TapRace"]
-    var segues : [String] = ["SimonSays"]
+    //var segues : [String] = ["SimonSays"]
     var rand = 0
     
     var tapRaceAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("mk64_racestart", ofType: "wav")!))
@@ -23,6 +25,9 @@ class ScoreBoardViewController: UIViewController {
     // MARK: ViewControler functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //reset triviaGameCount to 0
+        triviaGameCount = 0
         
         // background color
         view.backgroundColor = UIColor(netHex:0x2c3e50)

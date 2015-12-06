@@ -83,7 +83,7 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
                     self.label1.text = "Network Error"
                     self.didLoad = false
                 }
-                
+                print("\(triviaQuestions.count)")
             }
             
             

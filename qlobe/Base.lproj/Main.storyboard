@@ -557,6 +557,7 @@
                         <outlet property="questionUpsideDown" destination="fBm-Pq-EDz" id="jDc-mr-Tsq"/>
                         <outlet property="timerLabel1" destination="iZK-H3-Ajw" id="k1y-wq-EX8"/>
                         <outlet property="timerLabel2" destination="ppd-i8-Ai7" id="z24-zR-FXW"/>
+                        <outlet property="view" destination="LHj-N7-dKz" id="enT-fl-dPS"/>
                         <segue destination="5QN-8R-htx" kind="presentation" identifier="ScoreBoardFromTrivia" id="OPF-rQ-OyT"/>
                     </connections>
                 </viewController>
@@ -636,29 +637,22 @@
                                     <action selector="P1RedButton:" destination="9Xb-Lb-ROg" eventType="touchUpInside" id="BZF-T0-R73"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYP-qs-RNy">
-                                <rect key="frame" x="35" y="178" width="22" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYP-qs-RNy">
+                                <rect key="frame" x="13" y="173" width="82" height="26"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZo-hJ-dfQ">
-                                <rect key="frame" x="44" y="404" width="64" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXV-T0-zMP">
-                                <rect key="frame" x="124" y="404" width="23" height="21"/>
+                                <rect key="frame" x="13" y="398" width="64" height="27"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ShH-7P-llN">
-                                <rect key="frame" x="71" y="178" width="64" height="21"/>
+                                <rect key="frame" x="103" y="173" width="64" height="26"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -707,6 +701,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXV-T0-zMP">
+                                <rect key="frame" x="69" y="398" width="85" height="27"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -727,6 +728,7 @@
                         <outlet property="Player2ScoreLabel" destination="ShH-7P-llN" id="eTA-hw-T3e"/>
                         <outlet property="Player2ScoreValue" destination="uYP-qs-RNy" id="5Qm-oQ-VX8"/>
                         <outlet property="countDown_Reward" destination="0Cz-Sv-1dU" id="TTq-Ku-QNg"/>
+                        <segue destination="5QN-8R-htx" kind="presentation" identifier="ScoreBoardFromSimonSays" id="4uc-M6-eu5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imj-kA-hUd" userLabel="First Responder" sceneMemberID="firstResponder"/>
