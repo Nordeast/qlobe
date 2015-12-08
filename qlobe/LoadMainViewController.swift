@@ -38,11 +38,7 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        view.backgroundColor = UIColor(netHex:0x2c3e50)
-        //        label1.font = UIFont(name: "Kankin", size: 80.0)
-        //        label1.textColor = UIColor(netHex: 0xeeeeee)
-        //        label1.textAlignment = NSTextAlignment.Center
-        label1.text = ""
+    label1.text = ""
         
         
         //retrieve data from parse query
@@ -83,20 +79,9 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
                     self.label1.text = "Network Error"
                     self.didLoad = false
                 }
-                print("\(triviaQuestions.count)")
-            }
-            
-            
-            for element in triviaQuestions{
-                print(element.Key, element.Question)
-            }
-            //            if (didLoad == true) {
-            //                //perform segue to View Controller : Main menu
-            //                self.performSegueWithIdentifier("finnishLoad", sender: self)
-            //            }
-            
-        }
-    }
+            }// end for
+        }// end closure
+    }// end retrieve trivia
     
     
     // creat animation

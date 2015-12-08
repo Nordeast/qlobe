@@ -84,16 +84,12 @@ class ViewController: UIViewController {
             
             animations: {
                 
-                self.letsBegin.transform = CGAffineTransformMakeScale(1.1,1.1)
+                self.letsBegin.titleLabel!.alpha = 0.4
                 
             },
             
             completion: nil)
         
-        
-        
-        
     }
-    
 }
 
