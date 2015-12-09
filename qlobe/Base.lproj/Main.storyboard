@@ -65,6 +65,9 @@
                                     <constraint firstAttribute="width" constant="182" id="Buc-Q6-q7b"/>
                                 </constraints>
                                 <state key="normal" title="Settings"/>
+                                <connections>
+                                    <segue destination="5ag-rY-lhh" kind="presentation" id="VVf-Ce-Fq4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kl9-p0-cTK">
                                 <rect key="frame" x="20" y="524" width="182" height="56"/>
@@ -131,6 +134,165 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZTr-B5-bNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="675" y="1155"/>
+        </scene>
+        <!--SettingsTVC-->
+        <scene sceneID="WEh-1s-jNX">
+            <objects>
+                <tableViewController id="5ag-rY-lhh" customClass="SettingsTVC" customModule="qlobe" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="z1I-Al-7pp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yhK-Vx-4aB">
+                            <rect key="frame" x="0.0" y="295" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <state key="normal" title="Back To Game"/>
+                            <connections>
+                                <action selector="backButton:" destination="5ag-rY-lhh" eventType="touchUpInside" id="dVi-5q-iEf"/>
+                                <segue destination="07e-RH-l9R" kind="presentation" id="AYD-yS-PCT"/>
+                            </connections>
+                        </button>
+                        <sections>
+                            <tableViewSection headerTitle="Games" id="Xjc-nA-RUA">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nC4-iq-56e">
+                                        <rect key="frame" x="0.0" y="50" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nC4-iq-56e" id="7Jx-N6-IYJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Trivia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yq-o7-mFz">
+                                                    <rect key="frame" x="8" y="6" width="263" height="32"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQS-tt-ghX">
+                                                    <rect key="frame" x="543" y="6" width="51" height="31"/>
+                                                    <animations/>
+                                                    <connections>
+                                                        <action selector="triviaEnabler:" destination="5ag-rY-lhh" eventType="valueChanged" id="StR-Y2-lOK"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="RQS-tt-ghX" secondAttribute="trailing" id="1Cv-KB-wn8"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="7yq-o7-mFz" secondAttribute="leading" id="Lzb-vg-0Fa"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="9lU-ZL-D7F">
+                                        <rect key="frame" x="0.0" y="94" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9lU-ZL-D7F" id="KYy-hN-2G4">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Tap Race" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8K-3B-Lna">
+                                                    <rect key="frame" x="8" y="6" width="263" height="32"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="05U-fu-hAY">
+                                                    <rect key="frame" x="543" y="6" width="51" height="31"/>
+                                                    <animations/>
+                                                    <connections>
+                                                        <action selector="tapRaceEnabler:" destination="5ag-rY-lhh" eventType="valueChanged" id="Avx-ca-nBq"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="05U-fu-hAY" secondAttribute="trailing" id="8wq-3R-udg"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="S8K-3B-Lna" secondAttribute="leading" id="aCt-gh-Rg9"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="c9e-fV-pjI">
+                                        <rect key="frame" x="0.0" y="138" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c9e-fV-pjI" id="bvn-Ek-I8D">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Simon Says" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8V-Ew-WER">
+                                                    <rect key="frame" x="8" y="6" width="263" height="32"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOl-yZ-cbp">
+                                                    <rect key="frame" x="543" y="7" width="51" height="31"/>
+                                                    <animations/>
+                                                    <connections>
+                                                        <action selector="simonSaysEnabler:" destination="5ag-rY-lhh" eventType="valueChanged" id="rFS-1N-7Nr"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nOl-yZ-cbp" secondAttribute="trailing" id="dKS-Jw-FIb"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="o8V-Ew-WER" secondAttribute="leading" id="zbP-oG-kOC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Sound" id="Xjw-6b-iA6">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3Xw-6F-CH8">
+                                        <rect key="frame" x="0.0" y="233" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Xw-6F-CH8" id="E4P-5j-gp8">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x74-MR-J0I">
+                                                    <rect key="frame" x="8" y="6" width="263" height="32"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mkL-Xc-qQz">
+                                                    <rect key="frame" x="368" y="5" width="226" height="31"/>
+                                                    <animations/>
+                                                </slider>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="leadingMargin" secondItem="x74-MR-J0I" secondAttribute="leading" id="39J-yc-CG0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="mkL-Xc-qQz" secondAttribute="trailing" id="51h-cL-vor"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                    </tableView>
+                    <connections>
+                        <outlet property="back" destination="yhK-Vx-4aB" id="de3-ar-nR2"/>
+                        <outlet property="simonSaysSetting" destination="nOl-yZ-cbp" id="LE5-ta-pUH"/>
+                        <outlet property="tapRaceSetting" destination="05U-fu-hAY" id="5eV-2r-XWh"/>
+                        <outlet property="triviaSetting" destination="RQS-tt-ghX" id="hER-k2-12K"/>
+                        <outlet property="volumeSetting" destination="mkL-Xc-qQz" id="tcC-zs-oef"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BdI-Us-gTH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1360" y="1150"/>
         </scene>
         <!--Score Board View Controller-->
         <scene sceneID="VlC-WI-lqB">
@@ -891,6 +1053,7 @@
         <image name="qlobe_logo@1x" width="516" height="441"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KPH-Tg-4nz"/>
+        <segue reference="AYD-yS-PCT"/>
+        <segue reference="28S-l9-W5d"/>
     </inferredMetricsTieBreakers>
 </document>

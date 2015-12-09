@@ -491,6 +491,9 @@ class QuestionViewController: UIViewController {
         
         resetAll()
         
+        //account for volume settings
+        countDownAudio?.volume = settings.getVolume()
+        
         // set the content of all buttons labels
         setButtonContent()
         
