@@ -51,8 +51,8 @@ class ScoreBoardViewController: UIViewController {
             rand = Int(arc4random_uniform(UInt32(segues.count)))
         }
         
-        displayLabelBottom.text = "Next game: \(segues[rand])"
-        displayLabelTop.text = "Next game: \(segues[rand])"
+        displayLabelBottom.text = "\(segues[rand])"
+        displayLabelTop.text = "\(segues[rand])"
     }
     
     @IBAction func ChangeGameButtonTop(sender: AnyObject) {
@@ -251,11 +251,11 @@ class ScoreBoardViewController: UIViewController {
     func buttons(){
         
         displayLabelBottom.fadeOut(1, delay: 0, completion: {_ in
-            self.displayLabelBottom.text = "Next game: \(self.segues[self.rand])"
+            self.displayLabelBottom.text = "\(self.segues[self.rand])"
             self.displayLabelBottom.fadeIn()
         })
         displayLabelTop.fadeOut(1, delay: 0, completion: {_ in
-            self.displayLabelTop.text = "Next game: \(self.segues[self.rand])"
+            self.displayLabelTop.text = "\(self.segues[self.rand])"
             self.displayLabelTop.fadeIn()
         })
         

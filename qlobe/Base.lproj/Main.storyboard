@@ -98,7 +98,7 @@
                                     <segue destination="5QN-8R-htx" kind="presentation" id="28S-l9-W5d"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qlobe_logo@1x" translatesAutoresizingMaskIntoConstraints="NO" id="QMt-Fv-fty">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qlobe_logo_smoke0@1x" translatesAutoresizingMaskIntoConstraints="NO" id="QMt-Fv-fty">
                                 <rect key="frame" x="32" y="20" width="536" height="287"/>
                                 <animations/>
                                 <constraints>
@@ -127,6 +127,7 @@
                     <connections>
                         <outlet property="help" destination="kl9-p0-cTK" id="IF8-vS-xHp"/>
                         <outlet property="letsBegin" destination="qrs-vg-Qq1" id="b8W-EI-WPW"/>
+                        <outlet property="qlobe_logo" destination="QMt-Fv-fty" id="odU-oq-6b4"/>
                         <outlet property="settings" destination="u01-sB-ur1" id="fY6-DN-6Vh"/>
                         <outlet property="spacer2" destination="84w-Ct-8rg" id="3aE-2s-6hT"/>
                     </connections>
@@ -143,7 +144,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yhK-Vx-4aB">
                             <rect key="frame" x="0.0" y="295" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -168,7 +169,7 @@
                                                     <rect key="frame" x="8" y="6" width="263" height="32"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQS-tt-ghX">
@@ -198,7 +199,7 @@
                                                     <rect key="frame" x="8" y="6" width="263" height="32"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="05U-fu-hAY">
@@ -228,7 +229,7 @@
                                                     <rect key="frame" x="8" y="6" width="263" height="32"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOl-yZ-cbp">
@@ -262,7 +263,7 @@
                                                     <rect key="frame" x="8" y="6" width="263" height="32"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mkL-Xc-qQz">
@@ -318,7 +319,7 @@
                                     <constraint firstAttribute="height" constant="45" id="Xxf-9v-qeM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rhd-Oc-MnU">
@@ -369,7 +370,7 @@
                                     <constraint firstAttribute="height" constant="45" id="hND-eI-yqZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pud-zq-XJG">
@@ -1050,10 +1051,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="qlobe_logo@1x" width="516" height="441"/>
+        <image name="qlobe_logo_smoke0@1x" width="516" height="441"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="KPH-Tg-4nz"/>
         <segue reference="AYD-yS-PCT"/>
-        <segue reference="28S-l9-W5d"/>
     </inferredMetricsTieBreakers>
 </document>
