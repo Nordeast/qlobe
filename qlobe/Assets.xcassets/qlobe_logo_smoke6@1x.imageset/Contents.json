@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Finishline.png",
+      "filename" : "qlobe_logo_smoke6@1x.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "qlobe_logo_smoke6@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "qlobe_logo_smoke6@3x.png",
       "scale" : "3x"
     }
   ],
