@@ -16,7 +16,7 @@ var roundNumber = 0
 var numberOfRoundsPerMatch = 10
 
 class ScoreBoardViewController: UIViewController {
-    var segues : [String] = ["Trivia", "TapRace", "SimonSays"]
+    var segues : [String] = settings.getGamesSetting()
     //var segues : [String] = ["Trivia"]
     //var segues : [String] = ["TapRace"]
     //var segues : [String] = ["SimonSays"]
@@ -106,6 +106,9 @@ class ScoreBoardViewController: UIViewController {
         style()
         // Do any additional setup after loading the view.
         
+        //account for volume settings
+        tapRaceAudio?.volume = settings.getVolume()
+        triviaAudio?.volume = settings.getVolume()
         
         //reset triviaGameCount to 0
         triviaGameCount = 0

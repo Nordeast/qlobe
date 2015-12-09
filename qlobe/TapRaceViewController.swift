@@ -36,7 +36,7 @@ class TapRaceViewController: UIViewController {
     
     // MARK: Sound effect variables
     var coundownAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("mk64_countdown", ofType: "wav")!))
-    
+
     var backgroundAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("tapRace_background", ofType: "mp3")!))
     
     var victoryAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("tapRace_victory", ofType: "mp3")!))
@@ -134,6 +134,10 @@ class TapRaceViewController: UIViewController {
         BottomGameOverTextField.alpha = 0
         TopGameOverTextField.alpha = 0
         
+        //account for volume setting
+        coundownAudio?.volume = settings.getVolume()
+        backgroundAudio?.volume = settings.getVolume()
+        victoryAudio?.volume = settings.getVolume()
         
         // set the background color
         view.backgroundColor = UIColor(netHex:0x2c3e50)

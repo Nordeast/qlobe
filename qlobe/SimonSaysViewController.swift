@@ -56,7 +56,7 @@ class SimonSaysViewController: UIViewController {
     var elev_sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("elevatording", ofType: "wav")!)
     var pingPlayer = AVAudioPlayer()
     var elevPlayer = AVAudioPlayer()
-    
+
     var engine = AVAudioEngine()
     var playerNode = AVAudioPlayerNode()
     
@@ -207,6 +207,10 @@ class SimonSaysViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //account for volume settings
+        //pingPlayer.volume = settings.getVolume()
+        //elevPlayer.volume = settings.getVolume()
         
         Player1ScoreValue.text = "\(Player1.getPlayerScore())"
         Player2ScoreValue.text = "\(Player2.getPlayerScore())"
