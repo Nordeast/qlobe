@@ -31,11 +31,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var letsBegin: UIButton!
     
-    @IBOutlet weak var settings: UIButton!
+    @IBOutlet weak var settingBtn: UIButton!
     
     @IBOutlet weak var help: UIButton!
     
     @IBOutlet weak var spacer2: UILabel!
+    
+    @IBOutlet weak var muteBtn: UIButton!
     
     @IBAction func LetsBegin(sender: AnyObject) {
         // kill all the animations when the button is pressed
@@ -75,10 +77,10 @@ class ViewController: UIViewController {
         
         
         // settings button
-        settings.titleLabel!.font = UIFont(name: "Kankin", size: 30)!
-        settings.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        //settings.backgroundColor = UIColor(netHex: 0x464a53)
-        settings.titleLabel!.text = "Settings"
+        settingBtn.titleLabel!.font = UIFont(name: "Kankin", size: 30)!
+        settingBtn.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
+        //settingBtn.backgroundColor = UIColor(netHex: 0x464a53)
+        settingBtn.titleLabel!.text = "Settings"
         
         // help button
         help.titleLabel!.font = UIFont(name: "Kankin", size: 30)!
@@ -140,6 +142,17 @@ class ViewController: UIViewController {
         picture = (picture + 1) % 13
         qlobe_logo.image = UIImage(named: images[picture])
 
+    }
+    
+    @IBAction func muteChange(sender: AnyObject) {
+        if(settings.getVolume() > 0.0001){
+            settings.setVolumePre(settings.getVolume())
+            settings.setVolume(0.0)
+        }
+        else{
+            settings.setVolume(settings.getVolumePre())
+        }
+        print("Vol: \(settings.getVolume())")
     }
 }
 

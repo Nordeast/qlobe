@@ -46,10 +46,7 @@ class ScoreBoardViewController: UIViewController {
         // allow user to change the next game
         
         // make sure the game isnt the same as the one they had before they pressed change game
-        let previousRand = rand
-        while(previousRand == rand){
-            rand = Int(arc4random_uniform(UInt32(segues.count)))
-        }
+        rand = (rand+1) % segues.count
         
         displayLabelBottom.text = "\(segues[rand])"
         displayLabelTop.text = "\(segues[rand])"
@@ -59,10 +56,7 @@ class ScoreBoardViewController: UIViewController {
         // allow user to change the next game
         
         // make sure the game isnt the same as the one they had before they pressed change game
-        let previousRand = rand
-        while(previousRand == rand){
-            rand = Int(arc4random_uniform(UInt32(segues.count)))
-        }
+        rand = (rand+1) % segues.count
         
         displayLabelBottom.text = segues[rand]
         displayLabelTop.text = segues[rand]
@@ -71,9 +65,29 @@ class ScoreBoardViewController: UIViewController {
     
     @IBAction func ContinueButtonTop(sender: AnyObject) {
         //continue playing the game
-        segueToNextGame()
+        
+        var segueDelay = 0.0
+        
+        //Play sound effect for TapRace
+        if(segues[rand] == "TapRace"){
+            segueDelay = 5.0
+            tapRaceAudio!.play()
+        }else if(segues[rand] == "Trivia"){
+            triviaAudio!.play()
+        }else if(segues[rand] == "SimonSays"){
+            tapRaceAudio!.play()
+        }
+        
+        // Disable the change game button
+        ChangeGameButtonBottom.enabled = false
+        ChangeGameButtonTop.enabled = false
+        
+        // perform segue with delay for the audio to play
+        _ = NSTimer.scheduledTimerWithTimeInterval(segueDelay, target: self, selector: "segueToNextGame",
+            userInfo: nil, repeats: false)
 
     }
+    
     @IBAction func ContinueButtonBottom(sender: AnyObject) {
         //continue playing the game
         
@@ -86,13 +100,17 @@ class ScoreBoardViewController: UIViewController {
         }else if(segues[rand] == "Trivia"){
             triviaAudio!.play()
         }else if(segues[rand] == "SimonSays"){
-                    tapRaceAudio!.play()
+            tapRaceAudio!.play()
         }
+        
+        // Disable the change game button
+        ChangeGameButtonBottom.enabled = false
+        ChangeGameButtonTop.enabled = false
         
         // perform segue with delay for the audio to play
         _ = NSTimer.scheduledTimerWithTimeInterval(segueDelay, target: self, selector: "segueToNextGame",
             userInfo: nil, repeats: false)
-        }
+    }
     
     
     // MARK: ViewControler functions

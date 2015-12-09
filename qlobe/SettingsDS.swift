@@ -15,16 +15,21 @@ class SettingsDS {
     
     var gamesEnabled : [String]
     var volume : Float
+    var volumePre : Float
     
     init(){
         
         self.gamesEnabled = ["Trivia","TapRace","SimonSays"]
         self.volume = 1.0
-        
+        self.volumePre = 1.0
     }
     
     func setVolume(vol : Float){
         volume = vol
+    }
+    
+    func setVolumePre(vol : Float){
+        volumePre = vol
     }
     
     func setGame(game : String){
@@ -35,6 +40,10 @@ class SettingsDS {
     
     func getVolume() -> Float{
         return volume
+    }
+    
+    func getVolumePre() -> Float{
+        return volumePre
     }
     
     func getGamesSetting() -> [String] {
