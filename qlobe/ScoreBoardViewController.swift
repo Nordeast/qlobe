@@ -13,7 +13,7 @@ var triviaGameCount = 0
 //current round number
 var ROUND = 1
 //number of rounds the match will have, default = 10.
-var numberOfRoundsPerMatch = 2
+var numberOfRoundsPerMatch = 3
 
 class ScoreBoardViewController: UIViewController {
     var segues : [String] = settings.getGamesSetting()
@@ -26,6 +26,9 @@ class ScoreBoardViewController: UIViewController {
     
     var triviaAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("trivia", ofType: "wav")!))
     
+    var changeGameAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("boing", ofType: "wav")!))
+    
+    var roundAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("round", ofType: "mp3")!))
     
     // MARK: Outlets
     
@@ -40,8 +43,47 @@ class ScoreBoardViewController: UIViewController {
     @IBOutlet weak var ChangeGameButtonBottom: UIButton!
     @IBOutlet weak var ChangeGameButtonTop: UIButton!
     
+    @IBOutlet weak var muteBtnBottom: UIButton!
+    @IBOutlet weak var muteBtnTop: UIButton!
     
     // MARK: Actions
+    @IBAction func muteBtnPressedBottom(sender: AnyObject) {
+        if(settings.isMute() == false){
+            settings.setVolumePre(settings.getVolume())
+            settings.setVolume(0.0)
+            muteBtnBottom.setImage(UIImage(named: "sound_on"), forState: .Normal)
+            muteBtnTop.setImage(UIImage(named: "sound_on"), forState: .Normal)
+        }
+        else{
+            settings.setVolume(settings.getVolumePre())
+            muteBtnBottom.setImage(UIImage(named: "sound_off"), forState: .Normal)
+            muteBtnTop.setImage(UIImage(named: "sound_off"), forState: .Normal)
+        }
+        tapRaceAudio?.volume = settings.getVolume()
+        triviaAudio?.volume = settings.getVolume()
+        changeGameAudio?.volume = settings.getVolume()
+        roundAudio?.volume = settings.getVolume()
+        //print("Vol: \(settings.getVolume())")
+    }
+    
+    @IBAction func muteBtnPressedTop(sender: AnyObject) {
+        if(settings.isMute() == false){
+            settings.setVolumePre(settings.getVolume())
+            settings.setVolume(0.0)
+            muteBtnBottom.setImage(UIImage(named: "sound_on"), forState: .Normal)
+            muteBtnTop.setImage(UIImage(named: "sound_on"), forState: .Normal)
+        }
+        else{
+            settings.setVolume(settings.getVolumePre())
+            muteBtnBottom.setImage(UIImage(named: "sound_off"), forState: .Normal)
+            muteBtnTop.setImage(UIImage(named: "sound_off"), forState: .Normal)
+        }
+        tapRaceAudio?.volume = settings.getVolume()
+        triviaAudio?.volume = settings.getVolume()
+        changeGameAudio?.volume = settings.getVolume()
+        roundAudio?.volume = settings.getVolume()
+        //print("Vol: \(settings.getVolume())")
+    }
     @IBAction func ChangeGameButtonBottom(sender: AnyObject) {
         // allow user to change the next game
         
@@ -50,6 +92,8 @@ class ScoreBoardViewController: UIViewController {
         
         displayLabelBottom.text = "\(segues[rand])"
         displayLabelTop.text = "\(segues[rand])"
+        
+        changeGameAudio!.play()
     }
     
     @IBAction func ChangeGameButtonTop(sender: AnyObject) {
@@ -60,21 +104,19 @@ class ScoreBoardViewController: UIViewController {
         
         displayLabelBottom.text = segues[rand]
         displayLabelTop.text = segues[rand]
+        
+        changeGameAudio!.play()
     }
     
     
     @IBAction func ContinueButtonTop(sender: AnyObject) {
-        //continue playing the game
-        ROUND++
-        // disable the buttons
-        ContinueButtonBottom.enabled = false
-        ContinueButtonTop.enabled = false
-        ChangeGameButtonBottom.enabled = false
-        ChangeGameButtonTop.enabled = false
         var segueDelay = 0.0
         
+        //continue playing the game
+        ROUND++
+        
         //Play sound effect for TapRace
-        if(segues[rand] == "TapRace"){
+        if(segues[rand] == "TapRace" && (settings.isMute() == false)){
             segueDelay = 5.0
             tapRaceAudio!.play()
         }else if(segues[rand] == "Trivia"){
@@ -84,6 +126,12 @@ class ScoreBoardViewController: UIViewController {
         }
         
         // Disable the change game button
+        ChangeGameButtonBottom.enabled = false
+        ChangeGameButtonTop.enabled = false
+        muteBtnBottom.enabled = false
+        muteBtnTop.enabled = false
+        
+        roundAudio!.stop()
         
         
         // perform segue with delay for the audio to play
@@ -93,18 +141,13 @@ class ScoreBoardViewController: UIViewController {
     }
     
     @IBAction func ContinueButtonBottom(sender: AnyObject) {
-        //continue playing the game
-        ROUND++
-        // disable the buttons
-        ContinueButtonBottom.enabled = false
-        ContinueButtonTop.enabled = false
-        ChangeGameButtonBottom.enabled = false
-        ChangeGameButtonTop.enabled = false
-        
         var segueDelay = 0.0
         
+        //continue playing the game
+        ROUND++
+        
         //Play sound effect for TapRace
-        if(segues[rand] == "TapRace"){
+        if(segues[rand] == "TapRace" && (settings.isMute() == false)){
             segueDelay = 5.0
             tapRaceAudio!.play()
         }else if(segues[rand] == "Trivia"){
@@ -112,6 +155,14 @@ class ScoreBoardViewController: UIViewController {
         }else if(segues[rand] == "SimonSays"){
             tapRaceAudio!.play()
         }
+        
+        // Disable the change game button
+        ChangeGameButtonBottom.enabled = false
+        ChangeGameButtonTop.enabled = false
+        muteBtnBottom.enabled = false
+        muteBtnTop.enabled = false
+        
+        roundAudio!.stop()
         
         
         // perform segue with delay for the audio to play
@@ -134,6 +185,10 @@ class ScoreBoardViewController: UIViewController {
         //account for volume settings
         tapRaceAudio?.volume = settings.getVolume()
         triviaAudio?.volume = settings.getVolume()
+        changeGameAudio?.volume = settings.getVolume()
+        roundAudio?.volume = settings.getVolume()
+        
+        roundAudio!.play()
         
         //reset triviaGameCount to 0
         triviaGameCount = 0
@@ -166,8 +221,8 @@ class ScoreBoardViewController: UIViewController {
         
         
         
-        // show the score for 7 seconds then show the change game and continue buttons
-        _ = NSTimer.scheduledTimerWithTimeInterval(7, target: self, selector: "buttons",
+        // show the score for 4 seconds then show the change game and continue buttons
+        _ = NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: "buttons",
             userInfo: nil, repeats: false)
         
     }
@@ -263,6 +318,27 @@ class ScoreBoardViewController: UIViewController {
         ChangeGameButtonTop.flipUpSideDown()
         P2ScoreTop.flipUpSideDown()
         P1ScoreTop.flipUpSideDown()
+        
+        // flip the buttons and labels that need to be flipped
+        displayLabelTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        P1ScoreTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        ContinueButtonTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        ChangeGameButtonTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        P2ScoreTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        P1ScoreTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        
+        // Set Mute Icon
+        muteBtnTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        
+        if(settings.isMute() == false){
+            settings.setVolumePre(settings.getVolume())
+            muteBtnBottom.setImage(UIImage(named: "sound_off"), forState: .Normal)
+            muteBtnTop.setImage(UIImage(named: "sound_off"), forState: .Normal)
+        }
+        else{
+            muteBtnBottom.setImage(UIImage(named: "sound_on"), forState: .Normal)
+            muteBtnTop.setImage(UIImage(named: "sound_on"), forState: .Normal)
+        }
     }
     
     func displayScore(){

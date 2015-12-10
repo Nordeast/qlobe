@@ -19,7 +19,7 @@ class TapRaceViewController: UIViewController {
     var P2Taps : Int = 0 // number of taps for P2
     var CS1Position: CGFloat = 0 // holds the current position of P1 racer
     var CS2Position: CGFloat = 0 // holds the current position of P1 racer
-    let WIN_TAPS = 3 //number of taps needed to win 41
+    let WIN_TAPS = 20 //number of taps needed to win 41
     var WinningPlayer : Int = 0 // player that wins the game is stored here
     
     // array of images for the running animation
