@@ -69,7 +69,7 @@ class ScoreBoardViewController: UIViewController {
         var segueDelay = 0.0
         
         //Play sound effect for TapRace
-        if(segues[rand] == "TapRace"){
+        if(segues[rand] == "TapRace" && (settings.isMute() == false)){
             segueDelay = 5.0
             tapRaceAudio!.play()
         }else if(segues[rand] == "Trivia"){
@@ -94,7 +94,7 @@ class ScoreBoardViewController: UIViewController {
         var segueDelay = 0.0
 
         //Play sound effect for TapRace
-        if(segues[rand] == "TapRace"){
+        if(segues[rand] == "TapRace" && (settings.isMute() == false)){
             segueDelay = 5.0
             tapRaceAudio!.play()
         }else if(segues[rand] == "Trivia"){
@@ -128,6 +128,9 @@ class ScoreBoardViewController: UIViewController {
         tapRaceAudio?.volume = settings.getVolume()
         triviaAudio?.volume = settings.getVolume()
         
+        // Get a random game type
+        rand = Int(arc4random_uniform(UInt32(segues.count-1)))
+        
         //reset triviaGameCount to 0
         triviaGameCount = 0
         // intially everything should be hidden
@@ -157,8 +160,8 @@ class ScoreBoardViewController: UIViewController {
         displayLabelTop.fadeIn()
 
         
-        // show the score for 7 seconds then show the change game and continue buttons
-        _ = NSTimer.scheduledTimerWithTimeInterval(7, target: self, selector: "buttons",
+        // show the score for 4 seconds then show the change game and continue buttons
+        _ = NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: "buttons",
             userInfo: nil, repeats: false)
         
     }
