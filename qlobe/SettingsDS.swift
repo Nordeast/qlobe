@@ -46,10 +46,6 @@ class SettingsDS {
         return volumePre
     }
     
-    func isMute() -> Bool{
-        return (volume < 0.001)
-    }
-    
     func getGamesSetting() -> [String] {
         return gamesEnabled
     }
