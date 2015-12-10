@@ -12,11 +12,33 @@ import Parse
 
 class SettingsTVC: UITableViewController{
     
+    
+    // MARK: outlets
     @IBOutlet weak var triviaSetting: UISwitch!
     @IBOutlet weak var tapRaceSetting: UISwitch!
     @IBOutlet weak var simonSaysSetting: UISwitch!
     @IBOutlet weak var volumeSetting: UISlider!
     @IBOutlet weak var back: UIButton!
+    
+    @IBOutlet weak var TriviaLabel: UILabel!
+    @IBOutlet weak var TapRaceLabel: UILabel!
+    
+    @IBOutlet weak var SimonSaysLabel: UILabel!
+    
+    @IBOutlet weak var NumberOfRoundsLabel: UILabel!
+    
+    @IBOutlet weak var VolumeLabel: UILabel!
+    
+    @IBOutlet weak var NumberOfRoundsSlider: UISlider!
+    
+    @IBOutlet weak var ShowNumberOfRoundsLabel: UILabel!
+    
+    // MARK: actions
+    @IBAction func NumberOfRoundsSlider(sender: AnyObject) {
+        numberOfRoundsPerMatch =  Int(round(NumberOfRoundsSlider.value)) + 1
+        ShowNumberOfRoundsLabel.text = "\(Int(round(NumberOfRoundsSlider.value)))"
+    }
+    
     
     @IBAction func triviaEnabler(sender: AnyObject) {
         if(!simonSaysSetting.on && !tapRaceSetting.on){

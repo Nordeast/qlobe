@@ -31,18 +31,10 @@ class ViewController: UIViewController {
 
     // MARK: outlets
     @IBOutlet weak var qlobe_logo: UIImageView!
-    
-    
     @IBOutlet weak var letsBegin: UIButton!
-    
     @IBOutlet weak var settingBtn: UIButton!
-    
     @IBOutlet weak var help: UIButton!
-    
-    @IBOutlet weak var spacer2: UILabel!
-    
     @IBOutlet weak var muteBtn: UIButton!
-    
     @IBAction func LetsBegin(sender: AnyObject) {
         //Stop the sound effect
         menuAudio!.stop()
@@ -56,7 +48,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
 
-        spacer2.alpha = 0
+        
         stylePage()
         
         // Display the mute icon

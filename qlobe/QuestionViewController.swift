@@ -245,7 +245,7 @@ class QuestionViewController: UIViewController {
         Player2Button3.setTitle( Player2AnsList[2], forState: .Normal)
         
         // set scroe
-        Player1ScoreValue.text =  "\(Player2Score)"
+        Player1ScoreValue.text =  "\(Player1Score)"
         Player2ScoreValue.text =  "\(Player2Score)"
     }
     
@@ -518,7 +518,13 @@ class QuestionViewController: UIViewController {
         // segue to scoreboard view controller
         Player1.addScore(ROUND, game: "Trivia", score: Player1Score)
         Player2.addScore(ROUND, game: "Trivia", score: Player2Score)
-        self.performSegueWithIdentifier("ScoreBoardFromTrivia", sender: self)
+        if(ROUND == numberOfRoundsPerMatch){
+            performSegueWithIdentifier("TriviaGameOver", sender: self)
+        }else{
+            self.performSegueWithIdentifier("ScoreBoardFromTrivia", sender: self)
+
+        }
+
     }
     
     /////////////////////

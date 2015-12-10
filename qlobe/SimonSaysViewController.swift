@@ -775,7 +775,12 @@ class SimonSaysViewController: UIViewController {
     }
     func segue(){
         //func called by timer after Game Over on wrong button press
-        self.performSegueWithIdentifier("ScoreBoardFromSimonSays", sender: self)
+        if(ROUND == numberOfRoundsPerMatch){
+            performSegueWithIdentifier("SimonSaysGameOver", sender: self)
+        }else{
+            self.performSegueWithIdentifier("ScoreBoardFromSimonSays", sender: self)
+
+        }
     }
     
     

@@ -455,7 +455,12 @@ class TapRaceViewController: UIViewController {
     }
     func segue(){
         // segue to scoreboard view controller
-        self.performSegueWithIdentifier("ScoreBoardFromTapRace", sender: self)
+        if(ROUND == numberOfRoundsPerMatch){
+            performSegueWithIdentifier("TapRaceGameOver", sender: self)
+        }else{
+            self.performSegueWithIdentifier("ScoreBoardFromTapRace", sender: self)
+            
+        }
     }
     
 
