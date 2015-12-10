@@ -11,6 +11,10 @@
 		9F04CAEE1C03E9AD00F2B01B /* trivia_countdown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F04CAED1C03E9AD00F2B01B /* trivia_countdown.mp3 */; };
 		9F04CAF01C03EC0B00F2B01B /* tapRace_background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F04CAEF1C03EC0B00F2B01B /* tapRace_background.mp3 */; };
 		9F04CAF21C03EF4500F2B01B /* tapRace_victory.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F04CAF11C03EF4500F2B01B /* tapRace_victory.mp3 */; };
+		9F3364581C19324C0035CB1C /* boing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F3364541C19324C0035CB1C /* boing.wav */; };
+		9F3364591C19324C0035CB1C /* main_menu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F3364551C19324C0035CB1C /* main_menu.mp3 */; };
+		9F33645A1C19324C0035CB1C /* startPage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F3364561C19324C0035CB1C /* startPage.mp3 */; };
+		9F33645B1C19324C0035CB1C /* round.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F3364571C19324C0035CB1C /* round.mp3 */; };
 		9F9CEEE41C03922900E2EB13 /* mk64_racestart.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F9CEEE21C03922900E2EB13 /* mk64_racestart.wav */; };
 		9F9CEEE51C03922900E2EB13 /* mk64_countdown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9F9CEEE31C03922900E2EB13 /* mk64_countdown.wav */; };
 		9FC7F3491BFFE63E00C12689 /* ArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F3451BFFE63E00C12689 /* ArcLayer.swift */; };
@@ -84,6 +88,10 @@
 		9F04CAED1C03E9AD00F2B01B /* trivia_countdown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = trivia_countdown.mp3; sourceTree = "<group>"; };
 		9F04CAEF1C03EC0B00F2B01B /* tapRace_background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tapRace_background.mp3; sourceTree = "<group>"; };
 		9F04CAF11C03EF4500F2B01B /* tapRace_victory.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tapRace_victory.mp3; sourceTree = "<group>"; };
+		9F3364541C19324C0035CB1C /* boing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = boing.wav; sourceTree = "<group>"; };
+		9F3364551C19324C0035CB1C /* main_menu.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = main_menu.mp3; sourceTree = "<group>"; };
+		9F3364561C19324C0035CB1C /* startPage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = startPage.mp3; sourceTree = "<group>"; };
+		9F3364571C19324C0035CB1C /* round.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = round.mp3; sourceTree = "<group>"; };
 		9F9CEEE21C03922900E2EB13 /* mk64_racestart.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mk64_racestart.wav; sourceTree = "<group>"; };
 		9F9CEEE31C03922900E2EB13 /* mk64_countdown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mk64_countdown.wav; sourceTree = "<group>"; };
 		9FC7F3451BFFE63E00C12689 /* ArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcLayer.swift; sourceTree = "<group>"; };
@@ -218,6 +226,10 @@
 				9F04CAEF1C03EC0B00F2B01B /* tapRace_background.mp3 */,
 				9F04CAF11C03EF4500F2B01B /* tapRace_victory.mp3 */,
 				9F9CEEE31C03922900E2EB13 /* mk64_countdown.wav */,
+				9F3364541C19324C0035CB1C /* boing.wav */,
+				9F3364551C19324C0035CB1C /* main_menu.mp3 */,
+				9F3364561C19324C0035CB1C /* startPage.mp3 */,
+				9F3364571C19324C0035CB1C /* round.mp3 */,
 			);
 			name = Audio;
 			sourceTree = "<group>";
@@ -411,14 +423,18 @@
 				D61B50DD1BFC585200248DD9 /* LaunchScreen.storyboard in Resources */,
 				9F04CAF21C03EF4500F2B01B /* tapRace_victory.mp3 in Resources */,
 				D61B50DA1BFC585200248DD9 /* Assets.xcassets in Resources */,
+				9F33645A1C19324C0035CB1C /* startPage.mp3 in Resources */,
 				9F9CEEE51C03922900E2EB13 /* mk64_countdown.wav in Resources */,
 				9F04CAF01C03EC0B00F2B01B /* tapRace_background.mp3 in Resources */,
 				9F9CEEE41C03922900E2EB13 /* mk64_racestart.wav in Resources */,
 				9F04CAEA1C03E26300F2B01B /* trivia.wav in Resources */,
 				AC6C2EFF1C13A62E00EC759D /* elevatording.wav in Resources */,
 				AC1A05DA1BFFCD39000A6541 /* airplanding.wav in Resources */,
+				9F3364591C19324C0035CB1C /* main_menu.mp3 in Resources */,
+				9F3364581C19324C0035CB1C /* boing.wav in Resources */,
 				D61B50D81BFC585200248DD9 /* Main.storyboard in Resources */,
 				9F04CAEE1C03E9AD00F2B01B /* trivia_countdown.mp3 in Resources */,
+				9F33645B1C19324C0035CB1C /* round.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

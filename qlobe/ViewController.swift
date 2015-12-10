@@ -16,6 +16,7 @@
 // custom font Kankin. to use letsBegin.titleLabel!.font = UIFont(name: "Kankin", size: 50)!
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -23,7 +24,8 @@ class ViewController: UIViewController {
     var picture = 0 // counter for the logo animation
     // array of the images in the animation
     var images : [String] = [ "qlobe_logo_smoke0@1x.png", "qlobe_logo_smoke1@1x.png", "qlobe_logo_smoke2@1x.png", "qlobe_logo_smoke3@1x.png", "qlobe_logo_smoke4@1x.png", "qlobe_logo_smoke5@1x.png", "qlobe_logo_smoke6@1x.png", "qlobe_logo_smoke7@1x.png", "qlobe_logo_smoke8@1x.png", "qlobe_logo_smoke9@1x.png", "qlobe_logo_smoke10@1x.png", "qlobe_logo_smoke11@1x.png", "qlobe_logo_smoke12@1x.png", "qlobe_logo_smoke13@1x.png"]
-    
+
+    var menuAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("main_menu", ofType: "mp3")!))
 
     // MARK: outlets
     @IBOutlet weak var qlobe_logo: UIImageView!
@@ -40,6 +42,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var muteBtn: UIButton!
     
     @IBAction func LetsBegin(sender: AnyObject) {
+        //Stop the sound effect
+        menuAudio!.stop()
+        
         // kill all the animations when the button is pressed
         view.layer.removeAllAnimations()
     }
@@ -48,8 +53,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         spacer2.alpha = 0
         stylePage()
+        
+        // Display the mute icon
+        muteBtn.setImage(UIImage(named: "sound_off"), forState: .Normal)
+        muteBtn.backgroundColor = UIColor(netHex:0x2c3e50)
+        
+        // Play the main menu sound effect
+        menuAudio!.play()
         
         //run the logo animation every 4 seconds. 0.980 is 980ms which is the time the animation takes to run
         _ = NSTimer.scheduledTimerWithTimeInterval(0.980 + 3 , target: self, selector: "runLogoAnimation",
@@ -131,14 +144,20 @@ class ViewController: UIViewController {
     }
     
     @IBAction func muteChange(sender: AnyObject) {
-        if(settings.getVolume() > 0.0001){
+        if(settings.isMute() == false){
             settings.setVolumePre(settings.getVolume())
             settings.setVolume(0.0)
+            muteBtn.setImage(UIImage(named: "sound_on"), forState: .Normal)
         }
         else{
             settings.setVolume(settings.getVolumePre())
+            muteBtn.setImage(UIImage(named: "sound_off"), forState: .Normal)
         }
-        print("Vol: \(settings.getVolume())")
+        menuAudio?.volume = settings.getVolume()
+    }
+    
+    @IBAction func helpBtnPressed(sender: AnyObject) {
+        menuAudio!.stop()
     }
 }
 

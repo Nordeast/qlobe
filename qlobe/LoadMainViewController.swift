@@ -16,6 +16,7 @@
 
 import UIKit
 import Parse
+import AVFoundation
 
 class loadMainViewController: UIViewController, HolderViewDelegate{
     
@@ -26,6 +27,9 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
     
     // animation object
     var holderView = HolderView(frame: CGRectZero)
+    
+    // Sound effect object
+    var loadingAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("startPage", ofType: "mp3")!))
     
     //create new pfQuery - This is the bridge between our app and Parse: "trivia" is our class name on Parse
     let queryTrivia: PFQuery = PFQuery(className:"Trivia")
@@ -87,6 +91,10 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
     // creat animation
     func addHolderView() {
         let boxSize: CGFloat = 100.0
+        
+        // display start up audio
+        loadingAudio!.play()
+        
         holderView.frame = CGRect(x: view.bounds.width / 2 - boxSize / 2,
             y: view.bounds.height / 2 - boxSize / 2,
             width: boxSize,
