@@ -48,3 +48,34 @@ extension UIView {
         self.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
     }
 }
+// allows for a button to have an animation that it is fading in and out aka blinking
+extension UIButton {
+    func blinkingButton(){
+        
+        
+        UIView.animateWithDuration(0.6, delay: 0, options: [.Repeat, .Autoreverse, .AllowUserInteraction],
+            
+            animations: {
+                
+                self.titleLabel!.alpha = 0.4
+                
+            },
+            
+            completion: nil)
+        
+        func blinkingButton(blinkSpeed: Double){
+            
+            
+            UIView.animateWithDuration(blinkSpeed, delay: 0, options: [.Repeat, .Autoreverse, .AllowUserInteraction],
+                
+                animations: {
+                    
+                    self.titleLabel!.alpha = 0.4
+                    
+                },
+                
+                completion: nil)
+            
+        }
+    }
+}

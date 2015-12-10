@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         
     }
     override func viewDidAppear(animated: Bool) {
-        blinkingButtons()
+        letsBegin.blinkingButton()
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,20 +89,6 @@ class ViewController: UIViewController {
         help.titleLabel!.text = "Help"
     }
     
-    func blinkingButtons(){
-        
-        
-        UIView.animateWithDuration(0.6, delay: 0, options: [.Repeat, .Autoreverse, .AllowUserInteraction],
-            
-            animations: {
-                
-                self.letsBegin.titleLabel!.alpha = 0.4
-                
-            },
-            
-            completion: nil)
-        
-    }
     
     func runLogoAnimation(){
         // run the animation at 70 ms per image

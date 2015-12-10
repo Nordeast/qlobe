@@ -56,7 +56,7 @@ class SimonSaysViewController: UIViewController {
     var elev_sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("elevatording", ofType: "wav")!)
     var pingPlayer = AVAudioPlayer()
     var elevPlayer = AVAudioPlayer()
-
+    
     var engine = AVAudioEngine()
     var playerNode = AVAudioPlayerNode()
     
@@ -69,12 +69,8 @@ class SimonSaysViewController: UIViewController {
     @IBOutlet weak var P2Message: UILabel!
     @IBOutlet weak var P1Message: UILabel!
     
-    //score labels
-    @IBOutlet weak var Player2ScoreLabel: UILabel!
-    @IBOutlet weak var Player2ScoreValue: UILabel!
     
-    @IBOutlet weak var Player1ScoreValue: UILabel!
-    @IBOutlet weak var Player1ScoreLabel: UILabel!
+    @IBOutlet weak var ScoreLabelLeft: UILabel!
     
     //Player 2 Buttons (top player)
     @IBOutlet weak var P2RedButton: UIButton!
@@ -102,27 +98,16 @@ class SimonSaysViewController: UIViewController {
         
         //outlet designs
         //Adjust for upside-down labels
-        Player2ScoreLabel.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        Player2ScoreValue.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        P2Message.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-
+        P2Message.flipUpSideDown()
+        
         //countdown
-        countDown_Reward.font = UIFont(name: "Kankin", size: 30.0)
-        countDown_Reward.textColor = UIColor(netHex: 0xeeeeee)
+        countDown_Reward.alpha = 0
         
-        //font and color for scores and score values
-        Player2ScoreLabel.font = UIFont(name: "Kankin", size: 25.0)
-        Player2ScoreLabel.textColor = UIColor(netHex: 0xeeeeee)
-        Player2ScoreValue.font = UIFont(name: "Kankin", size:  25.0)
-        Player2ScoreValue.textColor = UIColor(netHex: 0xeeeeee)
-
+       
         
-        Player1ScoreLabel.font = UIFont(name: "Kankin", size: 25.0)
-        Player1ScoreLabel.textColor = UIColor(netHex: 0xeeeeee)
-        Player1ScoreValue.font = UIFont(name: "Kankin", size:  25.0)
-        Player1ScoreValue.textColor = UIColor(netHex: 0xeeeeee)
-
-        
+        ScoreLabelLeft.font = UIFont(name: "Kankin", size: 30.0)
+        ScoreLabelLeft.textColor = UIColor(netHex: 0xeeeeee)
+        ScoreLabelLeft.rotate360Degrees(3)
         
         //Message Labels
         P2Message.hidden = true;        //hidden until an alert is needed
@@ -139,44 +124,44 @@ class SimonSaysViewController: UIViewController {
         P2RedButton.backgroundColor = UIColor.clearColor()
         P2RedButton.layer.cornerRadius = P2RedButton.frame.size.width / 2
         P2RedButton.layer.borderWidth = 4
-        P2RedButton.layer.borderColor = UIColor(netHex: 0xc0392b).CGColor
+        P2RedButton.layer.borderColor = UIColor(netHex: 0xe74c3c).CGColor
         //yellow
         P2YellowButton.backgroundColor = UIColor.clearColor()
         P2YellowButton.layer.cornerRadius = 0.5 * P2YellowButton.bounds.size.width
         P2YellowButton.layer.borderWidth = 4
-        P2YellowButton.layer.borderColor = UIColor(netHex: 0xa4a200).CGColor
+        P2YellowButton.layer.borderColor = UIColor(netHex: 0xf1c40f).CGColor
         //green
         P2GreenButton.backgroundColor = UIColor.clearColor()
         P2GreenButton.layer.cornerRadius = 0.5 * P2GreenButton.bounds.size.width
         P2GreenButton.layer.borderWidth = 4
-        P2GreenButton.layer.borderColor = UIColor(netHex: 0x3d6451).CGColor
+        P2GreenButton.layer.borderColor = UIColor(netHex: 0x27ae60).CGColor
         //blue
         P2BlueButton.backgroundColor = UIColor.clearColor()
         P2BlueButton.layer.cornerRadius = 50
         P2BlueButton.layer.borderWidth = 4
-        P2BlueButton.layer.borderColor = UIColor(netHex: 0x662a5b).CGColor
+        P2BlueButton.layer.borderColor = UIColor(netHex: 0x2980b9).CGColor
         
         //Player 1's buttons (bottom player)
         //red
         P1RedButton.backgroundColor = UIColor.clearColor()
         P1RedButton.layer.cornerRadius = 50
         P1RedButton.layer.borderWidth = 4
-        P1RedButton.layer.borderColor = UIColor(netHex: 0xc0392b).CGColor
+        P1RedButton.layer.borderColor = UIColor(netHex: 0xe74c3c).CGColor
         //yellow
         P1YellowButton.backgroundColor = UIColor.clearColor()
         P1YellowButton.layer.cornerRadius = 50
         P1YellowButton.layer.borderWidth = 4
-        P1YellowButton.layer.borderColor = UIColor(netHex: 0xa4a200).CGColor
+        P1YellowButton.layer.borderColor = UIColor(netHex: 0xf1c40f).CGColor
         //green
         P1GreenButton.backgroundColor = UIColor.clearColor()
         P1GreenButton.layer.cornerRadius = 50
         P1GreenButton.layer.borderWidth = 4
-        P1GreenButton.layer.borderColor = UIColor(netHex: 0x3d6451).CGColor
+        P1GreenButton.layer.borderColor = UIColor(netHex: 0x27ae60).CGColor
         //blue
         P1BlueButton.backgroundColor = UIColor.clearColor()
         P1BlueButton.layer.cornerRadius = 50
         P1BlueButton.layer.borderWidth = 4
-        P1BlueButton.layer.borderColor = UIColor(netHex: 0x662a5b).CGColor
+        P1BlueButton.layer.borderColor = UIColor(netHex: 0x2980b9).CGColor
     }
     
     func generateRandSequence(){
@@ -195,7 +180,10 @@ class SimonSaysViewController: UIViewController {
         //represents the countdown at start of game
         
         if(countToBegin >= 0){
-            countDown_Reward.text = "\(countToBegin)"
+
+            ScoreLabelLeft.text = "\(countToBegin)"
+            
+            
             countToBegin -= 1
         }
         if(countToBegin == -1){
@@ -211,9 +199,6 @@ class SimonSaysViewController: UIViewController {
         //account for volume settings
         //pingPlayer.volume = settings.getVolume()
         //elevPlayer.volume = settings.getVolume()
-        
-        Player1ScoreValue.text = "\(Player1.getPlayerScore())"
-        Player2ScoreValue.text = "\(Player2.getPlayerScore())"
         
         do{
             pingPlayer = try AVAudioPlayer(contentsOfURL: ping_sound)
@@ -258,8 +243,8 @@ class SimonSaysViewController: UIViewController {
             //            }else{
             //                pingPlayer.play()
             //            }
-            self.P1RedButton.backgroundColor = UIColor(netHex: 0xc0392b)
-            self.P2RedButton.backgroundColor = UIColor(netHex: 0xc0392b).colorWithAlphaComponent(0.15)
+            self.P1RedButton.backgroundColor = UIColor(netHex: 0xe74c3c)
+            
         }
         if(sequence[currPlay] == 2){
             //            if(elevPlayer.playing){     //allows for overlap
@@ -269,16 +254,16 @@ class SimonSaysViewController: UIViewController {
             //            }else{
             //                elevPlayer.play()
             //            }
-            self.P1YellowButton.backgroundColor = UIColor(netHex: 0xa4a200)
-            self.P2YellowButton.backgroundColor = UIColor(netHex: 0xa4a200).colorWithAlphaComponent(0.15)
+            self.P1YellowButton.backgroundColor = UIColor(netHex: 0xf1c40f)
+            
         }
         if(sequence[currPlay] == 3){
-            self.P1GreenButton.backgroundColor = UIColor(netHex: 0x3d6451)
-            self.P2GreenButton.backgroundColor = UIColor(netHex: 0x3d6451).colorWithAlphaComponent(0.15)
+            self.P1GreenButton.backgroundColor = UIColor(netHex: 0x27ae60)
+            
         }
         if(sequence[currPlay] == 4){
-            self.P1BlueButton.backgroundColor = UIColor(netHex: 0x662a5b)
-            self.P2BlueButton.backgroundColor = UIColor(netHex: 0x662a5b).colorWithAlphaComponent(0.15)
+            self.P1BlueButton.backgroundColor = UIColor(netHex: 0x2980b9)
+            
         }
         if(currPlay == sequence.count - 1){
         }
@@ -296,8 +281,8 @@ class SimonSaysViewController: UIViewController {
             //            }else{
             //                pingPlayer.play()
             //            }
-            self.P1RedButton.backgroundColor = UIColor(netHex: 0xc0392b).colorWithAlphaComponent(0.15)
-            self.P2RedButton.backgroundColor = UIColor(netHex: 0xc0392b)
+            
+            self.P2RedButton.backgroundColor = UIColor(netHex: 0xe74c3c)
         }
         if(sequence[currPlay] == 2){
             //            if(elevPlayer.playing){     //allows for overlap
@@ -307,16 +292,16 @@ class SimonSaysViewController: UIViewController {
             //            }else{
             //                elevPlayer.play()
             //            }
-            self.P1YellowButton.backgroundColor = UIColor(netHex: 0xa4a200).colorWithAlphaComponent(0.15)
-            self.P2YellowButton.backgroundColor = UIColor(netHex: 0xa4a200)
+            
+            self.P2YellowButton.backgroundColor = UIColor(netHex: 0xf1c40f)
         }
         if(sequence[currPlay] == 3){
-            self.P1GreenButton.backgroundColor = UIColor(netHex: 0x3d6451).colorWithAlphaComponent(0.15)
-            self.P2GreenButton.backgroundColor = UIColor(netHex: 0x3d6451)
+            
+            self.P2GreenButton.backgroundColor = UIColor(netHex: 0x27ae60)
         }
         if(sequence[currPlay] == 4){
-            self.P1BlueButton.backgroundColor = UIColor(netHex: 0x662a5b).colorWithAlphaComponent(0.15)
-            self.P2BlueButton.backgroundColor = UIColor(netHex: 0x662a5b)
+            
+            self.P2BlueButton.backgroundColor = UIColor(netHex: 0x2980b9)
         }
         if(currPlay == sequence.count - 1){
         }
@@ -416,11 +401,14 @@ class SimonSaysViewController: UIViewController {
                 if(sequence[index] == 1){
                     print("good job")
                     totalTaps += 1
-                    reward = totalTaps * 100
-                     countDown_Reward.text = "\(reward)"
+                    reward = totalTaps * 25
+                    
+                    ScoreLabelLeft.text = "\(reward)"
+                    
                     degree += 180.0
                     UIView.animateWithDuration(0.15,animations:({
-                        self.countDown_Reward.transform = CGAffineTransformMakeRotation(self.degree)
+                        
+                        self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
                     }))
                     turn -= 1
                     index += 1
@@ -430,7 +418,9 @@ class SimonSaysViewController: UIViewController {
                     disableButtonPress()
                     P2Message.text = "Game Over!"
                     P2Message.hidden = false;
-                    Player1.addScore(reward)
+                    Player1.addScore(ROUND, game : "Simon Says", score: reward)
+                    Player2.addScore(ROUND, game : "Simon Says", score: 0)
+                    
                     _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
                         userInfo: nil, repeats: false)
                 }
@@ -466,11 +456,13 @@ class SimonSaysViewController: UIViewController {
                 if(sequence[index] == 2){
                     print("good job")
                     totalTaps += 1
-                    reward = totalTaps * 100
-                    countDown_Reward.text = "\(reward)"
+                    reward = totalTaps * 25
+                   
+                    ScoreLabelLeft.text = "\(reward)"
                     degree += 180.0
                     UIView.animateWithDuration(0.15,animations:({
-                        self.countDown_Reward.transform = CGAffineTransformMakeRotation(self.degree)
+                        
+                        self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
                     }))
                     turn -= 1
                     index += 1
@@ -480,7 +472,8 @@ class SimonSaysViewController: UIViewController {
                     disableButtonPress()
                     P2Message.text = "Game Over!"
                     P2Message.hidden = false;
-                    Player1.addScore(reward)
+                    Player1.addScore(ROUND, game : "Simon Says", score: reward)
+                    Player2.addScore(ROUND, game : "Simon Says", score: 0)
                     _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
                         userInfo: nil, repeats: false)
                 }
@@ -517,11 +510,13 @@ class SimonSaysViewController: UIViewController {
                 if(sequence[index] == 3){
                     print("good job")
                     totalTaps += 1
-                    reward = totalTaps * 100
-                    countDown_Reward.text = "\(reward)"
+                    reward = totalTaps * 25
+                    
+                    ScoreLabelLeft.text = "\(reward)"
                     degree += 180.0
                     UIView.animateWithDuration(0.15,animations:({
-                        self.countDown_Reward.transform = CGAffineTransformMakeRotation(self.degree)
+                        
+                        self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
                     }))
                     turn -= 1
                     index += 1
@@ -531,7 +526,8 @@ class SimonSaysViewController: UIViewController {
                     disableButtonPress()
                     P2Message.text = "Game Over!"
                     P2Message.hidden = false;
-                    Player1.addScore(reward)
+                    Player1.addScore(ROUND, game : "Simon Says", score: reward)
+                    Player2.addScore(ROUND, game : "Simon Says", score: 0)
                     _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
                         userInfo: nil, repeats: false)
                 }
@@ -561,11 +557,13 @@ class SimonSaysViewController: UIViewController {
                 if(sequence[index] == 4){
                     print("good job")
                     totalTaps += 1
-                    reward = totalTaps * 100
-                    countDown_Reward.text = "\(reward)"
+                    reward = totalTaps * 25
+                    
+                    ScoreLabelLeft.text = "\(reward)"
                     degree += 180.0
                     UIView.animateWithDuration(0.15,animations:({
-                        self.countDown_Reward.transform = CGAffineTransformMakeRotation(self.degree)
+                        
+                        self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
                     }))
                     turn -= 1
                     index += 1
@@ -575,7 +573,8 @@ class SimonSaysViewController: UIViewController {
                     disableButtonPress()
                     P2Message.text = "Game Over!"
                     P2Message.hidden = false;
-                    Player1.addScore(reward)
+                    Player1.addScore(ROUND, game : "Simon Says", score: reward)
+                    Player2.addScore(ROUND, game : "Simon Says", score: 0)
                     _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
                         userInfo: nil, repeats: false)
                 }
@@ -604,11 +603,14 @@ class SimonSaysViewController: UIViewController {
                 if(sequence[index] == 1){
                     print("good job")
                     totalTaps += 1
-                    reward = totalTaps * 100
-                    countDown_Reward.text = "\(reward)"
+                    reward = totalTaps * 25
+                    
+                    ScoreLabelLeft.text = "\(reward)"
                     degree += 180.0
                     UIView.animateWithDuration(0.15,animations:({
-                        self.countDown_Reward.transform = CGAffineTransformMakeRotation(self.degree)
+                        
+                        
+                        self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
                     }))
                     turn += 1
                     index += 1
@@ -618,7 +620,8 @@ class SimonSaysViewController: UIViewController {
                     disableButtonPress()
                     P1Message.text = "Game Over!"
                     P1Message.hidden = false;
-                    Player2.addScore(reward)
+                    Player2.addScore(ROUND, game : "Simon Says", score: reward)
+                    Player1.addScore(ROUND, game : "Simon Says", score: 0)
                     _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
                         userInfo: nil, repeats: false)
                 }
@@ -649,11 +652,12 @@ class SimonSaysViewController: UIViewController {
                 if(sequence[index] == 2){
                     print("good job")
                     totalTaps += 1
-                    reward = totalTaps * 100
-                    countDown_Reward.text = "\(reward)"
+                    reward = totalTaps * 25
+                   
+                    ScoreLabelLeft.text = "\(reward)"
                     degree += 180.0
                     UIView.animateWithDuration(0.15,animations:({
-                        self.countDown_Reward.transform = CGAffineTransformMakeRotation(self.degree)
+                                                self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
                     }))
                     turn += 1
                     index += 1
@@ -663,7 +667,9 @@ class SimonSaysViewController: UIViewController {
                     disableButtonPress()
                     P1Message.text = "Game Over!"
                     P1Message.hidden = false;
-                    Player2.addScore(reward)
+                    Player2.addScore(ROUND, game : "Simon Says", score: reward)
+                    Player1.addScore(ROUND, game : "Simon Says", score: 0)
+                    
                     _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
                         userInfo: nil, repeats: false)
                 }
@@ -693,11 +699,13 @@ class SimonSaysViewController: UIViewController {
                 if(sequence[index] == 3){
                     print("good job")
                     totalTaps += 1
-                    reward = totalTaps * 100
-                    countDown_Reward.text = "\(reward)"
-                    degree += 180.0
+                    reward = totalTaps * 25
+                    
+                    ScoreLabelLeft.text = "\(reward)"
+                    
                     UIView.animateWithDuration(0.15,animations:({
-                        self.countDown_Reward.transform = CGAffineTransformMakeRotation(self.degree)
+                        
+                        self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
                     }))
                     turn += 1
                     index += 1
@@ -707,7 +715,9 @@ class SimonSaysViewController: UIViewController {
                     disableButtonPress()
                     P1Message.text = "Game Over!"
                     P1Message.hidden = false;
-                    Player2.addScore(reward)
+                    Player2.addScore(ROUND, game : "Simon Says", score: reward)
+                    Player1.addScore(ROUND, game : "Simon Says", score: 0)
+                    
                     _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
                         userInfo: nil, repeats: false)
                 }
@@ -729,11 +739,13 @@ class SimonSaysViewController: UIViewController {
                 if(sequence[index] == 4){
                     print("good job")
                     totalTaps += 1
-                    reward = totalTaps * 100
-                    countDown_Reward.text = "\(reward)"
+                    reward = totalTaps * 25
+                    
+                    ScoreLabelLeft.text = "\(reward)"
                     degree += 180.0
                     UIView.animateWithDuration(0.15,animations:({
-                        self.countDown_Reward.transform = CGAffineTransformMakeRotation(self.degree)
+                        
+                        self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
                     }))
                     turn += 1
                     index += 1
@@ -743,7 +755,9 @@ class SimonSaysViewController: UIViewController {
                     disableButtonPress()
                     P1Message.text = "Game Over!"
                     P1Message.hidden = false;
-                    Player2.addScore(reward)
+                    Player2.addScore(ROUND, game : "Simon Says", score: reward)
+                    Player1.addScore(ROUND, game : "Simon Says", score: 0)
+                    
                     _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
                         userInfo: nil, repeats: false)
                 }
@@ -755,7 +769,10 @@ class SimonSaysViewController: UIViewController {
         
         buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
     }
-    
+    func randomDegrees()-> Int{
+        let rand = Int(arc4random_uniform(UInt32(360)))
+        return rand
+    }
     func segue(){
         //func called by timer after Game Over on wrong button press
         self.performSegueWithIdentifier("ScoreBoardFromSimonSays", sender: self)

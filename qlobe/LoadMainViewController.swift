@@ -38,7 +38,7 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    label1.text = ""
+        label1.text = ""
         
         
         //retrieve data from parse query
@@ -61,7 +61,7 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
             
             // Loop through the objects array
             for triviaObject in objects!{
-               
+                
                 // Retrieve data for each object (key, question, ans2, ans3, correctAns)
                 let triviaQuestion_ : String? = (triviaObject as PFObject)["Question"] as? String
                 let triviaWrongAnswer1 : String? = (triviaObject as PFObject)["WrongAnswer1"] as? String
