@@ -19,8 +19,9 @@ class TapRaceViewController: UIViewController {
     var P2Taps : Int = 0 // number of taps for P2
     var CS1Position: CGFloat = 0 // holds the current position of P1 racer
     var CS2Position: CGFloat = 0 // holds the current position of P1 racer
-    let WIN_TAPS = 20 //number of taps needed to win 41
+    let WIN_TAPS = 10 //number of taps needed to win 41
     var WinningPlayer : Int = 0 // player that wins the game is stored here
+    var gameOver : Bool = false // is the game over ?
     
     // array of images for the running animation
     var imagesP1: [String] = ["RedRunner1@1x.png", "RedRunner2@1x.png", "RedRunner3@1x.png", "RedRunner4@1x.png"]
@@ -86,8 +87,14 @@ class TapRaceViewController: UIViewController {
     
         // if P1 gets to 50 taps then call winner
            if(P1Taps == WIN_TAPS){
-            WinningPlayer = 1
-            winner()
+            Player1Tap.enabled = false
+            Player2Tap.enabled = false
+            
+            if(gameOver == false){
+                gameOver      = true
+                WinningPlayer = 1
+                winner()
+            }
         }
     
     }
@@ -100,11 +107,14 @@ class TapRaceViewController: UIViewController {
         
         // if P1 gets to  taps then call winner
         if(P2Taps == WIN_TAPS){
-            WinningPlayer = 2
-            winner()
+            Player1Tap.enabled = false
+            Player2Tap.enabled = false
             
-            // hide the tap buttons
-
+            if(gameOver == false){
+                gameOver      = true
+                WinningPlayer = 2
+                winner()
+            }
         }
     }
  

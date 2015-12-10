@@ -18,6 +18,8 @@
 import UIKit
 import AVFoundation
 
+var menuAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("main_menu", ofType: "mp3")!))
+
 class ViewController: UIViewController {
     
     
@@ -25,7 +27,7 @@ class ViewController: UIViewController {
     // array of the images in the animation
     var images : [String] = [ "qlobe_logo_smoke0@1x.png", "qlobe_logo_smoke1@1x.png", "qlobe_logo_smoke2@1x.png", "qlobe_logo_smoke3@1x.png", "qlobe_logo_smoke4@1x.png", "qlobe_logo_smoke5@1x.png", "qlobe_logo_smoke6@1x.png", "qlobe_logo_smoke7@1x.png", "qlobe_logo_smoke8@1x.png", "qlobe_logo_smoke9@1x.png", "qlobe_logo_smoke10@1x.png", "qlobe_logo_smoke11@1x.png", "qlobe_logo_smoke12@1x.png", "qlobe_logo_smoke13@1x.png"]
 
-    var menuAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("main_menu", ofType: "mp3")!))
+    //var menuAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("main_menu", ofType: "mp3")!))
 
     // MARK: outlets
     @IBOutlet weak var qlobe_logo: UIImageView!
@@ -62,7 +64,9 @@ class ViewController: UIViewController {
         muteBtn.backgroundColor = UIColor(netHex:0x2c3e50)
         
         // Play the main menu sound effect
-        menuAudio!.play()
+        if(menuAudio!.playing == false){
+            menuAudio!.play()
+        }
         
         //run the logo animation every 4 seconds. 0.980 is 980ms which is the time the animation takes to run
         _ = NSTimer.scheduledTimerWithTimeInterval(0.980 + 3 , target: self, selector: "runLogoAnimation",
@@ -157,11 +161,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func helpBtnPressed(sender: AnyObject) {
-        menuAudio!.stop()
+        //menuAudio!.stop()
     }
     
     @IBAction func settingBtnPressed(sender: AnyObject) {
-        menuAudio!.stop()
+        //menuAudio!.stop()
     }
 }
 

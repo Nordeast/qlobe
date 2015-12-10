@@ -84,6 +84,7 @@ class ScoreBoardViewController: UIViewController {
         roundAudio?.volume = settings.getVolume()
         //print("Vol: \(settings.getVolume())")
     }
+    
     @IBAction func ChangeGameButtonBottom(sender: AnyObject) {
         // allow user to change the next game
         
@@ -174,13 +175,12 @@ class ScoreBoardViewController: UIViewController {
     // MARK: ViewControler functions
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //add one to the roundNumber to indicate the next round
         
+        //Get random game type
+        rand = Int(arc4random_uniform(UInt32(segues.count)))
         
         // style the page
         style()
-        // Do any additional setup after loading the view.
         
         //account for volume settings
         tapRaceAudio?.volume = settings.getVolume()

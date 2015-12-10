@@ -124,14 +124,14 @@ Settings:
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84w-Ct-8rg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84w-Ct-8rg">
                                 <rect key="frame" x="279" y="295" width="42" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrs-vg-Qq1">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrs-vg-Qq1">
                                 <rect key="frame" x="135" y="324" width="330" height="80"/>
                                 <animations/>
                                 <constraints>
@@ -144,7 +144,7 @@ Settings:
                                     <segue destination="5QN-8R-htx" kind="presentation" id="28S-l9-W5d"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qlobe_logo_smoke0@1x" translatesAutoresizingMaskIntoConstraints="NO" id="QMt-Fv-fty">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="qlobe_logo_smoke0@1x" translatesAutoresizingMaskIntoConstraints="NO" id="QMt-Fv-fty">
                                 <rect key="frame" x="32" y="0.0" width="536" height="287"/>
                                 <animations/>
                                 <constraints>
@@ -352,6 +352,9 @@ Settings:
                                                 <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="mkL-Xc-qQz">
                                                     <rect key="frame" x="368" y="5" width="226" height="31"/>
                                                     <animations/>
+                                                    <connections>
+                                                        <action selector="changeVolume:" destination="5ag-rY-lhh" eventType="valueChanged" id="0eA-g1-KBH"/>
+                                                    </connections>
                                                 </slider>
                                             </subviews>
                                             <animations/>
@@ -647,22 +650,22 @@ Settings:
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Display things upon game over" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5O-4S-cpe">
-                                <rect key="frame" x="20" y="347" width="560" height="128"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="C0o-AF-M00"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Display thing upon gameover" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33l-UJ-oQu">
                                 <rect key="frame" x="20" y="124" width="560" height="128"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="9V5-8T-BFU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Display things upon game over" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5O-4S-cpe">
+                                <rect key="frame" x="20" y="347" width="560" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="C0o-AF-M00"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1270,24 +1273,6 @@ Settings:
             </objects>
             <point key="canvasLocation" x="1788" y="2784"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ZVB-nh-qC6">
-            <objects>
-                <viewController id="FJO-8q-yFj" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7F5-3h-uBq"/>
-                        <viewControllerLayoutGuide type="bottom" id="I2u-EA-Hy0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="leq-oD-E0t">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UKT-bU-B6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
         <!--Game Over View Controller-->
         <scene sceneID="jR7-kD-DWP">
             <objects>
@@ -1313,7 +1298,7 @@ Settings:
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="er8-YM-cni">
                                 <rect key="frame" x="20" y="98" width="520" height="11"/>
                                 <animations/>
-                                <color key="backgroundColor" patternImage="D07C7231-ED7C-4E15-91B1-DA8FD8F7DFD2" colorSpace="pattern"/>
+                                <color key="backgroundColor" patternImage="204DFCF1-7EA5-437B-B087-3665A6C5B4EF" colorSpace="pattern"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="11" id="5Ba-Wm-pzs"/>
@@ -1423,7 +1408,7 @@ Settings:
         </scene>
     </scenes>
     <resources>
-        <image name="D07C7231-ED7C-4E15-91B1-DA8FD8F7DFD2" width="320" height="460">
+        <image name="204DFCF1-7EA5-437B-B087-3665A6C5B4EF" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -11314,7 +11299,7 @@ AAAAAAAAAAAJCvs
         <image name="sound_off" width="626" height="626"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MOT-dF-jKM"/>
-        <segue reference="28S-l9-W5d"/>
+        <segue reference="AYD-yS-PCT"/>
+        <segue reference="KPH-Tg-4nz"/>
     </inferredMetricsTieBreakers>
 </document>
