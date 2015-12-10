@@ -383,6 +383,7 @@
 				TargetAttributes = {
 					D61B50CE1BFC585200248DD9 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = VEGEYN8UR5;
 					};
 					D61B50E21BFC585200248DD9 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -621,6 +622,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -628,7 +630,7 @@
 				);
 				INFOPLIST_FILE = qlobe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qlobe.qlobe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CS407.wisc.qlobe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -637,6 +639,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -644,7 +647,7 @@
 				);
 				INFOPLIST_FILE = qlobe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qlobe.qlobe;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CS407.wisc.qlobe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

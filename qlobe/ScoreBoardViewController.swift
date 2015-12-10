@@ -13,7 +13,7 @@ var triviaGameCount = 0
 //current round number
 var ROUND = 1
 //number of rounds the match will have, default = 10.
-var numberOfRoundsPerMatch = 2
+var numberOfRoundsPerMatch = 3
 
 class ScoreBoardViewController: UIViewController {
     var segues : [String] = settings.getGamesSetting()

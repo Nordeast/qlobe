@@ -163,6 +163,15 @@ Settings:
                                     <action selector="muteChange:" destination="07e-RH-l9R" eventType="touchUpInside" id="Xhs-DI-g37"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kl9-p0-cTK">
+                                <rect key="frame" x="20" y="524" width="257" height="56"/>
+                                <animations/>
+                                <state key="normal" title="Help"/>
+                                <connections>
+                                    <action selector="helpBtnPressed:" destination="07e-RH-l9R" eventType="touchUpInside" id="JRb-gQ-ZLy"/>
+                                    <segue destination="WBN-CS-eM5" kind="presentation" id="Nq2-tW-ueT"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u01-sB-ur1">
                                 <rect key="frame" x="323" y="524" width="257" height="56"/>
                                 <animations/>
@@ -171,16 +180,8 @@ Settings:
                                 </constraints>
                                 <state key="normal" title="Settings"/>
                                 <connections>
+                                    <action selector="settingBtnPressed:" destination="07e-RH-l9R" eventType="touchUpInside" id="uba-iI-aMa"/>
                                     <segue destination="5ag-rY-lhh" kind="presentation" id="VVf-Ce-Fq4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kl9-p0-cTK">
-                                <rect key="frame" x="20" y="524" width="257" height="56"/>
-                                <animations/>
-                                <state key="normal" title="Help"/>
-                                <connections>
-                                    <action selector="helpBtnPressed:" destination="07e-RH-l9R" eventType="touchUpInside" id="JRb-gQ-ZLy"/>
-                                    <segue destination="WBN-CS-eM5" kind="presentation" id="Nq2-tW-ueT"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1160,7 +1161,7 @@ Settings:
                                     <constraint firstAttribute="height" constant="58" id="WaE-4M-ZSP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0Cz-Sv-1dU">
@@ -1306,13 +1307,13 @@ Settings:
                                     <constraint firstAttribute="height" constant="70" id="4JU-wB-BMB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="er8-YM-cni">
                                 <rect key="frame" x="20" y="98" width="520" height="11"/>
                                 <animations/>
-                                <color key="backgroundColor" patternImage="4421D94B-AFD0-4DCE-B277-005E36F785B5" colorSpace="pattern"/>
+                                <color key="backgroundColor" patternImage="D07C7231-ED7C-4E15-91B1-DA8FD8F7DFD2" colorSpace="pattern"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="11" id="5Ba-Wm-pzs"/>
@@ -1341,7 +1342,7 @@ Settings:
                                     <constraint firstAttribute="height" constant="60" id="ek1-Qd-Mg1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWV-KF-Rgk">
@@ -1351,7 +1352,7 @@ Settings:
                                     <constraint firstAttribute="height" constant="60" id="LxH-Kb-VSu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nW5-dG-1iA">
@@ -1422,7 +1423,7 @@ Settings:
         </scene>
     </scenes>
     <resources>
-        <image name="4421D94B-AFD0-4DCE-B277-005E36F785B5" width="320" height="460">
+        <image name="D07C7231-ED7C-4E15-91B1-DA8FD8F7DFD2" width="320" height="460">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

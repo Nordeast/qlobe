@@ -159,5 +159,9 @@ class ViewController: UIViewController {
     @IBAction func helpBtnPressed(sender: AnyObject) {
         menuAudio!.stop()
     }
+    
+    @IBAction func settingBtnPressed(sender: AnyObject) {
+        menuAudio!.stop()
+    }
 }
 
