@@ -51,6 +51,10 @@ class ViewController: UIViewController {
         spacer2.alpha = 0
         stylePage()
         
+        // Display the mute icon
+        muteBtn.setImage(UIImage(named: "sound_off"), forState: .Normal)
+        muteBtn.backgroundColor = UIColor(netHex:0x2c3e50)
+        
         //run the logo animation every 4 seconds. 0.980 is 980ms which is the time the animation takes to run
         _ = NSTimer.scheduledTimerWithTimeInterval(0.980 + 3 , target: self, selector: "runLogoAnimation",
             userInfo: nil, repeats: true)
@@ -145,12 +149,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func muteChange(sender: AnyObject) {
-        if(settings.getVolume() > 0.0001){
+        if(settings.isMute() == false){
             settings.setVolumePre(settings.getVolume())
             settings.setVolume(0.0)
+            muteBtn.setImage(UIImage(named: "sound_on"), forState: .Normal)
+            muteBtn.imageView?.backgroundColor = UIColor(netHex:0x2c3e50)
         }
         else{
             settings.setVolume(settings.getVolumePre())
+            muteBtn.setImage(UIImage(named: "sound_off"), forState: .Normal)
         }
         print("Vol: \(settings.getVolume())")
     }
