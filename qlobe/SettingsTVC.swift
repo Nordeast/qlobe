@@ -36,6 +36,10 @@ class SettingsTVC: UITableViewController{
         }
     }
     
+    @IBAction func changeVolume(sender: AnyObject) {
+        settings.setVolume(volumeSetting.value)
+        menuAudio?.volume = volumeSetting.value
+    }
     
     @IBAction func backButton(sender: AnyObject) {
         
@@ -57,8 +61,6 @@ class SettingsTVC: UITableViewController{
         }
         
         settings.setVolume(volumeSetting.value)
-        
-        
     }
     
     override func viewDidLoad() {
@@ -81,9 +83,9 @@ class SettingsTVC: UITableViewController{
             simonSaysSetting.setOn(false, animated: false)
         }
         
-        volumeSetting.setValue(settings.getVolume(), animated: false)
+        volumeSetting.setValue(settings.getVolumePre(), animated: false)
         
-        design()
+        //design()
     }
     
     func design(){
