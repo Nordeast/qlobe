@@ -32,7 +32,6 @@
 		D61B50E81BFC585200248DD9 /* qlobeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B50E71BFC585200248DD9 /* qlobeTests.swift */; };
 		D61B50F31BFC585200248DD9 /* qlobeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B50F21BFC585200248DD9 /* qlobeUITests.swift */; };
 		D61B51011BFC589300248DD9 /* LoadMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B51001BFC589300248DD9 /* LoadMainViewController.swift */; };
-		D61B51071BFC5A7B00248DD9 /* Kankin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D61B51061BFC5A7B00248DD9 /* Kankin.ttf */; };
 		D61B512D1BFC5DAE00248DD9 /* triviaQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B512C1BFC5DAE00248DD9 /* triviaQuestion.swift */; };
 		D61B512F1BFC5EBB00248DD9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B512E1BFC5EBB00248DD9 /* ViewController.swift */; };
 		D61B51311BFC60D400248DD9 /* ScoreBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B51301BFC60D400248DD9 /* ScoreBoardViewController.swift */; };
@@ -40,6 +39,11 @@
 		D61B51351BFC61DC00248DD9 /* TapRaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B51341BFC61DC00248DD9 /* TapRaceViewController.swift */; };
 		D61B51371BFC61E300248DD9 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B51361BFC61E300248DD9 /* QuestionViewController.swift */; };
 		D61B51391BFC61ED00248DD9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61B51381BFC61ED00248DD9 /* Player.swift */; };
+		D631330F1C18E3C800B46237 /* Rounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = D631330E1C18E3C800B46237 /* Rounds.swift */; };
+		D63133131C18EBF000B46237 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63133121C18EBF000B46237 /* GameOverViewController.swift */; };
+		D63133151C18EEF600B46237 /* GameOverParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63133141C18EEF600B46237 /* GameOverParentViewController.swift */; };
+		D63133171C19183100B46237 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63133161C19183100B46237 /* HelpViewController.swift */; };
+		D63133191C19273200B46237 /* Kankin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D63133181C1926FD00B46237 /* Kankin.ttf */; };
 		D653FC0F1BFC7378004915C9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D653FC081BFC7378004915C9 /* Bolts.framework */; };
 		D653FC101BFC7378004915C9 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D653FC091BFC7378004915C9 /* Parse.framework */; };
 		D653FC111BFC7378004915C9 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D653FC0A1BFC7378004915C9 /* ParseCrashReporting.framework */; };
@@ -107,7 +111,6 @@
 		D61B50F21BFC585200248DD9 /* qlobeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qlobeUITests.swift; sourceTree = "<group>"; };
 		D61B50F41BFC585200248DD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D61B51001BFC589300248DD9 /* LoadMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMainViewController.swift; sourceTree = "<group>"; };
-		D61B51061BFC5A7B00248DD9 /* Kankin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kankin.ttf; sourceTree = "<group>"; };
 		D61B512C1BFC5DAE00248DD9 /* triviaQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = triviaQuestion.swift; sourceTree = "<group>"; };
 		D61B512E1BFC5EBB00248DD9 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D61B51301BFC60D400248DD9 /* ScoreBoardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreBoardViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +118,11 @@
 		D61B51341BFC61DC00248DD9 /* TapRaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapRaceViewController.swift; sourceTree = "<group>"; };
 		D61B51361BFC61E300248DD9 /* QuestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		D61B51381BFC61ED00248DD9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		D631330E1C18E3C800B46237 /* Rounds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rounds.swift; sourceTree = "<group>"; };
+		D63133121C18EBF000B46237 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		D63133141C18EEF600B46237 /* GameOverParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverParentViewController.swift; sourceTree = "<group>"; };
+		D63133161C19183100B46237 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		D63133181C1926FD00B46237 /* Kankin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kankin.ttf; sourceTree = "<group>"; };
 		D653FC081BFC7378004915C9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		D653FC091BFC7378004915C9 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		D653FC0A1BFC7378004915C9 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -194,6 +202,7 @@
 				D61B512C1BFC5DAE00248DD9 /* triviaQuestion.swift */,
 				AC961FE41BFFCA500099225B /* UIColorExtensions.swift */,
 				D61B51321BFC61D300248DD9 /* UIViewExtensions.swift */,
+				D631330E1C18E3C800B46237 /* Rounds.swift */,
 			);
 			name = ClassDefine;
 			sourceTree = "<group>";
@@ -259,6 +268,9 @@
 				9F2C77491C18B6FF00D1FAB4 /* LoadingAnimation */,
 				9F2C774A1C18B88A00D1FAB4 /* ClassDefine */,
 				D61B50D61BFC585200248DD9 /* Main.storyboard */,
+				D63133161C19183100B46237 /* HelpViewController.swift */,
+				D63133141C18EEF600B46237 /* GameOverParentViewController.swift */,
+				D63133121C18EBF000B46237 /* GameOverViewController.swift */,
 				AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */,
 				D61B51001BFC589300248DD9 /* LoadMainViewController.swift */,
 				D61B512E1BFC5EBB00248DD9 /* ViewController.swift */,
@@ -267,7 +279,7 @@
 				D61B51361BFC61E300248DD9 /* QuestionViewController.swift */,
 				ACE981681C17A06700C25DDE /* SettingsDS.swift */,
 				ACE9816A1C17A10900C25DDE /* SettingsTVC.swift */,
-				D61B51061BFC5A7B00248DD9 /* Kankin.ttf */,
+				D63133181C1926FD00B46237 /* Kankin.ttf */,
 				D61B50DB1BFC585200248DD9 /* LaunchScreen.storyboard */,
 			);
 			path = qlobe;
@@ -395,13 +407,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D63133191C19273200B46237 /* Kankin.ttf in Resources */,
 				D61B50DD1BFC585200248DD9 /* LaunchScreen.storyboard in Resources */,
 				9F04CAF21C03EF4500F2B01B /* tapRace_victory.mp3 in Resources */,
 				D61B50DA1BFC585200248DD9 /* Assets.xcassets in Resources */,
 				9F9CEEE51C03922900E2EB13 /* mk64_countdown.wav in Resources */,
 				9F04CAF01C03EC0B00F2B01B /* tapRace_background.mp3 in Resources */,
 				9F9CEEE41C03922900E2EB13 /* mk64_racestart.wav in Resources */,
-				D61B51071BFC5A7B00248DD9 /* Kankin.ttf in Resources */,
 				9F04CAEA1C03E26300F2B01B /* trivia.wav in Resources */,
 				AC6C2EFF1C13A62E00EC759D /* elevatording.wav in Resources */,
 				AC1A05DA1BFFCD39000A6541 /* airplanding.wav in Resources */,
@@ -442,13 +454,17 @@
 				D61B51351BFC61DC00248DD9 /* TapRaceViewController.swift in Sources */,
 				9FC7F34E1BFFE68100C12689 /* Colors.swift in Sources */,
 				D61B51311BFC60D400248DD9 /* ScoreBoardViewController.swift in Sources */,
+				D63133131C18EBF000B46237 /* GameOverViewController.swift in Sources */,
 				9FC7F34B1BFFE63E00C12689 /* RectangleLayer.swift in Sources */,
 				D61B512D1BFC5DAE00248DD9 /* triviaQuestion.swift in Sources */,
 				D61B51391BFC61ED00248DD9 /* Player.swift in Sources */,
+				D631330F1C18E3C800B46237 /* Rounds.swift in Sources */,
 				D61B51371BFC61E300248DD9 /* QuestionViewController.swift in Sources */,
 				ACE981691C17A06700C25DDE /* SettingsDS.swift in Sources */,
+				D63133151C18EEF600B46237 /* GameOverParentViewController.swift in Sources */,
 				AC961FE51BFFCA500099225B /* UIColorExtensions.swift in Sources */,
 				9FC7F3501BFFE6B900C12689 /* HolderView.swift in Sources */,
+				D63133171C19183100B46237 /* HelpViewController.swift in Sources */,
 				ACE9816B1C17A10900C25DDE /* SettingsTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

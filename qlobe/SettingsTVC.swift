@@ -23,7 +23,7 @@ class SettingsTVC: UITableViewController{
             triviaSetting.setOn(true, animated: true)
         }
     }
-
+    
     @IBAction func tapRaceEnabler(sender: AnyObject) {
         if(!triviaSetting.on && !simonSaysSetting.on){
             tapRaceSetting.setOn(true, animated: true)

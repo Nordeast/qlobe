@@ -10,14 +10,13 @@
     // qlobe game. One object is needed for each player.
     
     var playerNumber : Int // unique player to identify each class
-    var score : Int
     var numberQuestionsCorrect : Int
     var numberQuestionsIncorrect : Int
+    var rounds: [Rounds] = [] // holds the rounds, game that round and the score of the round.
     
     init(playerNumber : Int){
         // playerNumber must be a unique number
         self.playerNumber = playerNumber
-        score = 0
         numberQuestionsCorrect = 0
         numberQuestionsIncorrect = 0
     }
@@ -27,7 +26,11 @@
         return playerNumber
     }
     
-    func getPlayerScore() -> Int{
+    func getTotalPlayerScore() -> Int{
+        var score = 0
+        for r in rounds{
+            score = score + r.score
+        }
         return score
     }
     
@@ -41,14 +44,30 @@
     
     //// class functionality ////
     
-    func getAverageScore() -> Double {
+    func getAverageScore() -> Int{
         // returns the average points earned for all of the questions
         
-        var average : Double = 0
-        average = Double(score) / Double(numberQuestionsCorrect + numberQuestionsIncorrect)
+        let average = getTotalPlayerScore() / getTotalRounds()
         return average
     }
-    
+    func getTotalRounds() -> Int{
+        if(rounds.count <= 0){
+            return 1
+        }
+        else{
+            return rounds.count
+        }
+    }
+    func getRoundScore(round: Int) -> Int{
+        let r = round
+        // returns the players score in a certain round
+        return rounds[r].score
+    }
+    func getRoundGame(round: Int) -> String{
+        let r = round
+        // returns the game that was played in a certain round
+        return rounds[r].game
+    }
     func gotQuestionWrong(){
         // increments the questions incorrect counter
         numberQuestionsIncorrect++
@@ -59,15 +78,15 @@
         numberQuestionsCorrect++
     }
     
-    func addScore(seconds : Int){
+    func addScore(round: Int, game: String, score: Int){
         // does the score calculation based on how quickly the player answered the question
-        score += seconds
+        rounds.append(Rounds(round: round, game: game, score: score))
     }
     
     func NewGame(){
         // reset the players fields to start a new game
         
-        score = 0
+        rounds = []
         numberQuestionsCorrect = 0
         numberQuestionsIncorrect = 0
     }

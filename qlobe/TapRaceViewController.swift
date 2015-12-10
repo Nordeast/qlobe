@@ -187,7 +187,7 @@ class TapRaceViewController: UIViewController {
         // set the bottom label off the screen to the right
         self.RSG1X.constant -= self.view.bounds.width
         // flip the ready set go label
-        readySetGo2.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        readySetGo2.flipUpSideDown()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -374,6 +374,21 @@ class TapRaceViewController: UIViewController {
 
         TopGameOverTextField.flipUpSideDown()
         
+        // maximum score is 2500 for a perfect game. Basically if the other side doesnt move
+        // per step the winning player wins by they get 2500/41 points
+        var addToWinnersScore = 0
+        
+        if(WinningPlayer == 1){
+            addToWinnersScore = (2500/41) * (P1Taps - P2Taps)
+            Player2.addScore(ROUND - 1, game : "TapRace", score: 0)
+            Player1.addScore(ROUND - 1, game : "TapRace", score: addToWinnersScore)
+
+        }else{
+            addToWinnersScore = (2500/41) * (P2Taps - P1Taps)
+            Player2.addScore(ROUND - 1, game : "TapRace", score: addToWinnersScore)
+            Player1.addScore(ROUND - 1, game : "TapRace", score: 0)
+        }
+        
         
         // display who won
         // display the players distance
@@ -449,7 +464,7 @@ class TapRaceViewController: UIViewController {
         // load the images in to the image view
         
         P2Image.image = UIImage(named: imagesP2[imageP2])
-        P2Image.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        P2Image.flipUpSideDown()
         // load the images into the image view
         
         P1Image.image = UIImage(named: imagesP1[imageP1])
@@ -586,7 +601,7 @@ class TapRaceViewController: UIViewController {
         self.view.addConstraints([leftButtonEdgeConstraint, rightButtonEdgeConstraint, topButtonConstraint])
         
         // flip the button
-        Player2Tap.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        Player2Tap.flipUpSideDown()
     }
 
 

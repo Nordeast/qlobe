@@ -41,6 +41,8 @@ class QuestionViewController: UIViewController {
     //////////////////////
     // class variables //
     /////////////////////
+    var Player2Score = 0
+    var Player1Score = 0
     var timerCount = TimerStartValue
     
     var timerRunning = false
@@ -243,8 +245,8 @@ class QuestionViewController: UIViewController {
         Player2Button3.setTitle( Player2AnsList[2], forState: .Normal)
         
         // set scroe
-        Player1ScoreValue.text =  "\(Player1.score)"
-        Player2ScoreValue.text =  "\(Player2.score)"
+        Player1ScoreValue.text =  "\(Player2Score)"
+        Player2ScoreValue.text =  "\(Player2Score)"
     }
     
     func showCorrectAnswer(){
@@ -305,7 +307,7 @@ class QuestionViewController: UIViewController {
         
         if(answerP1 == curQuestion.getAnswer()){
             Player1.getQuestionsCorrect()
-            Player1.addScore(Player1AnsTime * 100)
+            Player1Score += (Player1AnsTime * 100)
         }
         else{
             Player1.getQuestionsIncorrect()
@@ -313,14 +315,14 @@ class QuestionViewController: UIViewController {
         
         if(answerP2 == curQuestion.getAnswer()){
             Player2.getQuestionsCorrect()
-            Player2.addScore(Player2AnsTime * 100)
+            Player2Score += (Player2AnsTime * 100)
         }
         else{
             Player2.getQuestionsIncorrect()
         }
         
-        Player1ScoreValue.text =  "\(Player1.score)"
-        Player2ScoreValue.text =  "\(Player2.score)"
+        Player1ScoreValue.text =  "\(Player1Score)"
+        Player2ScoreValue.text =  "\(Player2Score)"
     }
     
     func setLabelStyle(inLabel: UILabel, fontName: String, fontSize: CGFloat, fontColor:  Int){
@@ -393,15 +395,15 @@ class QuestionViewController: UIViewController {
     }
     
     func flipButton(){
-        timerLabel2.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        questionUpsideDown.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        timerLabel2.flipUpSideDown()
+        questionUpsideDown.flipUpSideDown()
         
-        Player2Button1.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        Player2Button2.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        Player2Button3.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        Player2Button1.flipUpSideDown()
+        Player2Button2.flipUpSideDown()
+        Player2Button3.flipUpSideDown()
         
-        Player2ScoreLabel.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        Player2ScoreValue.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        Player2ScoreLabel.flipUpSideDown()
+        Player2ScoreValue.flipUpSideDown()
     }
     
     func Counting(){
@@ -514,6 +516,8 @@ class QuestionViewController: UIViewController {
     
     func segue(){
         // segue to scoreboard view controller
+        Player1.addScore(ROUND, game: "Trivia", score: Player1Score)
+        Player2.addScore(ROUND, game: "Trivia", score: Player2Score)
         self.performSegueWithIdentifier("ScoreBoardFromTrivia", sender: self)
     }
     

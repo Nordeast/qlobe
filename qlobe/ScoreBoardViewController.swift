@@ -11,9 +11,9 @@ import AVFoundation
 
 var triviaGameCount = 0
 //current round number
-var roundNumber = 0
+var ROUND = 1
 //number of rounds the match will have, default = 10.
-var numberOfRoundsPerMatch = 10
+var numberOfRoundsPerMatch = 2
 
 class ScoreBoardViewController: UIViewController {
     var segues : [String] = settings.getGamesSetting()
@@ -65,7 +65,12 @@ class ScoreBoardViewController: UIViewController {
     
     @IBAction func ContinueButtonTop(sender: AnyObject) {
         //continue playing the game
-        
+        ROUND++
+        // disable the buttons
+        ContinueButtonBottom.enabled = false
+        ContinueButtonTop.enabled = false
+        ChangeGameButtonBottom.enabled = false
+        ChangeGameButtonTop.enabled = false
         var segueDelay = 0.0
         
         //Play sound effect for TapRace
@@ -79,20 +84,25 @@ class ScoreBoardViewController: UIViewController {
         }
         
         // Disable the change game button
-        ChangeGameButtonBottom.enabled = false
-        ChangeGameButtonTop.enabled = false
+        
         
         // perform segue with delay for the audio to play
         _ = NSTimer.scheduledTimerWithTimeInterval(segueDelay, target: self, selector: "segueToNextGame",
             userInfo: nil, repeats: false)
-
+        
     }
     
     @IBAction func ContinueButtonBottom(sender: AnyObject) {
         //continue playing the game
+        ROUND++
+        // disable the buttons
+        ContinueButtonBottom.enabled = false
+        ContinueButtonTop.enabled = false
+        ChangeGameButtonBottom.enabled = false
+        ChangeGameButtonTop.enabled = false
         
         var segueDelay = 0.0
-
+        
         //Play sound effect for TapRace
         if(segues[rand] == "TapRace"){
             segueDelay = 5.0
@@ -103,9 +113,6 @@ class ScoreBoardViewController: UIViewController {
             tapRaceAudio!.play()
         }
         
-        // Disable the change game button
-        ChangeGameButtonBottom.enabled = false
-        ChangeGameButtonTop.enabled = false
         
         // perform segue with delay for the audio to play
         _ = NSTimer.scheduledTimerWithTimeInterval(segueDelay, target: self, selector: "segueToNextGame",
@@ -116,9 +123,9 @@ class ScoreBoardViewController: UIViewController {
     // MARK: ViewControler functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //add one to the roundNumber to indicate the next round
-        roundNumber++
+        
         
         // style the page
         style()
@@ -145,7 +152,7 @@ class ScoreBoardViewController: UIViewController {
         //load the score
         displayScore()
         
-                   }
+    }
     override func viewDidAppear(animated: Bool) {
         
         //fade in to display score
@@ -155,7 +162,9 @@ class ScoreBoardViewController: UIViewController {
         P2ScoreBottom.fadeIn()
         displayLabelBottom.fadeIn()
         displayLabelTop.fadeIn()
-
+        ContinueButtonBottom.blinkingButton()
+        
+        
         
         // show the score for 7 seconds then show the change game and continue buttons
         _ = NSTimer.scheduledTimerWithTimeInterval(7, target: self, selector: "buttons",
@@ -193,17 +202,17 @@ class ScoreBoardViewController: UIViewController {
         P1ScoreTop.textColor = UIColor(netHex: 0xeeeeee)
         P1ScoreTop.textAlignment = NSTextAlignment.Center
         P1ScoreTop.backgroundColor = UIColor(netHex:0x2c3e50)
-      
+        
         P2ScoreTop.font = UIFont(name: "Kankin", size: 25)
         P2ScoreTop.textColor = UIColor(netHex: 0xeeeeee)
         P2ScoreTop.textAlignment = NSTextAlignment.Center
         P2ScoreTop.backgroundColor = UIColor(netHex:0x2c3e50)
-
+        
         P1ScoreBottom.font = UIFont(name: "Kankin", size: 25)
         P1ScoreBottom.textColor = UIColor(netHex: 0xeeeeee)
         P1ScoreBottom.textAlignment = NSTextAlignment.Center
         P1ScoreBottom.backgroundColor = UIColor(netHex:0x2c3e50)
-
+        
         P2ScoreBottom.font = UIFont(name: "Kankin", size: 25)
         P2ScoreBottom.textColor = UIColor(netHex: 0xeeeeee)
         P2ScoreBottom.textAlignment = NSTextAlignment.Center
@@ -220,14 +229,14 @@ class ScoreBoardViewController: UIViewController {
         
         // set label styling
         displayLabelBottom.font = UIFont(name: "Kankin", size: 40)
-        displayLabelBottom.textColor = UIColor(netHex: 0xe74c3c)
+        displayLabelBottom.textColor = UIColor(netHex: 0xf1c40f)
         displayLabelBottom.textAlignment = NSTextAlignment.Center
-        displayLabelBottom.text = "Round \(roundNumber)"
-
+        displayLabelBottom.text = "Round \(ROUND)"
+        
         displayLabelTop.font = UIFont(name: "Kankin", size: 40)
-        displayLabelTop.textColor = UIColor(netHex: 0xe74c3c)
+        displayLabelTop.textColor = UIColor(netHex: 0xf1c40f)
         displayLabelTop.textAlignment = NSTextAlignment.Center
-        displayLabelTop.text = "Round \(roundNumber)"
+        displayLabelTop.text = "Round \(ROUND)"
         
         // set button styling
         ContinueButtonBottom.titleLabel!.font = UIFont(name: "Kankin", size: 25)!
@@ -240,34 +249,44 @@ class ScoreBoardViewController: UIViewController {
         
         ChangeGameButtonBottom.titleLabel!.font = UIFont(name: "Kankin", size: 25)!
         ChangeGameButtonBottom.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        ChangeGameButtonBottom.titleLabel!.text = "Change game)"
+        ChangeGameButtonBottom.titleLabel!.text = "Random game)"
         
         ChangeGameButtonTop.titleLabel!.font = UIFont(name: "Kankin", size: 25)!
         ChangeGameButtonTop.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        ChangeGameButtonTop.titleLabel!.text = "Change game"
+        ChangeGameButtonTop.titleLabel!.text = "Random game"
         
         
         // flip the buttons and labels that need to be flipped
-        displayLabelTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        P1ScoreTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        ContinueButtonTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        ChangeGameButtonTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        P2ScoreTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        P1ScoreTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        displayLabelTop.flipUpSideDown()
+        P1ScoreTop.flipUpSideDown()
+        ContinueButtonTop.flipUpSideDown()
+        ChangeGameButtonTop.flipUpSideDown()
+        P2ScoreTop.flipUpSideDown()
+        P1ScoreTop.flipUpSideDown()
     }
     
     func displayScore(){
         // displays the current score of the match
-
         
-        P1ScoreBottom.text = "Red's Score: \(Player1.getPlayerScore())"
-        P1ScoreTop.text = "Red's Score: \(Player1.getPlayerScore())"
-        P2ScoreBottom.text = "Blue's Score: \(Player2.getPlayerScore())"
-        P2ScoreTop.text = "Blue's Score: \(Player2.getPlayerScore())"
+        
+        P1ScoreBottom.text = "Red's Score:\n\(Player1.getTotalPlayerScore())"
+        P1ScoreTop.text = "Red's Score:\n\(Player1.getTotalPlayerScore())"
+        P2ScoreBottom.text = "Blue's Score:\n\(Player2.getTotalPlayerScore())"
+        P2ScoreTop.text = "Blue's Score:\n\(Player2.getTotalPlayerScore())"
     }
     
     func buttons(){
+        //segue to the gameover view when the number of rounds are reached
+        if(ROUND >= numberOfRoundsPerMatch){
+            
+            performSegueWithIdentifier("GameOver", sender: self)
+        }
         
+        // make the  buttons blink
+        ContinueButtonBottom.blinkingButton()
+        ContinueButtonTop.blinkingButton()
+        
+        // do some fading animations
         displayLabelBottom.fadeOut(1, delay: 0, completion: {_ in
             self.displayLabelBottom.text = "\(self.segues[self.rand])"
             self.displayLabelBottom.fadeIn()
@@ -288,36 +307,20 @@ class ScoreBoardViewController: UIViewController {
         P2ScoreTop.fadeOut()
         P1ScoreBottom.fadeOut()
         P2ScoreBottom.fadeOut()
-        blinkingButtons()
     }
     
-    func blinkingButtons(){
-        
-        
-        UIView.animateWithDuration(0.6, delay: 0, options: [.Repeat, .Autoreverse, .AllowUserInteraction],
-            
-            animations: {
-                
-                self.ContinueButtonBottom.titleLabel!.alpha = 0.4
-                self.ContinueButtonTop.titleLabel!.alpha = 0.4
-
-                
-            },
-            
-            completion: nil)
-        
-    }
-
     
-
+    
+    
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
