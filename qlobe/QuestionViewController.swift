@@ -430,7 +430,7 @@ class QuestionViewController: UIViewController {
                     userInfo: nil, repeats: false)
             }
             else{
-                print("\(triviaGameCount)")
+                //print("\(triviaGameCount)")
                 _ = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "viewDidLoad",
                     userInfo: nil, repeats: false)
             }

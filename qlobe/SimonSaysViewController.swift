@@ -52,13 +52,11 @@ class SimonSaysViewController: UIViewController {
     var index = 0                           // index used for sequence
     
     //for sound
-    var ping_sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("airplanding", ofType: "wav")!)
-    var elev_sound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("elevatording", ofType: "wav")!)
-    var pingPlayer = AVAudioPlayer()
-    var elevPlayer = AVAudioPlayer()
+    var elev_sound  = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("airplanding", ofType: "wav")!))
     
-    var engine = AVAudioEngine()
-    var playerNode = AVAudioPlayerNode()
+    var ping_sound  = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("elevatording", ofType: "wav")!))
+    
+    var backgroundAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("simonSaysPlaying", ofType: "mp3")!))
     
     ///////////////////
     // MARK: outlets //
@@ -89,6 +87,12 @@ class SimonSaysViewController: UIViewController {
     ////////////////////
     // MARK: Start UP //
     ////////////////////
+    
+    func setAudioVolume(){
+        elev_sound?.volume = settings.getVolume()
+        ping_sound?.volume = settings.getVolume()
+        backgroundAudio?.volume = settings.getVolume()
+    }
     
     func design(){
         //Design for all views to occur in viewDidLoad
@@ -197,17 +201,9 @@ class SimonSaysViewController: UIViewController {
         super.viewDidLoad()
         
         //account for volume settings
-        //pingPlayer.volume = settings.getVolume()
-        //elevPlayer.volume = settings.getVolume()
-        
-        do{
-            pingPlayer = try AVAudioPlayer(contentsOfURL: ping_sound)
-            elevPlayer = try AVAudioPlayer(contentsOfURL: elev_sound)
-        }catch{
-            print("error")
-        }
-        pingPlayer.prepareToPlay()
-        elevPlayer.prepareToPlay()
+        setAudioVolume()
+        backgroundAudio!.play()
+
         
         design()
         
@@ -390,11 +386,11 @@ class SimonSaysViewController: UIViewController {
     /////////////////////
     // MARK: Game Play //
     /////////////////////
-
+    
     //MARK: Player 2 button Actions
     @IBAction func P2RedButton(sender: AnyObject) {
         
-        P2RedButton.backgroundColor = UIColor(netHex: 0xe74c3c)
+        P2RedButton.backgroundColor = UIColor(netHex: 0xc0392b)
         
         if(!gameOver){
             if(turn == 2){
@@ -449,7 +445,7 @@ class SimonSaysViewController: UIViewController {
     
     @IBAction func P2YellowButton(sender: AnyObject) {
         
-        P2YellowButton.backgroundColor = UIColor(netHex: 0xf1c40f)
+        P2YellowButton.backgroundColor = UIColor(netHex: 0xa4a200)
         
         if(!gameOver){
             if(turn == 2){
@@ -503,7 +499,7 @@ class SimonSaysViewController: UIViewController {
     
     @IBAction func P2GreenButton(sender: AnyObject) {
         
-        P2GreenButton.backgroundColor = UIColor(netHex: 0x27ae60)
+        P2GreenButton.backgroundColor = UIColor(netHex: 0x3d6451)
         
         if(!gameOver){
             if(turn == 2){
@@ -549,7 +545,7 @@ class SimonSaysViewController: UIViewController {
     
     @IBAction func P2BlueButton(sender: AnyObject) {
         
-        P2BlueButton.backgroundColor = UIColor(netHex: 0x2980b9)
+        P2BlueButton.backgroundColor = UIColor(netHex: 0x662a5b)
         
         
         if(!gameOver){
@@ -596,7 +592,7 @@ class SimonSaysViewController: UIViewController {
     //MARK: Player 1 button Actions
     @IBAction func P1RedButton(sender: AnyObject) {
         
-        P1RedButton.backgroundColor = UIColor(netHex: 0xe74c3c)
+        P1RedButton.backgroundColor = UIColor(netHex: 0xc0392b)
         
         if(!gameOver){
             if(turn == 1){
@@ -645,7 +641,7 @@ class SimonSaysViewController: UIViewController {
     }
     
     @IBAction func P1YellowButton(sender: AnyObject) {
-        P1YellowButton.backgroundColor = UIColor(netHex: 0xf1c40f)
+        P1YellowButton.backgroundColor = UIColor(netHex: 0xa4a200)
         
         if(!gameOver){
             if(turn == 1){
@@ -692,7 +688,7 @@ class SimonSaysViewController: UIViewController {
     }
     
     @IBAction func P1GreenButton(sender: AnyObject) {
-        P1GreenButton.backgroundColor = UIColor(netHex: 0x27ae60)
+        P1GreenButton.backgroundColor = UIColor(netHex: 0x3d6451)
         
         if(!gameOver){
             if(turn == 1){
@@ -732,7 +728,7 @@ class SimonSaysViewController: UIViewController {
     }
     
     @IBAction func P1BlueButton(sender: AnyObject) {
-        P1BlueButton.backgroundColor = UIColor(netHex: 0x2980b9)
+        P1BlueButton.backgroundColor = UIColor(netHex: 0x662a5b)
         
         if(!gameOver){
             if(turn == 1){
@@ -775,6 +771,9 @@ class SimonSaysViewController: UIViewController {
     }
     func segue(){
         //func called by timer after Game Over on wrong button press
+        
+        backgroundAudio!.stop()
+        
         if(ROUND == numberOfRoundsPerMatch){
             performSegueWithIdentifier("SimonSaysGameOver", sender: self)
         }else{

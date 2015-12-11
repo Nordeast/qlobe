@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GameOverParentViewController: UIViewController {
     var upsidedown = false
@@ -17,16 +18,18 @@ class GameOverParentViewController: UIViewController {
     @IBOutlet weak var ContinueTop: UIButton!
     @IBOutlet weak var ContinueBottom: UIButton!
     
+    var gameOverAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("gameOver", ofType: "mp3")!))
+    
     // MARK: actions
     @IBAction func ContinueTop(sender: AnyObject) {
         //segue to start screen
-
         performSegueWithIdentifier("ReturnToStartScreen", sender: self)
+        gameOverAudio!.stop()
     }
     @IBAction func ContinueBottom(sender: AnyObject) {
         // segue to start screen
         performSegueWithIdentifier("ReturnToStartScreen", sender: self)
-
+        gameOverAudio!.stop()
     }
     
     
@@ -46,6 +49,8 @@ class GameOverParentViewController: UIViewController {
         ContinueBottom.titleLabel!.text = "Continue"
         
         // Do any additional setup after loading the view.
+        gameOverAudio?.volume = settings.getVolume()
+        gameOverAudio!.play()
     }
     override func viewDidAppear(animated: Bool) {
         animateInfinitelyWithDelay(5, duration: 1)
