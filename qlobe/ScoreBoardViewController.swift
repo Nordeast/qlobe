@@ -35,10 +35,16 @@ class ScoreBoardViewController: UIViewController {
     
     // MARK: Outlets
     
-    @IBOutlet weak var P1ScoreTop: UITextView!
-    @IBOutlet weak var P2ScoreTop: UITextView!
-    @IBOutlet weak var P1ScoreBottom: UITextView!
-    @IBOutlet weak var P2ScoreBottom: UITextView!
+    @IBOutlet weak var P1ScoreNameBottom: UILabel!
+    @IBOutlet weak var P1ScoreValueBottom: UILabel!
+    @IBOutlet weak var P1ScoreNameTop: UILabel!
+    @IBOutlet weak var P1ScoreValueTop: UILabel!
+    
+    @IBOutlet weak var P2ScoreNameBottom: UILabel!
+    @IBOutlet weak var P2ScoreValueBottom: UILabel!
+    @IBOutlet weak var P2ScoreNameTop: UILabel!
+    @IBOutlet weak var P2ScoreValueTop: UILabel!
+    
     @IBOutlet weak var displayLabelBottom: UILabel!
     @IBOutlet weak var displayLabelTop: UILabel!
     @IBOutlet weak var ContinueButtonBottom: UIButton!
@@ -182,10 +188,6 @@ class ScoreBoardViewController: UIViewController {
         ContinueButtonTop.alpha = 0
         ChangeGameButtonBottom.alpha = 0
         ChangeGameButtonTop.alpha = 0
-        P1ScoreTop.alpha = 0
-        P2ScoreTop.alpha = 0
-        P1ScoreBottom.alpha = 0
-        P2ScoreBottom.alpha = 0
         displayLabelBottom.alpha = 0
         displayLabelTop.alpha = 0
         QuitButtonTop.alpha = 0
@@ -198,10 +200,16 @@ class ScoreBoardViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         //fade in to display score
-        P1ScoreTop.fadeIn()
-        P2ScoreTop.fadeIn()
-        P1ScoreBottom.fadeIn()
-        P2ScoreBottom.fadeIn()
+        P1ScoreNameBottom.fadeIn()
+        P1ScoreValueBottom.fadeIn()
+        P1ScoreNameTop.fadeIn()
+        P1ScoreValueTop.fadeIn()
+        
+        P2ScoreNameBottom.fadeIn()
+        P2ScoreValueBottom.fadeIn()
+        P2ScoreNameTop.fadeIn()
+        P2ScoreValueTop.fadeIn()
+        
         displayLabelBottom.fadeIn()
         displayLabelTop.fadeIn()
         ContinueButtonBottom.blinkingButton()
@@ -229,43 +237,46 @@ class ScoreBoardViewController: UIViewController {
         view.backgroundColor = UIColor(netHex:0x2c3e50)
         
         // set text view styling
-        P1ScoreTop.selectable = true
-        P1ScoreTop.editable = true
-        P2ScoreTop.selectable = true
-        P2ScoreTop.editable = true
-        P1ScoreBottom.selectable = true
-        P1ScoreBottom.editable = true
-        P2ScoreBottom.selectable = true
-        P2ScoreBottom.editable = true
+        P1ScoreNameBottom.font = UIFont(name: "Kankin", size: 25)
+        P1ScoreNameBottom.textColor = UIColor(netHex: 0xeeeeee)
+        P1ScoreNameBottom.textAlignment = NSTextAlignment.Center
+        P1ScoreNameBottom.backgroundColor = UIColor(netHex:0x2c3e50)
         
-        P1ScoreTop.font = UIFont(name: "Kankin", size: 25)
-        P1ScoreTop.textColor = UIColor(netHex: 0xeeeeee)
-        P1ScoreTop.textAlignment = NSTextAlignment.Center
-        P1ScoreTop.backgroundColor = UIColor(netHex:0x2c3e50)
+        P1ScoreNameTop.font = UIFont(name: "Kankin", size: 25)
+        P1ScoreNameTop.textColor = UIColor(netHex: 0xeeeeee)
+        P1ScoreNameTop.textAlignment = NSTextAlignment.Center
+        P1ScoreNameTop.backgroundColor = UIColor(netHex:0x2c3e50)
         
-        P2ScoreTop.font = UIFont(name: "Kankin", size: 25)
-        P2ScoreTop.textColor = UIColor(netHex: 0xeeeeee)
-        P2ScoreTop.textAlignment = NSTextAlignment.Center
-        P2ScoreTop.backgroundColor = UIColor(netHex:0x2c3e50)
+        P1ScoreValueBottom.font = UIFont(name: "Kankin", size: 25)
+        P1ScoreValueBottom.textColor = UIColor(netHex: 0xeeeeee)
+        P1ScoreValueBottom.textAlignment = NSTextAlignment.Center
+        P1ScoreValueBottom.backgroundColor = UIColor(netHex:0x2c3e50)
         
-        P1ScoreBottom.font = UIFont(name: "Kankin", size: 25)
-        P1ScoreBottom.textColor = UIColor(netHex: 0xeeeeee)
-        P1ScoreBottom.textAlignment = NSTextAlignment.Center
-        P1ScoreBottom.backgroundColor = UIColor(netHex:0x2c3e50)
+        P1ScoreValueTop.font = UIFont(name: "Kankin", size: 25)
+        P1ScoreValueTop.textColor = UIColor(netHex: 0xeeeeee)
+        P1ScoreValueTop.textAlignment = NSTextAlignment.Center
+        P1ScoreValueTop.backgroundColor = UIColor(netHex:0x2c3e50)
         
-        P2ScoreBottom.font = UIFont(name: "Kankin", size: 25)
-        P2ScoreBottom.textColor = UIColor(netHex: 0xeeeeee)
-        P2ScoreBottom.textAlignment = NSTextAlignment.Center
-        P2ScoreBottom.backgroundColor = UIColor(netHex:0x2c3e50)
+        P2ScoreNameBottom.font = UIFont(name: "Kankin", size: 25)
+        P2ScoreNameBottom.textColor = UIColor(netHex: 0xeeeeee)
+        P2ScoreNameBottom.textAlignment = NSTextAlignment.Center
+        P2ScoreNameBottom.backgroundColor = UIColor(netHex:0x2c3e50)
         
-        P1ScoreTop.selectable = false
-        P1ScoreTop.editable = false
-        P2ScoreTop.selectable = false
-        P2ScoreTop.editable = false
-        P1ScoreBottom.selectable = false
-        P1ScoreBottom.editable = false
-        P2ScoreBottom.selectable = false
-        P2ScoreBottom.editable = false
+        P2ScoreNameTop.font = UIFont(name: "Kankin", size: 25)
+        P2ScoreNameTop.textColor = UIColor(netHex: 0xeeeeee)
+        P2ScoreNameTop.textAlignment = NSTextAlignment.Center
+        P2ScoreNameTop.backgroundColor = UIColor(netHex:0x2c3e50)
+        
+        P2ScoreValueBottom.font = UIFont(name: "Kankin", size: 25)
+        P2ScoreValueBottom.textColor = UIColor(netHex: 0xeeeeee)
+        P2ScoreValueBottom.textAlignment = NSTextAlignment.Center
+        P2ScoreValueBottom.backgroundColor = UIColor(netHex:0x2c3e50)
+        
+        P2ScoreValueTop.font = UIFont(name: "Kankin", size: 25)
+        P2ScoreValueTop.textColor = UIColor(netHex: 0xeeeeee)
+        P2ScoreValueTop.textAlignment = NSTextAlignment.Center
+        P2ScoreValueTop.backgroundColor = UIColor(netHex:0x2c3e50)
+        
         
         // set label styling
         displayLabelBottom.font = UIFont(name: "Kankin", size: 40)
@@ -308,11 +319,14 @@ class ScoreBoardViewController: UIViewController {
         
         // flip the buttons and labels that need to be flipped
         displayLabelTop.flipUpSideDown()
-        P1ScoreTop.flipUpSideDown()
         ContinueButtonTop.flipUpSideDown()
         ChangeGameButtonTop.flipUpSideDown()
-        P2ScoreTop.flipUpSideDown()
-        P1ScoreTop.flipUpSideDown()
+        
+        P1ScoreNameTop.flipUpSideDown()
+        P1ScoreValueTop.flipUpSideDown()
+        P2ScoreNameTop.flipUpSideDown()
+        P2ScoreValueTop.flipUpSideDown()
+        
         QuitButtonTop.flipUpSideDown()
         muteBtnTop.flipUpSideDown()
         
@@ -331,10 +345,15 @@ class ScoreBoardViewController: UIViewController {
     func displayScore(){
         // displays the current score of the match
         
-        P1ScoreBottom.text = "Red's Score:\n\(Player1.getTotalPlayerScore())"
-        P1ScoreTop.text = "Red's Score:\n\(Player1.getTotalPlayerScore())"
-        P2ScoreBottom.text = "Blue's Score:\n\(Player2.getTotalPlayerScore())"
-        P2ScoreTop.text = "Blue's Score:\n\(Player2.getTotalPlayerScore())"
+        P1ScoreNameBottom.text = "Red's Score:"
+        P1ScoreNameTop.text    = "Red's Score:"
+        P1ScoreValueBottom.text = "\(Player1.getTotalPlayerScore())"
+        P1ScoreValueTop.text    = "\(Player1.getTotalPlayerScore())"
+        
+        P2ScoreNameBottom.text = "Blue's Score:"
+        P2ScoreNameTop.text    = "Blue's Score:"
+        P2ScoreValueBottom.text = "\(Player2.getTotalPlayerScore())"
+        P2ScoreValueTop.text    = "\(Player2.getTotalPlayerScore())"
     }
     
     func buttons(){
@@ -358,8 +377,7 @@ class ScoreBoardViewController: UIViewController {
             self.displayLabelTop.fadeIn()
         })
         
-        //fade out score displays and fade in buttons
-        P1ScoreTop.fadeOut(1, delay: 0, completion: {_ in
+        P1ScoreNameBottom.fadeOut(1, delay: 0, completion: {_ in
             self.ContinueButtonBottom.fadeIn()
             self.ContinueButtonTop.fadeIn()
             self.ChangeGameButtonBottom.fadeIn()
@@ -368,9 +386,15 @@ class ScoreBoardViewController: UIViewController {
             self.QuitButtonBottom.fadeIn()
         })
         
-        P2ScoreTop.fadeOut()
-        P1ScoreBottom.fadeOut()
-        P2ScoreBottom.fadeOut()
+        P1ScoreValueBottom.fadeOut()
+        P1ScoreNameTop.fadeOut()
+        P1ScoreValueTop.fadeOut()
+        
+        P2ScoreNameBottom.fadeOut()
+        P2ScoreValueBottom.fadeOut()
+        P2ScoreNameTop.fadeOut()
+        P2ScoreValueTop.fadeOut()
+        
     }
     
     
