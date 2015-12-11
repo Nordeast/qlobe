@@ -232,24 +232,10 @@ class SimonSaysViewController: UIViewController {
         //Check which button to show from sequence, play corresponding sound and, change corresponding buttons Look
         
         if(sequence[currPlay] == 1){
-            //            if(pingPlayer.playing){     //allows for overlap
-            //                pingPlayer.stop()
-            //                pingPlayer.currentTime = 0
-            //                pingPlayer.play()
-            //            }else{
-            //                pingPlayer.play()
-            //            }
             self.P1RedButton.backgroundColor = UIColor(netHex: 0xe74c3c)
             
         }
         if(sequence[currPlay] == 2){
-            //            if(elevPlayer.playing){     //allows for overlap
-            //                elevPlayer.stop()
-            //                elevPlayer.currentTime = 0
-            //                elevPlayer.play()
-            //            }else{
-            //                elevPlayer.play()
-            //            }
             self.P1YellowButton.backgroundColor = UIColor(netHex: 0xf1c40f)
             
         }
@@ -270,25 +256,9 @@ class SimonSaysViewController: UIViewController {
         //Check which button to show from sequence, play corresponding sound and, change corresponding buttons Look
         
         if(sequence[currPlay] == 1){
-            //            if(pingPlayer.playing){     //allows for overlap
-            //                pingPlayer.stop()
-            //                pingPlayer.currentTime = 0
-            //                pingPlayer.play()
-            //            }else{
-            //                pingPlayer.play()
-            //            }
-            
             self.P2RedButton.backgroundColor = UIColor(netHex: 0xe74c3c)
         }
         if(sequence[currPlay] == 2){
-            //            if(elevPlayer.playing){     //allows for overlap
-            //                elevPlayer.stop()
-            //                elevPlayer.currentTime = 0
-            //                elevPlayer.play()
-            //            }else{
-            //                elevPlayer.play()
-            //            }
-            
             self.P2YellowButton.backgroundColor = UIColor(netHex: 0xf1c40f)
         }
         if(sequence[currPlay] == 3){
@@ -388,14 +358,17 @@ class SimonSaysViewController: UIViewController {
     /////////////////////
     
     //MARK: Player 2 button Actions
-    @IBAction func P2RedButton(sender: AnyObject) {
-        
-        P2RedButton.backgroundColor = UIColor(netHex: 0xc0392b)
+    func P2PressBtn(inButton: UIButton, backgroundColor: UIColor){
+        //Set background color of the button
+        inButton.backgroundColor = backgroundColor
         
         if(!gameOver){
             if(turn == 2){
                 if(sequence[index] == 1){
                     print("good job")
+                    
+                    elev_sound!.play()
+                    
                     totalTaps += 1
                     reward = totalTaps * 25
                     
@@ -426,178 +399,39 @@ class SimonSaysViewController: UIViewController {
             }
         }
         
-        //play sound
-        //        if(pingPlayer.playing){     //allows for overlap
-        //            pingPlayer.stop()
-        //            pingPlayer.currentTime = 0
-        //            pingPlayer.play()
-        //        }else{
-        //            pingPlayer.play()
-        //        }
         buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
         
         //when each button has been reached for the cycle, reset cycle variables and begin cycle again
         if(index == plays){
             resetForCycle()
         }
-        
+    }
+
+    @IBAction func P2RedButton(sender: AnyObject) {
+        P2PressBtn(P2RedButton, backgroundColor: UIColor(netHex: 0xc0392b))
     }
     
     @IBAction func P2YellowButton(sender: AnyObject) {
-        
-        P2YellowButton.backgroundColor = UIColor(netHex: 0xa4a200)
-        
-        if(!gameOver){
-            if(turn == 2){
-                if(sequence[index] == 2){
-                    print("good job")
-                    totalTaps += 1
-                    reward = totalTaps * 25
-                   
-                    ScoreLabelLeft.text = "\(reward)"
-                    degree += 180.0
-                    UIView.animateWithDuration(0.15,animations:({
-                        
-                        self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
-                    }))
-                    turn -= 1
-                    index += 1
-                }
-                else{
-                    gameOver = true
-                    disableButtonPress()
-                    P2Message.text = "Game Over!"
-                    P2Message.hidden = false;
-                    Player1.addScore(ROUND, game : "Simon Says", score: reward)
-                    Player2.addScore(ROUND, game : "Simon Says", score: 0)
-                    _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
-                        userInfo: nil, repeats: false)
-                }
-            }else{
-                P2Message.text = "Not Your Turn"
-                P2Message.hidden = false;
-            }
-        }
-        
-        //        if(elevPlayer.playing){     //allows for overlap
-        //            elevPlayer.stop()
-        //            elevPlayer.currentTime = 0
-        //            elevPlayer.play()
-        //        }else{
-        //            elevPlayer.play()
-        //        }
-        
-        buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
-        
-        //when each button has been reached for the cycle, reset cycle variables and begin cycle again
-        if(index == plays){
-            resetForCycle()
-        }
-        
-        
+        P2PressBtn(P2YellowButton, backgroundColor: UIColor(netHex: 0xa4a200))
     }
     
     @IBAction func P2GreenButton(sender: AnyObject) {
-        
-        P2GreenButton.backgroundColor = UIColor(netHex: 0x3d6451)
-        
-        if(!gameOver){
-            if(turn == 2){
-                if(sequence[index] == 3){
-                    print("good job")
-                    totalTaps += 1
-                    reward = totalTaps * 25
-                    
-                    ScoreLabelLeft.text = "\(reward)"
-                    degree += 180.0
-                    UIView.animateWithDuration(0.15,animations:({
-                        
-                        self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
-                    }))
-                    turn -= 1
-                    index += 1
-                }
-                else{
-                    gameOver = true
-                    disableButtonPress()
-                    P2Message.text = "Game Over!"
-                    P2Message.hidden = false;
-                    Player1.addScore(ROUND, game : "Simon Says", score: reward)
-                    Player2.addScore(ROUND, game : "Simon Says", score: 0)
-                    _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
-                        userInfo: nil, repeats: false)
-                }
-            }else{
-                P2Message.text = "Not Your Turn"
-                P2Message.hidden = false;
-            }
-        }
-        
-        buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
-        
-        //when each button has been reached for the cycle, reset cycle variables and begin cycle again
-        if(index == plays){
-            resetForCycle()
-        }
-        
-        
+        P2PressBtn(P2GreenButton, backgroundColor: UIColor(netHex: 0x3d6451))
     }
     
     @IBAction func P2BlueButton(sender: AnyObject) {
-        
-        P2BlueButton.backgroundColor = UIColor(netHex: 0x662a5b)
-        
-        
-        if(!gameOver){
-            if(turn == 2){
-                if(sequence[index] == 4){
-                    print("good job")
-                    totalTaps += 1
-                    reward = totalTaps * 25
-                    
-                    ScoreLabelLeft.text = "\(reward)"
-                    degree += 180.0
-                    UIView.animateWithDuration(0.15,animations:({
-                        
-                        self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
-                    }))
-                    turn -= 1
-                    index += 1
-                }
-                else{
-                    gameOver = true
-                    disableButtonPress()
-                    P2Message.text = "Game Over!"
-                    P2Message.hidden = false;
-                    Player1.addScore(ROUND, game : "Simon Says", score: reward)
-                    Player2.addScore(ROUND, game : "Simon Says", score: 0)
-                    _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
-                        userInfo: nil, repeats: false)
-                }
-            }else{
-                P2Message.text = "Not Your Turn"
-                P2Message.hidden = false;
-            }
-        }
-        
-        buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
-        
-        //when each button has been reached for the cycle, reset cycle variables and begin cycle again
-        if(index == plays){
-            resetForCycle()
-        }
-        
+        P2PressBtn(P2BlueButton, backgroundColor: UIColor(netHex: 0x662a5b))
     }
     
     //MARK: Player 1 button Actions
-    @IBAction func P1RedButton(sender: AnyObject) {
-        
-        P1RedButton.backgroundColor = UIColor(netHex: 0xc0392b)
-        
+    func P1PressBtn(inButton: UIButton, backgroundColor: UIColor){
         if(!gameOver){
             if(turn == 1){
                 if(sequence[index] == 1){
                     print("good job")
+                    
+                    ping_sound!.play()
+                    
                     totalTaps += 1
                     reward = totalTaps * 25
                     
@@ -627,148 +461,31 @@ class SimonSaysViewController: UIViewController {
             }
         }
         
-        //play sound
-        //        if(pingPlayer.playing){     //allows for overlap
-        //            pingPlayer.stop()
-        //            pingPlayer.currentTime = 0
-        //            pingPlayer.play()
-        //        }else{
-        //            pingPlayer.play()
-        //        }
-        
-        buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
-        
+        buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self,
+            selector: Selector("clearButtons"), userInfo: nil, repeats: false)
+    }
+    
+    @IBAction func P1RedButton(sender: AnyObject) {
+        P1PressBtn(P1RedButton, backgroundColor: UIColor(netHex: 0xc0392b))
     }
     
     @IBAction func P1YellowButton(sender: AnyObject) {
-        P1YellowButton.backgroundColor = UIColor(netHex: 0xa4a200)
-        
-        if(!gameOver){
-            if(turn == 1){
-                if(sequence[index] == 2){
-                    print("good job")
-                    totalTaps += 1
-                    reward = totalTaps * 25
-                   
-                    ScoreLabelLeft.text = "\(reward)"
-                    degree += 180.0
-                    UIView.animateWithDuration(0.15,animations:({
-                                                self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
-                    }))
-                    turn += 1
-                    index += 1
-                }
-                else{
-                    gameOver = true
-                    disableButtonPress()
-                    P1Message.text = "Game Over!"
-                    P1Message.hidden = false;
-                    Player2.addScore(ROUND, game : "Simon Says", score: reward)
-                    Player1.addScore(ROUND, game : "Simon Says", score: 0)
-                    
-                    _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
-                        userInfo: nil, repeats: false)
-                }
-            }else{
-                P1Message.text = "Not Your Turn"
-                P1Message.hidden = false;
-            }
-        }
-        
-        //        if(elevPlayer.playing){     //allows for overlap
-        //            elevPlayer.stop()
-        //            elevPlayer.currentTime = 0
-        //            elevPlayer.play()
-        //        }else{
-        //            elevPlayer.play()
-        //        }
-        
-        buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
-        
+        P1PressBtn(P1YellowButton, backgroundColor: UIColor(netHex: 0xa4a200))
     }
     
     @IBAction func P1GreenButton(sender: AnyObject) {
-        P1GreenButton.backgroundColor = UIColor(netHex: 0x3d6451)
-        
-        if(!gameOver){
-            if(turn == 1){
-                if(sequence[index] == 3){
-                    print("good job")
-                    totalTaps += 1
-                    reward = totalTaps * 25
-                    
-                    ScoreLabelLeft.text = "\(reward)"
-                    
-                    UIView.animateWithDuration(0.15,animations:({
-                        
-                        self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
-                    }))
-                    turn += 1
-                    index += 1
-                }
-                else{
-                    gameOver = true
-                    disableButtonPress()
-                    P1Message.text = "Game Over!"
-                    P1Message.hidden = false;
-                    Player2.addScore(ROUND, game : "Simon Says", score: reward)
-                    Player1.addScore(ROUND, game : "Simon Says", score: 0)
-                    
-                    _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
-                        userInfo: nil, repeats: false)
-                }
-            }else{
-                P1Message.text = "Not Your Turn"
-                P1Message.hidden = false;
-            }
-        }
-        
-        buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
-        
+        P1PressBtn(P1GreenButton, backgroundColor: UIColor(netHex: 0x3d6451))
     }
     
     @IBAction func P1BlueButton(sender: AnyObject) {
-        P1BlueButton.backgroundColor = UIColor(netHex: 0x662a5b)
-        
-        if(!gameOver){
-            if(turn == 1){
-                if(sequence[index] == 4){
-                    print("good job")
-                    totalTaps += 1
-                    reward = totalTaps * 25
-                    
-                    ScoreLabelLeft.text = "\(reward)"
-                    degree += 180.0
-                    UIView.animateWithDuration(0.15,animations:({
-                        
-                        self.ScoreLabelLeft.transform = CGAffineTransformMakeRotation(CGFloat(self.randomDegrees()))
-                    }))
-                    turn += 1
-                    index += 1
-                }
-                else{
-                    gameOver = true
-                    disableButtonPress()
-                    P1Message.text = "Game Over!"
-                    P1Message.hidden = false;
-                    Player2.addScore(ROUND, game : "Simon Says", score: reward)
-                    Player1.addScore(ROUND, game : "Simon Says", score: 0)
-                    
-                    _ = NSTimer.scheduledTimerWithTimeInterval(3, target: self, selector: "segue",
-                        userInfo: nil, repeats: false)
-                }
-            }else{
-                P1Message.text = "Not Your Turn"
-                P1Message.hidden = false;
-            }
-        }
-        
-        buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
+        P1PressBtn(P1BlueButton, backgroundColor: UIColor(netHex: 0x662a5b))
     }
+    
     func randomDegrees()-> Int{
         let rand = Int(arc4random_uniform(UInt32(360)))
         return rand
     }
+    
     func segue(){
         //func called by timer after Game Over on wrong button press
         
