@@ -45,12 +45,10 @@ class ViewController: UIViewController {
         // kill all the animations when the button is pressed
         view.layer.removeAllAnimations()
         
-        //reset the round to 1
-        ROUND = 1
-        
         //reset player scores and rounds
         Player1.NewGame()
         Player2.NewGame()
+        ROUND = 1
     }
     
     // MARK: ViewControler functions
@@ -59,12 +57,20 @@ class ViewController: UIViewController {
         
         stylePage()
         
+        // Display the mute icon
+        if(settings.isMute()){
+            muteBtn.setImage(UIImage(named: "sound_off"), forState: .Normal)
+        }
+        else{
+            muteBtn.setImage(UIImage(named: "sound_on"), forState: .Normal)
+        }
+        muteBtn.backgroundColor = UIColor(netHex:0x2c3e50)
+        
         // Play the main menu sound effect
+        menuAudio?.volume = settings.getVolume()
         if(menuAudio!.playing == false){
             menuAudio!.play()
         }
-        
-        adjustVolume()
         
         //run the logo animation every 4 seconds. 0.980 is 980ms which is the time the animation takes to run
         _ = NSTimer.scheduledTimerWithTimeInterval(0.980 + 3 , target: self, selector: "runLogoAnimation",
@@ -102,19 +108,6 @@ class ViewController: UIViewController {
         help.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
         //help.backgroundColor = UIColor(netHex: 0x464a53)
         help.titleLabel!.text = "Help"
-        
-        //update mute icon to match current state
-        if(settings.isMute() == false){
-            muteBtn.setImage(UIImage(named: "sound_on"), forState: .Normal)
-            print("entered")
-        }
-        else{
-            muteBtn.setImage(UIImage(named: "sound_off"), forState: .Normal)
-            print("entered2")
-        }
-        
-        muteBtn.backgroundColor = UIColor(netHex:0x2c3e50)
-        
     }
     
     
@@ -158,10 +151,6 @@ class ViewController: UIViewController {
 
     }
     
-    func adjustVolume(){
-        menuAudio?.volume = settings.getVolume()
-    }
-    
     @IBAction func muteChange(sender: AnyObject) {
         if(settings.isMute() == false){
             settings.setVolumePre(settings.getVolume())
@@ -172,9 +161,7 @@ class ViewController: UIViewController {
             settings.setVolume(settings.getVolumePre())
             muteBtn.setImage(UIImage(named: "sound_on"), forState: .Normal)
         }
-        
-        adjustVolume()
-    
+        menuAudio?.volume = settings.getVolume()
     }
     
     @IBAction func helpBtnPressed(sender: AnyObject) {

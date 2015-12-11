@@ -39,14 +39,15 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
     
     override func viewDidAppear(animated: Bool) {
         
-        // check Internet Connection
-        //checkConnection()
-        
-        //retrieve data from parse query
-        retrieveTrivia()
-        
         //Start the loading animation
         addHolderView()
+        
+        // display start up audio
+        loadingAudio!.play()
+        
+        //retrieve data from parse query, and wait for animation to be loaded
+        _ = NSTimer.scheduledTimerWithTimeInterval(5.5, target: self, selector: "retrieveTrivia",
+            userInfo: nil, repeats: false)
 
     }
     
@@ -55,27 +56,33 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-//    func checkConnection(){
+//    func checkConnection() -> Bool{
 //        if(Reachability.isConnectedToNetwork() == false){
 //            self.didLoad = false
-//            //self.performSegueWithIdentifier("NetworkError", sender: self)
 //            print("No Internet!!")
 //            handleNetworkError()
+//            return false
+//        }
+//        else{
+//            return true
 //        }
 //    }
-    
+//    
     func retrieveTrivia() {
         
-        timerQuery = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: Selector("handleNetworkError"), userInfo: nil, repeats: false)
+        // check Internet Connection, if no internet, show alert
+        if(Reachability.isConnectedToNetwork() == false){
+            self.didLoad = false
+            print("No Internet!!")
+            handleNetworkError()
+            return
+        }
+        
+        timerQuery = NSTimer.scheduledTimerWithTimeInterval(25, target: self, selector: Selector("handleNetworkError"), userInfo: nil, repeats: false)
         
         //This CLOSURE gives access to all objects in "trivia" class using our queryTrivia Bridge
         queryTrivia.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error:NSError?) -> Void in
-            
-            if(objects == nil){
-                self.didLoad     = false
-                return
-            }
-            
+                        
             // Loop through the objects array
             for triviaObject in objects!{
                 
@@ -103,6 +110,7 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
             
             if(self.didLoad == true){
                 self.timerQuery.invalidate()
+                
                 self.performSegueWithIdentifier("finnishLoad", sender: self)
             }
         }// end closure
@@ -112,9 +120,6 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
     // creat animation
     func addHolderView() {
         let boxSize: CGFloat = 100.0
-        
-        // display start up audio
-        loadingAudio!.play()
         
         holderView.frame = CGRect(x: view.bounds.width / 2 - boxSize / 2,
             y: view.bounds.height / 2 - boxSize / 2,

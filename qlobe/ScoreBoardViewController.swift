@@ -27,6 +27,8 @@ class ScoreBoardViewController: UIViewController {
     
     var triviaAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("trivia", ofType: "wav")!))
     
+    var simonSaysAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("simonSaysStart", ofType: "mp3")!))
+    
     var changeGameAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("boing", ofType: "wav")!))
     
     var roundAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("round", ofType: "mp3")!))
@@ -50,29 +52,32 @@ class ScoreBoardViewController: UIViewController {
 
     
     // MARK: Actions
-    @IBAction func QuitButtonBottom(sender: AnyObject) {
+    func quitGame(){
         // set the number of rounds in the match to the number at the time of quitting + 1 for off by one error
-        //numberOfRoundsPerMatch = ROUND
-        
-        roundAudio?.stop()
-        
+        numberOfRoundsPerMatch = ROUND
+        roundAudio!.stop()
         // segue to the final results page
         performSegueWithIdentifier("GameOver", sender: self)
+    }
+    @IBAction func QuitButtonBottom(sender: AnyObject) {
+        quitGame()
     }
     
     @IBAction func QuitButtonTop(sender: AnyObject) {
-        // set the number of rounds in the match to the number at the time of quitting + 1 for off by one error
-        //numberOfRoundsPerMatch = ROUND
-        
-        roundAudio?.stop()
-        
-        // segue to the final results page
-        performSegueWithIdentifier("GameOver", sender: self)
-
+        quitGame()
     }
     
     
-    @IBAction func muteBtnPressedBottom(sender: AnyObject) {
+    
+    func setAudioVolume(){
+        tapRaceAudio?.volume = settings.getVolume()
+        triviaAudio?.volume = settings.getVolume()
+        simonSaysAudio?.volume = settings.getVolume()
+        changeGameAudio?.volume = settings.getVolume()
+        roundAudio?.volume = settings.getVolume()
+    }
+    
+    func switchMute(){
         if(settings.isMute() == false){
             settings.setVolumePre(settings.getVolume())
             settings.setVolume(0.0)
@@ -84,33 +89,19 @@ class ScoreBoardViewController: UIViewController {
             muteBtnBottom.setImage(UIImage(named: "sound_on"), forState: .Normal)
             muteBtnTop.setImage(UIImage(named: "sound_on"), forState: .Normal)
         }
-        tapRaceAudio?.volume = settings.getVolume()
-        triviaAudio?.volume = settings.getVolume()
-        changeGameAudio?.volume = settings.getVolume()
-        roundAudio?.volume = settings.getVolume()
-        //print("Vol: \(settings.getVolume())")
+        setAudioVolume()
+    }
+    
+    @IBAction func muteBtnPressedBottom(sender: AnyObject) {
+        switchMute()
     }
     
     @IBAction func muteBtnPressedTop(sender: AnyObject) {
-        if(settings.isMute() == false){
-            settings.setVolumePre(settings.getVolume())
-            settings.setVolume(0.0)
-            muteBtnBottom.setImage(UIImage(named: "sound_off"), forState: .Normal)
-            muteBtnTop.setImage(UIImage(named: "sound_off"), forState: .Normal)
-        }
-        else{
-            settings.setVolume(settings.getVolumePre())
-            muteBtnBottom.setImage(UIImage(named: "sound_on"), forState: .Normal)
-            muteBtnTop.setImage(UIImage(named: "sound_on"), forState: .Normal)
-        }
-        tapRaceAudio?.volume = settings.getVolume()
-        triviaAudio?.volume = settings.getVolume()
-        changeGameAudio?.volume = settings.getVolume()
-        roundAudio?.volume = settings.getVolume()
-        //print("Vol: \(settings.getVolume())")
+        switchMute()
     }
     
-    @IBAction func ChangeGameButtonBottom(sender: AnyObject) {
+    
+    func changeGame(){
         // allow user to change the next game
         
         // make sure the game isnt the same as the one they had before they pressed change game
@@ -121,21 +112,16 @@ class ScoreBoardViewController: UIViewController {
         
         changeGameAudio!.play()
     }
+    @IBAction func ChangeGameButtonBottom(sender: AnyObject) {
+        changeGame()
+    }
     
     @IBAction func ChangeGameButtonTop(sender: AnyObject) {
-        // allow user to change the next game
-        
-        // make sure the game isnt the same as the one they had before they pressed change game
-        rand = (rand+1) % segues.count
-        
-        displayLabelBottom.text = segues[rand]
-        displayLabelTop.text = segues[rand]
-        
-        changeGameAudio!.play()
+        changeGame()
     }
     
     
-    @IBAction func ContinueButtonTop(sender: AnyObject) {
+    func ContinueToNextGame(){
         var segueDelay = 0.0
         
         //continue playing the game
@@ -145,10 +131,12 @@ class ScoreBoardViewController: UIViewController {
         if(segues[rand] == "TapRace" && (settings.isMute() == false)){
             segueDelay = 5.0
             tapRaceAudio!.play()
-        }else if(segues[rand] == "Trivia"){
+        }else if(segues[rand] == "Trivia" && (settings.isMute() == false)){
+            segueDelay = 3.0
             triviaAudio!.play()
-        }else if(segues[rand] == "SimonSays"){
-            tapRaceAudio!.play()
+        }else if(segues[rand] == "SimonSays" && (settings.isMute() == false)){
+            segueDelay = 3.0
+            simonSaysAudio!.play()
         }
         
         // Disable the change game button
@@ -159,41 +147,17 @@ class ScoreBoardViewController: UIViewController {
         
         roundAudio!.stop()
         
-        
         // perform segue with delay for the audio to play
         _ = NSTimer.scheduledTimerWithTimeInterval(segueDelay, target: self, selector: "segueToNextGame",
             userInfo: nil, repeats: false)
-        
+    }
+    
+    @IBAction func ContinueButtonTop(sender: AnyObject) {
+        ContinueToNextGame()
     }
     
     @IBAction func ContinueButtonBottom(sender: AnyObject) {
-        var segueDelay = 0.0
-        
-        //continue playing the game
-        ROUND++
-        
-        //Play sound effect for TapRace
-        if(segues[rand] == "TapRace" && (settings.isMute() == false)){
-            segueDelay = 5.0
-            tapRaceAudio!.play()
-        }else if(segues[rand] == "Trivia"){
-            triviaAudio!.play()
-        }else if(segues[rand] == "SimonSays"){
-            tapRaceAudio!.play()
-        }
-        
-        // Disable the change game button
-        ChangeGameButtonBottom.enabled = false
-        ChangeGameButtonTop.enabled = false
-        muteBtnBottom.enabled = false
-        muteBtnTop.enabled = false
-        
-        roundAudio!.stop()
-        
-        
-        // perform segue with delay for the audio to play
-        _ = NSTimer.scheduledTimerWithTimeInterval(segueDelay, target: self, selector: "segueToNextGame",
-            userInfo: nil, repeats: false)
+        ContinueToNextGame()
     }
     
     
@@ -208,11 +172,7 @@ class ScoreBoardViewController: UIViewController {
         style()
         
         //account for volume settings
-        tapRaceAudio?.volume = settings.getVolume()
-        triviaAudio?.volume = settings.getVolume()
-        changeGameAudio?.volume = settings.getVolume()
-        roundAudio?.volume = settings.getVolume()
-        
+        setAudioVolume()
         roundAudio!.play()
         
         //reset triviaGameCount to 0
@@ -245,8 +205,6 @@ class ScoreBoardViewController: UIViewController {
         displayLabelBottom.fadeIn()
         displayLabelTop.fadeIn()
         ContinueButtonBottom.blinkingButton()
-        
-        
         
         // show the score for 4 seconds then show the change game and continue buttons
         _ = NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: "buttons",
@@ -373,7 +331,6 @@ class ScoreBoardViewController: UIViewController {
     func displayScore(){
         // displays the current score of the match
         
-        
         P1ScoreBottom.text = "Red's Score:\n\(Player1.getTotalPlayerScore())"
         P1ScoreTop.text = "Red's Score:\n\(Player1.getTotalPlayerScore())"
         P2ScoreBottom.text = "Blue's Score:\n\(Player2.getTotalPlayerScore())"
@@ -383,7 +340,7 @@ class ScoreBoardViewController: UIViewController {
     func buttons(){
         //segue to the gameover view when the number of rounds are reached
         if(ROUND >= numberOfRoundsPerMatch){
-            
+            roundAudio!.stop()
             performSegueWithIdentifier("GameOver", sender: self)
         }
         
