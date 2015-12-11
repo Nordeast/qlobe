@@ -22,8 +22,6 @@ class GameOverViewController: UIViewController {
     @IBOutlet weak var MiddleView: UIView!
     @IBOutlet weak var TopView: UIView!
     
-    @IBOutlet weak var ContinueButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(netHex: 0x2c3e50)
@@ -31,9 +29,6 @@ class GameOverViewController: UIViewController {
         style()
         display()
         
-    }
-    override func viewDidAppear(animated: Bool) {
-        ContinueButton.blinkingButton()
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,30 +81,24 @@ class GameOverViewController: UIViewController {
         winnerLabel.textColor = UIColor(netHex: 0xe74c3c)
         winnerLabel.textAlignment = NSTextAlignment.Center
         
-        // button styling
-        ContinueButton.titleLabel!.font = UIFont(name: "Kankin", size: 25)!
-        ContinueButton.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        ContinueButton.titleLabel!.text = "Continue"
-       
         
         if(Player1.getTotalPlayerScore() > Player2.getTotalPlayerScore()){
-            winnerLabel.text = "Red wins!"
+            winnerLabel.text = "Red is the winner!"
             winnerLabel.textColor = UIColor(netHex: 0xe74c3c)
             MiddleView.backgroundColor = UIColor(netHex: 0xe74c3c)
             TopView.backgroundColor = UIColor(netHex: 0xe74c3c)
             
         }else if( Player1.getTotalPlayerScore() < Player2.getTotalPlayerScore()){
-            winnerLabel.text = "Blue Wins!"
+            winnerLabel.text = "Blue is the Winner!"
             winnerLabel.textColor = UIColor(netHex: 0x2980b9)
             MiddleView.backgroundColor = UIColor(netHex: 0x2980b9)
             TopView.backgroundColor = UIColor(netHex: 0x2980b9)
             
         }else{
             winnerLabel.text = "It's a tie!"
-            winnerLabel.textColor = UIColor(netHex: 0xe74c3c)
+            winnerLabel.textColor = UIColor(netHex: 0xbdc3c7)
             MiddleView.backgroundColor = UIColor(netHex: 0xbdc3c7)
             TopView.backgroundColor = UIColor(netHex: 0xebdc3c7)
-            
         }
     }
     
@@ -125,13 +114,14 @@ class GameOverViewController: UIViewController {
         }
         
         // total scores
-        redString = redString + "\ntotal score: \(Player1.getTotalPlayerScore()) \n"
-        blueString = blueString + "\ntotal score: \(Player2.getTotalPlayerScore()) \n"
-        
-        // average score
-        redString = redString + "\nAverage score: \(Player1.getAverageScore()) \n"
-        blueString = blueString + "\nAverage score: \(Player2.getAverageScore()) \n"
-        
+        if(Player1.getTotalRounds() != 0){
+            redString = redString + "\ntotal score: \(Player1.getTotalPlayerScore()) \n"
+            blueString = blueString + "\ntotal score: \(Player2.getTotalPlayerScore()) \n"
+            
+            // average score
+            redString = redString + "\nAverage score: \(Player1.getAverageScore()) \n"
+            blueString = blueString + "\nAverage score: \(Player2.getAverageScore()) \n"
+        }
         redTextView.text = redString
         blueTextView.text = blueString
         

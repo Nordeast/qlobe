@@ -13,8 +13,8 @@ var triviaGameCount = 0
 //current round number
 var ROUND = 1
 //number of rounds the match will have, default = 10.
-var numberOfRoundsPerMatch = 2 // number of rounds is actually numberOfRoundsPerMatch - 1 
- //because of off by one errors prevention
+var numberOfRoundsPerMatch = 2 // number of rounds is actually numberOfRoundsPerMatch - 1
+//because of off by one errors prevention
 
 class ScoreBoardViewController: UIViewController {
     var segues : [String] = settings.getGamesSetting()
@@ -43,11 +43,30 @@ class ScoreBoardViewController: UIViewController {
     @IBOutlet weak var ContinueButtonTop: UIButton!
     @IBOutlet weak var ChangeGameButtonBottom: UIButton!
     @IBOutlet weak var ChangeGameButtonTop: UIButton!
-    
     @IBOutlet weak var muteBtnBottom: UIButton!
     @IBOutlet weak var muteBtnTop: UIButton!
+    @IBOutlet weak var QuitButtonBottom: UIButton!
+    @IBOutlet weak var QuitButtonTop: UIButton!
+    @IBOutlet weak var BlueColorStrip: UIView!
+    @IBOutlet weak var RedColorStrip: UIView!
     
     // MARK: Actions
+    @IBAction func QuitButtonBottom(sender: AnyObject) {
+        // set the number of rounds in the match to the number at the time of quitting + 1 for off by one error
+        numberOfRoundsPerMatch = ROUND
+        // segue to the final results page
+        performSegueWithIdentifier("GameOver", sender: self)
+    }
+    
+    @IBAction func QuitButtonTop(sender: AnyObject) {
+        // set the number of rounds in the match to the number at the time of quitting + 1 for off by one error
+        numberOfRoundsPerMatch = ROUND
+        // segue to the final results page
+        performSegueWithIdentifier("GameOver", sender: self)
+
+    }
+    
+    
     @IBAction func muteBtnPressedBottom(sender: AnyObject) {
         if(settings.isMute() == false){
             settings.setVolumePre(settings.getVolume())
@@ -204,6 +223,8 @@ class ScoreBoardViewController: UIViewController {
         P2ScoreBottom.alpha = 0
         displayLabelBottom.alpha = 0
         displayLabelTop.alpha = 0
+        QuitButtonTop.alpha = 0
+        QuitButtonBottom.alpha = 0
         
         //load the score
         displayScore()
@@ -312,6 +333,17 @@ class ScoreBoardViewController: UIViewController {
         ChangeGameButtonTop.titleLabel!.text = "Random game"
         
         
+        QuitButtonBottom.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
+        QuitButtonBottom.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
+        QuitButtonBottom.titleLabel!.text = "Quit"
+        
+        QuitButtonTop.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
+        QuitButtonTop.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
+        QuitButtonTop.titleLabel!.text = "Quit"
+        
+        BlueColorStrip.backgroundColor = UIColor(netHex: 0x662a5b)
+        RedColorStrip.backgroundColor = UIColor(netHex: 0xc0392b)
+        
         // flip the buttons and labels that need to be flipped
         displayLabelTop.flipUpSideDown()
         P1ScoreTop.flipUpSideDown()
@@ -319,17 +351,9 @@ class ScoreBoardViewController: UIViewController {
         ChangeGameButtonTop.flipUpSideDown()
         P2ScoreTop.flipUpSideDown()
         P1ScoreTop.flipUpSideDown()
+        QuitButtonTop.flipUpSideDown()
+        muteBtnTop.flipUpSideDown()
         
-        // flip the buttons and labels that need to be flipped
-        displayLabelTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        P1ScoreTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        ContinueButtonTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        ChangeGameButtonTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        P2ScoreTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        P1ScoreTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        
-        // Set Mute Icon
-        muteBtnTop.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
         
         if(settings.isMute() == false){
             settings.setVolumePre(settings.getVolume())
@@ -379,6 +403,8 @@ class ScoreBoardViewController: UIViewController {
             self.ContinueButtonTop.fadeIn()
             self.ChangeGameButtonBottom.fadeIn()
             self.ChangeGameButtonTop.fadeIn()
+            self.QuitButtonTop.fadeIn()
+            self.QuitButtonBottom.fadeIn()
         })
         
         P2ScoreTop.fadeOut()

@@ -35,12 +35,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var settingBtn: UIButton!
     @IBOutlet weak var help: UIButton!
     @IBOutlet weak var muteBtn: UIButton!
+    
+    // MARK: actions
+    
     @IBAction func LetsBegin(sender: AnyObject) {
         //Stop the sound effect
         menuAudio!.stop()
         
         // kill all the animations when the button is pressed
         view.layer.removeAllAnimations()
+        
+        //reset player scores and rounds
+        Player1.NewGame()
+        Player2.NewGame()
     }
     
     // MARK: ViewControler functions

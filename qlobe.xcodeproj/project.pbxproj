@@ -193,6 +193,7 @@
 		9F2C77491C18B6FF00D1FAB4 /* LoadingAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				ACE981681C17A06700C25DDE /* SettingsDS.swift */,
 				9FC7F3481BFFE63E00C12689 /* TriangleLayer.swift */,
 				9FC7F34D1BFFE68100C12689 /* Colors.swift */,
 				9FC7F3461BFFE63E00C12689 /* OvalLayer.swift */,
@@ -289,7 +290,6 @@
 				D61B51301BFC60D400248DD9 /* ScoreBoardViewController.swift */,
 				D61B51341BFC61DC00248DD9 /* TapRaceViewController.swift */,
 				D61B51361BFC61E300248DD9 /* QuestionViewController.swift */,
-				ACE981681C17A06700C25DDE /* SettingsDS.swift */,
 				ACE9816A1C17A10900C25DDE /* SettingsTVC.swift */,
 				D63133181C1926FD00B46237 /* Kankin.ttf */,
 				D61B50DB1BFC585200248DD9 /* LaunchScreen.storyboard */,

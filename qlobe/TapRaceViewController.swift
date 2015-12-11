@@ -19,7 +19,7 @@ class TapRaceViewController: UIViewController {
     var P2Taps : Int = 0 // number of taps for P2
     var CS1Position: CGFloat = 0 // holds the current position of P1 racer
     var CS2Position: CGFloat = 0 // holds the current position of P1 racer
-    let WIN_TAPS = 10 //number of taps needed to win 41
+    let WIN_TAPS = 41 //number of taps needed to win 41
     var WinningPlayer : Int = 0 // player that wins the game is stored here
     var gameOver : Bool = false // is the game over ?
     
@@ -419,9 +419,14 @@ class TapRaceViewController: UIViewController {
                 self.TopGameOverTextField.alpha = 1
                 self.BottomGameOverTextField.alpha = 1
                 
-                self.TopGameOverTextField.text = "P\(self.WinningPlayer) Wins!"
-                self.BottomGameOverTextField.text = "P\(self.WinningPlayer) Wins!"
-                
+                if(self.WinningPlayer == 1){
+                    self.TopGameOverTextField.text = "Red Wins!"
+                    self.BottomGameOverTextField.text = "Red Wins!"
+                }else{
+                    self.TopGameOverTextField.text = "Blue Wins!"
+                    self.BottomGameOverTextField.text = "Blue Wins!"
+                }
+                                
             },
             
             completion: { _ in
