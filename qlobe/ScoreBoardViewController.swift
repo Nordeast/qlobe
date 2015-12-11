@@ -52,14 +52,20 @@ class ScoreBoardViewController: UIViewController {
     // MARK: Actions
     @IBAction func QuitButtonBottom(sender: AnyObject) {
         // set the number of rounds in the match to the number at the time of quitting + 1 for off by one error
-        numberOfRoundsPerMatch = ROUND
+        //numberOfRoundsPerMatch = ROUND
+        
+        roundAudio?.stop()
+        
         // segue to the final results page
         performSegueWithIdentifier("GameOver", sender: self)
     }
     
     @IBAction func QuitButtonTop(sender: AnyObject) {
         // set the number of rounds in the match to the number at the time of quitting + 1 for off by one error
-        numberOfRoundsPerMatch = ROUND
+        //numberOfRoundsPerMatch = ROUND
+        
+        roundAudio?.stop()
+        
         // segue to the final results page
         performSegueWithIdentifier("GameOver", sender: self)
 
