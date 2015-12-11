@@ -17,26 +17,10 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTT-Db-TYj">
-                                <rect key="frame" x="20" y="146" width="560" height="305"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="UTT-Db-TYj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="82G-lI-V90"/>
-                            <constraint firstItem="UTT-Db-TYj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Ds5-fv-exY"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UTT-Db-TYj" secondAttribute="bottom" constant="149" id="VKS-6V-JLc"/>
-                            <constraint firstItem="UTT-Db-TYj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="126" id="yAu-13-hT7"/>
-                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="label1" destination="UTT-Db-TYj" id="bJY-Dz-FQr"/>
                         <segue destination="07e-RH-l9R" kind="presentation" identifier="finnishLoad" id="Sh2-8x-ioK"/>
                     </connections>
                 </viewController>
@@ -1551,6 +1535,6 @@ Settings:
     <inferredMetricsTieBreakers>
         <segue reference="OPF-rQ-OyT"/>
         <segue reference="4Ib-ab-tc9"/>
-        <segue reference="AYD-yS-PCT"/>
+        <segue reference="Sh2-8x-ioK"/>
     </inferredMetricsTieBreakers>
 </document>
