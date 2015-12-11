@@ -10,15 +10,11 @@
     // qlobe game. One object is needed for each player.
     
     var playerNumber : Int // unique player to identify each class
-    var numberQuestionsCorrect : Int
-    var numberQuestionsIncorrect : Int
     var rounds: [Rounds] = [] // holds the rounds, game that round and the score of the round.
     
     init(playerNumber : Int){
         // playerNumber must be a unique number
         self.playerNumber = playerNumber
-        numberQuestionsCorrect = 0
-        numberQuestionsIncorrect = 0
     }
     
     //// get functions ////
@@ -34,48 +30,38 @@
         return score
     }
     
-    func getQuestionsCorrect() -> Int{
-        return numberQuestionsCorrect
-    }
-    
-    func getQuestionsIncorrect() -> Int{
-        return numberQuestionsIncorrect
-    }
-    
     //// class functionality ////
     
     func getAverageScore() -> Int{
         // returns the average points earned for all of the questions
-        
-        let average = getTotalPlayerScore() / getTotalRounds()
-        return average
+        if(getTotalRounds() == 0){// avoid devide by zero error
+            return 0
+        }else{
+            let average = getTotalPlayerScore() / getTotalRounds()
+            return average
+
+        }
     }
     func getTotalRounds() -> Int{
-        if(rounds.count <= 0){
-            return 1
-        }
-        else{
+        // returns the total number of rounds the match was
             return rounds.count
-        }
+        
     }
     func getRoundScore(round: Int) -> Int{
         let r = round
         // returns the players score in a certain round
+        if(r == 0){ // accounts for the case no rounds were played
+            return 0
+        }
         return rounds[r].score
     }
     func getRoundGame(round: Int) -> String{
         let r = round
         // returns the game that was played in a certain round
+        if(r == 0){ // accounts for the case no rounds were played
+            return ""
+        }
         return rounds[r].game
-    }
-    func gotQuestionWrong(){
-        // increments the questions incorrect counter
-        numberQuestionsIncorrect++
-    }
-    
-    func gotQuestionRight(){
-        // increments the questions correct counter
-        numberQuestionsCorrect++
     }
     
     func addScore(round: Int, game: String, score: Int){
@@ -87,8 +73,7 @@
         // reset the players fields to start a new game
         
         rounds = []
-        numberQuestionsCorrect = 0
-        numberQuestionsIncorrect = 0
+
     }
     
  }

@@ -19,19 +19,21 @@ class SettingsTVC: UITableViewController{
     @IBOutlet weak var simonSaysSetting: UISwitch!
     @IBOutlet weak var volumeSetting: UISlider!
     @IBOutlet weak var back: UIButton!
-    
     @IBOutlet weak var TriviaLabel: UILabel!
     @IBOutlet weak var TapRaceLabel: UILabel!
-    
     @IBOutlet weak var SimonSaysLabel: UILabel!
-    
     @IBOutlet weak var NumberOfRoundsLabel: UILabel!
-    
     @IBOutlet weak var VolumeLabel: UILabel!
-    
     @IBOutlet weak var NumberOfRoundsSlider: UISlider!
-    
     @IBOutlet weak var ShowNumberOfRoundsLabel: UILabel!
+    @IBOutlet weak var VolumeCell: UITableViewCell!
+    @IBOutlet weak var NumberOfRoundsCell: UITableViewCell!
+    @IBOutlet weak var SimonSaysCell: UITableViewCell!
+    @IBOutlet weak var TapRaceCell: UITableViewCell!
+    @IBOutlet weak var TriviaCell: UITableViewCell!
+    
+    @IBOutlet weak var SettingsTitleLabel: UILabel!
+    
     
     // MARK: actions
     @IBAction func NumberOfRoundsSlider(sender: AnyObject) {
@@ -107,12 +109,68 @@ class SettingsTVC: UITableViewController{
         
         volumeSetting.setValue(settings.getVolumePre(), animated: false)
         
-        //design()
+        style()
     }
     
-    func design(){
-        //tableView.backgroundColor = UIColor(netHex:0x2c3e50)
+
+    
+    func style(){
+        
+        // style the settings page
+        
+        tableView.backgroundColor = UIColor(netHex:0x2c3e50)
+        
+        // set the background color
+        view.backgroundColor = UIColor(netHex:0x2c3e50)
+        
+        triviaSetting.backgroundColor = UIColor(netHex:0x2c3e50)
+        tapRaceSetting.backgroundColor = UIColor(netHex:0x2c3e50)
+        simonSaysSetting.backgroundColor = UIColor(netHex:0x2c3e50)
+        volumeSetting.backgroundColor = UIColor(netHex:0x2c3e50)
+        NumberOfRoundsSlider.backgroundColor = UIColor(netHex:0x2c3e50)
+        
+        TriviaLabel.font = UIFont(name: "Kankin", size: 20)
+        TriviaLabel.textColor = UIColor(netHex: 0xeeeeee)
+        TapRaceLabel.font = UIFont(name: "Kankin", size: 20)
+        TapRaceLabel.textColor = UIColor(netHex: 0xeeeeee)
+        SimonSaysLabel.font = UIFont(name: "Kankin", size: 20)
+        SimonSaysLabel.textColor = UIColor(netHex: 0xeeeeee)
+        NumberOfRoundsLabel.font = UIFont(name: "Kankin", size: 20)
+        NumberOfRoundsLabel.textColor = UIColor(netHex: 0xeeeeee)
+        VolumeLabel.font = UIFont(name: "Kankin", size: 20)
+        VolumeLabel.textColor = UIColor(netHex:0xeeeeee)
+        ShowNumberOfRoundsLabel.font = UIFont(name: "Kankin", size: 20)
+        ShowNumberOfRoundsLabel.textColor = UIColor(netHex: 0xeeeeee)
+        ShowNumberOfRoundsLabel.textAlignment = NSTextAlignment.Center
+        
+        
+        SettingsTitleLabel.font = UIFont(name: "Kankin", size: 30)
+        SettingsTitleLabel.textColor = UIColor(netHex: 0xf1c40f)
+        SettingsTitleLabel.textAlignment = NSTextAlignment.Center
+        
+        
+        back.titleLabel!.font = UIFont(name: "Kankin", size: 25)!
+        back.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
+        back.titleLabel!.text = "Back"
+        
+        
+        VolumeCell.backgroundColor = UIColor(netHex:0x2c3e50)
+        NumberOfRoundsCell.backgroundColor = UIColor(netHex:0x2c3e50)
+        SimonSaysCell.backgroundColor = UIColor(netHex:0x2c3e50)
+        TapRaceCell.backgroundColor = UIColor(netHex:0x2c3e50)
+        TriviaCell.backgroundColor = UIColor(netHex:0x2c3e50)
         
     }
     
+    // this will style the tableview section text
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView //recast your view as a UITableViewHeaderFooterView
+        
+        header.contentView.backgroundColor = UIColor(netHex:0x2c3e50) //make the background color light blue
+        
+        header.textLabel!.textColor = UIColor(netHex:0xf1c40f) //make the text white
+        
+        header.textLabel?.font = UIFont(name: "Kankin", size: 25)
+    }
 }

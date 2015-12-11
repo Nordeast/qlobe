@@ -303,24 +303,15 @@ class QuestionViewController: UIViewController {
     }
     
     func updatePlayerScore(){
-        
+        // show the players score on that current question
         
         if(answerP1 == curQuestion.getAnswer()){
-            Player1.getQuestionsCorrect()
             Player1Score += (Player1AnsTime * 100)
         }
-        else{
-            Player1.getQuestionsIncorrect()
-        }
-        
         if(answerP2 == curQuestion.getAnswer()){
-            Player2.getQuestionsCorrect()
             Player2Score += (Player2AnsTime * 100)
         }
-        else{
-            Player2.getQuestionsIncorrect()
-        }
-        
+
         Player1ScoreValue.text =  "\(Player1Score)"
         Player2ScoreValue.text =  "\(Player2Score)"
     }

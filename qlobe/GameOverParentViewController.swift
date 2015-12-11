@@ -9,19 +9,49 @@
 import UIKit
 
 class GameOverParentViewController: UIViewController {
+    var upsidedown = false
+    
+    // MARK: outlets
     
     @IBOutlet weak var GameOverView: UIView!
+    @IBOutlet weak var ContinueTop: UIButton!
+    @IBOutlet weak var ContinueBottom: UIButton!
     
-    var upsidedown = false
+    // MARK: actions
+    @IBAction func ContinueTop(sender: AnyObject) {
+        //segue to start screen
+
+        performSegueWithIdentifier("ReturnToStartScreen", sender: self)
+    }
+    @IBAction func ContinueBottom(sender: AnyObject) {
+        // segue to start screen
+        performSegueWithIdentifier("ReturnToStartScreen", sender: self)
+
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(netHex: 0x2c3e50)
         
+        // style continue buttons they will take you to the start screen
+        
+        ContinueTop.titleLabel!.font = UIFont(name: "Kankin", size: 25)!
+        ContinueTop.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
+        ContinueTop.titleLabel!.text = "Continue"
+        ContinueTop.flipUpSideDown()
+        
+        ContinueBottom.titleLabel!.font = UIFont(name: "Kankin", size: 25)!
+        ContinueBottom.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
+        ContinueBottom.titleLabel!.text = "Continue"
         
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(animated: Bool) {
         animateInfinitelyWithDelay(5, duration: 1)
+        
+        ContinueTop.blinkingButton()
+        ContinueBottom.blinkingButton()
     }
     
     func animateInfinitelyWithDelay(delay : NSTimeInterval, duration : NSTimeInterval) {
