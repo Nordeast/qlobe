@@ -47,8 +47,7 @@ class ScoreBoardViewController: UIViewController {
     @IBOutlet weak var muteBtnTop: UIButton!
     @IBOutlet weak var QuitButtonBottom: UIButton!
     @IBOutlet weak var QuitButtonTop: UIButton!
-    @IBOutlet weak var BlueColorStrip: UIView!
-    @IBOutlet weak var RedColorStrip: UIView!
+
     
     // MARK: Actions
     @IBAction func QuitButtonBottom(sender: AnyObject) {
@@ -341,8 +340,7 @@ class ScoreBoardViewController: UIViewController {
         QuitButtonTop.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
         QuitButtonTop.titleLabel!.text = "Quit"
         
-        BlueColorStrip.backgroundColor = UIColor(netHex: 0x662a5b)
-        RedColorStrip.backgroundColor = UIColor(netHex: 0xc0392b)
+       
         
         // flip the buttons and labels that need to be flipped
         displayLabelTop.flipUpSideDown()
