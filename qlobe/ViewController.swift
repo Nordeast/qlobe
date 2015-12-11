@@ -150,11 +150,11 @@ class ViewController: UIViewController {
         if(settings.isMute() == false){
             settings.setVolumePre(settings.getVolume())
             settings.setVolume(0.0)
-            muteBtn.setImage(UIImage(named: "sound_on"), forState: .Normal)
+            muteBtn.setImage(UIImage(named: "sound_off"), forState: .Normal)
         }
         else{
             settings.setVolume(settings.getVolumePre())
-            muteBtn.setImage(UIImage(named: "sound_off"), forState: .Normal)
+            muteBtn.setImage(UIImage(named: "sound_on"), forState: .Normal)
         }
         menuAudio?.volume = settings.getVolume()
     }

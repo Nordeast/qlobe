@@ -193,7 +193,6 @@
 		9F2C77491C18B6FF00D1FAB4 /* LoadingAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				ACE981681C17A06700C25DDE /* SettingsDS.swift */,
 				9FC7F3481BFFE63E00C12689 /* TriangleLayer.swift */,
 				9FC7F34D1BFFE68100C12689 /* Colors.swift */,
 				9FC7F3461BFFE63E00C12689 /* OvalLayer.swift */,
@@ -212,6 +211,7 @@
 				AC961FE41BFFCA500099225B /* UIColorExtensions.swift */,
 				D61B51321BFC61D300248DD9 /* UIViewExtensions.swift */,
 				D631330E1C18E3C800B46237 /* Rounds.swift */,
+				ACE981681C17A06700C25DDE /* SettingsDS.swift */,
 			);
 			name = ClassDefine;
 			sourceTree = "<group>";

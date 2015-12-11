@@ -20,8 +20,8 @@ class SettingsDS {
     init(){
         
         self.gamesEnabled = ["Trivia","TapRace","SimonSays"]
-        self.volume = 1.0
-        self.volumePre = 1.0
+        self.volume = 4.0
+        self.volumePre = 4.0
     }
     
     func setVolume(vol : Float){

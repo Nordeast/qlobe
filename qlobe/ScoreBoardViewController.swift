@@ -71,13 +71,13 @@ class ScoreBoardViewController: UIViewController {
         if(settings.isMute() == false){
             settings.setVolumePre(settings.getVolume())
             settings.setVolume(0.0)
-            muteBtnBottom.setImage(UIImage(named: "sound_on"), forState: .Normal)
-            muteBtnTop.setImage(UIImage(named: "sound_on"), forState: .Normal)
+            muteBtnBottom.setImage(UIImage(named: "sound_off"), forState: .Normal)
+            muteBtnTop.setImage(UIImage(named: "sound_off"), forState: .Normal)
         }
         else{
             settings.setVolume(settings.getVolumePre())
-            muteBtnBottom.setImage(UIImage(named: "sound_off"), forState: .Normal)
-            muteBtnTop.setImage(UIImage(named: "sound_off"), forState: .Normal)
+            muteBtnBottom.setImage(UIImage(named: "sound_on"), forState: .Normal)
+            muteBtnTop.setImage(UIImage(named: "sound_on"), forState: .Normal)
         }
         tapRaceAudio?.volume = settings.getVolume()
         triviaAudio?.volume = settings.getVolume()
@@ -90,13 +90,13 @@ class ScoreBoardViewController: UIViewController {
         if(settings.isMute() == false){
             settings.setVolumePre(settings.getVolume())
             settings.setVolume(0.0)
-            muteBtnBottom.setImage(UIImage(named: "sound_on"), forState: .Normal)
-            muteBtnTop.setImage(UIImage(named: "sound_on"), forState: .Normal)
+            muteBtnBottom.setImage(UIImage(named: "sound_off"), forState: .Normal)
+            muteBtnTop.setImage(UIImage(named: "sound_off"), forState: .Normal)
         }
         else{
             settings.setVolume(settings.getVolumePre())
-            muteBtnBottom.setImage(UIImage(named: "sound_off"), forState: .Normal)
-            muteBtnTop.setImage(UIImage(named: "sound_off"), forState: .Normal)
+            muteBtnBottom.setImage(UIImage(named: "sound_on"), forState: .Normal)
+            muteBtnTop.setImage(UIImage(named: "sound_on"), forState: .Normal)
         }
         tapRaceAudio?.volume = settings.getVolume()
         triviaAudio?.volume = settings.getVolume()
@@ -357,12 +357,12 @@ class ScoreBoardViewController: UIViewController {
         
         if(settings.isMute() == false){
             settings.setVolumePre(settings.getVolume())
-            muteBtnBottom.setImage(UIImage(named: "sound_off"), forState: .Normal)
-            muteBtnTop.setImage(UIImage(named: "sound_off"), forState: .Normal)
-        }
-        else{
             muteBtnBottom.setImage(UIImage(named: "sound_on"), forState: .Normal)
             muteBtnTop.setImage(UIImage(named: "sound_on"), forState: .Normal)
+        }
+        else{
+            muteBtnBottom.setImage(UIImage(named: "sound_off"), forState: .Normal)
+            muteBtnTop.setImage(UIImage(named: "sound_off"), forState: .Normal)
         }
     }
     

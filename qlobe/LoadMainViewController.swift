@@ -12,7 +12,6 @@
 //
 //  Created by Aaron Knaack on 11/6/15.
 //  Copyright © 2015 qlobe. All rights reserved.
-//
 
 import UIKit
 import Parse
@@ -20,10 +19,8 @@ import AVFoundation
 
 class loadMainViewController: UIViewController, HolderViewDelegate{
     
-    // timer to control the animation
-    var timerCount   = 1
-    var timer        = NSTimer()
-    var timerRunning = false
+    // timer for connection timeout
+    var timerQuery = NSTimer()
     
     // animation object
     var holderView = HolderView(frame: CGRectZero)
@@ -36,20 +33,21 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
     var didLoad = false
     
     
-    
-    @IBOutlet weak var label1: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         
-        label1.text = ""
-        
+        // check Internet Connection
+        //checkConnection()
         
         //retrieve data from parse query
         retrieveTrivia()
         
         //Start the loading animation
         addHolderView()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,11 +55,26 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
         // Dispose of any resources that can be recreated.
     }
     
+//    func checkConnection(){
+//        if(Reachability.isConnectedToNetwork() == false){
+//            self.didLoad = false
+//            //self.performSegueWithIdentifier("NetworkError", sender: self)
+//            print("No Internet!!")
+//            handleNetworkError()
+//        }
+//    }
     
     func retrieveTrivia() {
         
+        timerQuery = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: Selector("handleNetworkError"), userInfo: nil, repeats: false)
+        
         //This CLOSURE gives access to all objects in "trivia" class using our queryTrivia Bridge
         queryTrivia.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error:NSError?) -> Void in
+            
+            if(objects == nil){
+                self.didLoad     = false
+                return
+            }
             
             // Loop through the objects array
             for triviaObject in objects!{
@@ -77,15 +90,23 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
                 if ( triviaKey != nil && triviaQuestion_ != nil && triviaWrongAnswer1 != nil &&  triviaWrongAnswer2 != nil && triviaAnswer != nil){
                     let trivia = triviaQuestion(Key: triviaKey!, Question: triviaQuestion_!, Answer: triviaAnswer!, WrongAnswer:  triviaWrongAnswer1!, WrongAnswer2:  triviaWrongAnswer2!)
                     triviaQuestions.append(trivia) // append to the global array of trivia questions
-                    self.didLoad = true
+                    
+                    if(triviaQuestions.count == objects!.count){
+                        self.didLoad = true
+                    }
                     
                 }else{
-                    self.label1.text = "Network Error"
+                    print("Network Error")
                     self.didLoad = false
                 }
             }// end for
+            
+            if(self.didLoad == true){
+                self.timerQuery.invalidate()
+                self.performSegueWithIdentifier("finnishLoad", sender: self)
+            }
         }// end closure
-    }// end retrieve trivia
+    }// end retrieve trivias
     
     
     // creat animation
@@ -105,7 +126,6 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
         holderView.addOval()
     }
     
-    
     // animation content
     func animateLabel() {
         // 1
@@ -122,47 +142,32 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
         label.transform = CGAffineTransformScale(label.transform, 0.25, 0.25)
         view.addSubview(label)
         
-        
-        // 3
-        //        UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.CurveEaseInOut,
-        //            animations: ({
-        //                label.transform = CGAffineTransformScale(label.transform, 4.0, 4.0)
-        //            }), completion: { finished in
-        //                self.addButton()
-        //        })
-        
-        //3
         UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.CurveEaseInOut,
             animations: ({
                 label.transform = CGAffineTransformScale(label.transform, 4.0, 4.0)
             }), completion: nil)
+    }
+    
+    func handleNetworkError(){
+        //Create the AlertController
+        let actionSheetController: UIAlertController = UIAlertController(title: "Network Error!", message: "Choose Setting to check the network, or Retry Otherwise", preferredStyle: .Alert)
         
-        runTimer()
-    }
-    
-    // timer function
-    func Counting(){
-        print(timerCount)
-        if(timerCount > 0){
-            timerCount -= 1
+        //Create and add the Cancel action
+        let settingAction: UIAlertAction = UIAlertAction(title: "Setting", style: .Cancel) { action -> Void in
+            //Do some stuff
+            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+            self.retrieveTrivia()
         }
-        else{
-            timerRunning = false
-            timerCount   = 1
-            if ( didLoad == true) {
-                //perform segue to View Controller : Main menu
-                timer.invalidate()
-                self.performSegueWithIdentifier("finnishLoad", sender: self)
-            }
+        actionSheetController.addAction(settingAction)
+        
+        //Create and an option action
+        let retryAction: UIAlertAction = UIAlertAction(title: "Retry", style: .Default) { action -> Void in
+            self.retrieveTrivia()
         }
-    }
-    
-    func runTimer(){
-        if(timerRunning == false){
-            // run the timer
-            timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("Counting"), userInfo: nil, repeats: true)
-            timerRunning = true
-        }
+        actionSheetController.addAction(retryAction)
+        
+        //Present the AlertController
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
     }
 }
 
