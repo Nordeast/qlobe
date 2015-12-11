@@ -107,12 +107,15 @@ class SettingsTVC: UITableViewController{
             simonSaysSetting.setOn(false, animated: false)
         }
         
-        volumeSetting.setValue(settings.getVolumePre(), animated: false)
+        volumeSetting.setValue(settings.getVolume(), animated: false)
+        NumberOfRoundsSlider.setValue(Float(numberOfRoundsPerMatch), animated: false)
+        ShowNumberOfRoundsLabel.text = "\(Int(numberOfRoundsPerMatch) - 1)"
         
         style()
     }
     
 
+    
     
     func style(){
         
@@ -122,6 +125,7 @@ class SettingsTVC: UITableViewController{
         
         // set the background color
         view.backgroundColor = UIColor(netHex:0x2c3e50)
+        
         
         triviaSetting.backgroundColor = UIColor(netHex:0x2c3e50)
         tapRaceSetting.backgroundColor = UIColor(netHex:0x2c3e50)
@@ -172,5 +176,17 @@ class SettingsTVC: UITableViewController{
         header.textLabel!.textColor = UIColor(netHex:0xf1c40f) //make the text white
         
         header.textLabel?.font = UIFont(name: "Kankin", size: 25)
+    }
+    
+    // this will style the tableview cell background
+    override func tableView(tableView: UITableView,
+        willDisplayCell cell: UITableViewCell,
+        forRowAtIndexPath indexPath: NSIndexPath){
+            
+            //this will style the background color of the cell when it is pressed to be transparent
+            let bgColorView = UIView()
+            bgColorView.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0)
+            cell.selectedBackgroundView = bgColorView
+            
     }
 }

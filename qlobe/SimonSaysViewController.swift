@@ -390,11 +390,11 @@ class SimonSaysViewController: UIViewController {
     /////////////////////
     // MARK: Game Play //
     /////////////////////
-    
+
     //MARK: Player 2 button Actions
     @IBAction func P2RedButton(sender: AnyObject) {
         
-        P2RedButton.backgroundColor = UIColor(netHex: 0xc0392b)
+        P2RedButton.backgroundColor = UIColor(netHex: 0xe74c3c)
         
         if(!gameOver){
             if(turn == 2){
@@ -449,7 +449,7 @@ class SimonSaysViewController: UIViewController {
     
     @IBAction func P2YellowButton(sender: AnyObject) {
         
-        P2YellowButton.backgroundColor = UIColor(netHex: 0xa4a200)
+        P2YellowButton.backgroundColor = UIColor(netHex: 0xf1c40f)
         
         if(!gameOver){
             if(turn == 2){
@@ -503,7 +503,7 @@ class SimonSaysViewController: UIViewController {
     
     @IBAction func P2GreenButton(sender: AnyObject) {
         
-        P2GreenButton.backgroundColor = UIColor(netHex: 0x3d6451)
+        P2GreenButton.backgroundColor = UIColor(netHex: 0x27ae60)
         
         if(!gameOver){
             if(turn == 2){
@@ -549,7 +549,7 @@ class SimonSaysViewController: UIViewController {
     
     @IBAction func P2BlueButton(sender: AnyObject) {
         
-        P2BlueButton.backgroundColor = UIColor(netHex: 0x662a5b)
+        P2BlueButton.backgroundColor = UIColor(netHex: 0x2980b9)
         
         
         if(!gameOver){
@@ -596,7 +596,7 @@ class SimonSaysViewController: UIViewController {
     //MARK: Player 1 button Actions
     @IBAction func P1RedButton(sender: AnyObject) {
         
-        P1RedButton.backgroundColor = UIColor(netHex: 0xc0392b)
+        P1RedButton.backgroundColor = UIColor(netHex: 0xe74c3c)
         
         if(!gameOver){
             if(turn == 1){
@@ -645,7 +645,7 @@ class SimonSaysViewController: UIViewController {
     }
     
     @IBAction func P1YellowButton(sender: AnyObject) {
-        P1YellowButton.backgroundColor = UIColor(netHex: 0xa4a200)
+        P1YellowButton.backgroundColor = UIColor(netHex: 0xf1c40f)
         
         if(!gameOver){
             if(turn == 1){
@@ -692,7 +692,7 @@ class SimonSaysViewController: UIViewController {
     }
     
     @IBAction func P1GreenButton(sender: AnyObject) {
-        P1GreenButton.backgroundColor = UIColor(netHex: 0x3d6451)
+        P1GreenButton.backgroundColor = UIColor(netHex: 0x27ae60)
         
         if(!gameOver){
             if(turn == 1){
@@ -732,7 +732,7 @@ class SimonSaysViewController: UIViewController {
     }
     
     @IBAction func P1BlueButton(sender: AnyObject) {
-        P1BlueButton.backgroundColor = UIColor(netHex: 0x662a5b)
+        P1BlueButton.backgroundColor = UIColor(netHex: 0x2980b9)
         
         if(!gameOver){
             if(turn == 1){
