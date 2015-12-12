@@ -92,10 +92,11 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
                 let triviaWrongAnswer2 : String? = (triviaObject as PFObject)["WrongAnswer2"] as? String
                 let triviaAnswer : String? = (triviaObject as PFObject)["Answer"] as? String
                 let triviaKey : Int? = (triviaObject as PFObject)["Key"] as? Int
+                let triviaLocation : PFGeoPoint? = (triviaObject as PFObject)["relatedRegion"] as? PFGeoPoint
                 
                 //Check that items are not nil, and create trivia object, add to triviaQuestions Array
                 if ( triviaKey != nil && triviaQuestion_ != nil && triviaWrongAnswer1 != nil &&  triviaWrongAnswer2 != nil && triviaAnswer != nil){
-                    let trivia = triviaQuestion(Key: triviaKey!, Question: triviaQuestion_!, Answer: triviaAnswer!, WrongAnswer:  triviaWrongAnswer1!, WrongAnswer2:  triviaWrongAnswer2!)
+                    let trivia = triviaQuestion(Key: triviaKey!, Question: triviaQuestion_!, Answer: triviaAnswer!, WrongAnswer:  triviaWrongAnswer1!, WrongAnswer2:  triviaWrongAnswer2!, RelatedRegion: triviaLocation!)
                     triviaQuestions.append(trivia) // append to the global array of trivia questions
                     
                     if(triviaQuestions.count == objects!.count){
@@ -114,6 +115,9 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
                 self.performSegueWithIdentifier("finnishLoad", sender: self)
             }
         }// end closure
+        
+        triviaDuplicate = triviaQuestions   // this is used to repeat questions after all have been gone through.
+        
     }// end retrieve trivias
     
     

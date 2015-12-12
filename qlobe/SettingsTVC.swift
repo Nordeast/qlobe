@@ -32,6 +32,11 @@ class SettingsTVC: UITableViewController{
     @IBOutlet weak var TapRaceCell: UITableViewCell!
     @IBOutlet weak var TriviaCell: UITableViewCell!
     
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var locationSetting: UISwitch!
+    
+    @IBOutlet weak var locationCell: UITableViewCell!
+    
     @IBOutlet weak var SettingsTitleLabel: UILabel!
     
     
@@ -45,6 +50,49 @@ class SettingsTVC: UITableViewController{
     @IBAction func triviaEnabler(sender: AnyObject) {
         if(!simonSaysSetting.on && !tapRaceSetting.on){
             triviaSetting.setOn(true, animated: true)
+        }
+    }
+    
+    
+    @IBAction func locationEnabler(sender: AnyObject) {
+        
+        if(locationSetting.on){
+            
+            //this will check user for location permission, and retrieve their long, lat position. (must have <key>NSLocationWhenInUseUsageDescription</key> in info.plist, with <String> pair)
+            
+            PFGeoPoint.geoPointForCurrentLocationInBackground {
+                (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+                if error == nil {
+                    settings.setLocationSetting(true)
+                    Player1.setLocation(geoPoint!)
+                    Player2.setLocation(geoPoint!)
+                    self.generateLocationTrivia()
+                    print(geoPoint) //for testing purposes
+                }else{
+                    print("There was an error in retrieving the position. Could be because GPS is turned off, bad connection, or for debugging purposes the simulator does not have a location specified.")
+                    settings.setLocationSetting(false)
+                    self.locationSetting.setOn(false, animated: true)   //if there is an error in location, turn location setting off auto.
+                }
+            }
+        }else{
+            settings.setLocationSetting(false)
+        }
+        
+    }
+    
+    func generateLocationTrivia(){
+        //temp long and lat paramaters to test location setting
+        //this has been designed to look for questions about Computer Science if the user is in the CS Building
+        //note the labels here are contradictory because left long would imply that longitude goes up/down. This is
+        //just used by the way google maps orientated its self to me
+        let leftLong = -89.407391
+        let rightLong = -89.405714
+        let topLat = 43.072172
+        let botLat = 43.071041
+        
+        if(Player1.getLocation().latitude >= botLat && Player1.getLocation().latitude <= topLat &&
+            Player1.getLocation().longitude >= leftLong && Player1.getLocation().longitude <= rightLong){
+                
         }
     }
     
@@ -90,6 +138,13 @@ class SettingsTVC: UITableViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        updateViewsFromSettings()
+        
+        style()
+    }
+    
+    func updateViewsFromSettings(){
+        
         //update views to match settings
         if(settings.getGamesSetting().contains("Trivia")){
             triviaSetting.setOn(true, animated: false)
@@ -108,16 +163,21 @@ class SettingsTVC: UITableViewController{
         }
         
         // Volume
-        volumeSetting.setValue(settings.getVolumePre(), animated: false)
+        volumeSetting.setValue(settings.getVolume(), animated: false)
         
         //Nuber of Rounds per match
         NumberOfRoundsSlider.setValue(Float (numberOfRoundsPerMatch), animated: false)
         ShowNumberOfRoundsLabel.text = "\(numberOfRoundsPerMatch)"
         
-        style()
+        //location off by default, otherwise match settings
+        if(settings.getLocationSetting() == false){
+            locationSetting.setOn(false, animated: false)
+        }else{
+            locationSetting.setOn(true, animated: false)
+        }
     }
     
-
+    
     
     func style(){
         
@@ -147,6 +207,8 @@ class SettingsTVC: UITableViewController{
         ShowNumberOfRoundsLabel.font = UIFont(name: "Kankin", size: 20)
         ShowNumberOfRoundsLabel.textColor = UIColor(netHex: 0xeeeeee)
         ShowNumberOfRoundsLabel.textAlignment = NSTextAlignment.Center
+        locationLabel.font = UIFont(name: "Kankin", size:20)
+        locationLabel.textColor = UIColor(netHex: 0xeeeeee)
         
         
         SettingsTitleLabel.font = UIFont(name: "Kankin", size: 30)
@@ -164,6 +226,7 @@ class SettingsTVC: UITableViewController{
         SimonSaysCell.backgroundColor = UIColor(netHex:0x2c3e50)
         TapRaceCell.backgroundColor = UIColor(netHex:0x2c3e50)
         TriviaCell.backgroundColor = UIColor(netHex:0x2c3e50)
+        locationCell.backgroundColor = UIColor(netHex:0x2c3e50)
         
     }
     
@@ -177,5 +240,17 @@ class SettingsTVC: UITableViewController{
         header.textLabel!.textColor = UIColor(netHex:0xf1c40f) //make the text white
         
         header.textLabel?.font = UIFont(name: "Kankin", size: 25)
+    }
+    
+    // this will style the tableview cell background
+    override func tableView(tableView: UITableView,
+        willDisplayCell cell: UITableViewCell,
+        forRowAtIndexPath indexPath: NSIndexPath){
+            
+            //this will style the background color of the cell when it is pressed to be transparent
+            let bgColorView = UIView()
+            bgColorView.backgroundColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0)
+            cell.selectedBackgroundView = bgColorView
+            
     }
 }

@@ -1,6 +1,7 @@
  //: Playground - noun: a place where people can play
  
  import Foundation
+ import Parse
  
  var Player1 = Player(playerNumber : 1) // player on the bottom of the screen
  var Player2 = Player(playerNumber : 2) // player on the top of the screen
@@ -11,6 +12,7 @@
     
     var playerNumber : Int // unique player to identify each class
     var rounds: [Rounds] = [] // holds the rounds, game that round and the score of the round.
+    var location = PFGeoPoint(latitude: 0,longitude: 0) // holds location coordinates of players 0,0 is default, until activated
     
     init(playerNumber : Int){
         // playerNumber must be a unique number
@@ -76,7 +78,16 @@
 
     }
     
+    func setLocation(longlat : PFGeoPoint){
+              location = longlat
+        }
+
+       func getLocation() -> PFGeoPoint{
+               return location
+        }
  }
+    
+ 
  
  
  

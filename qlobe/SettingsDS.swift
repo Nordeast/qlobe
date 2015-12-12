@@ -16,12 +16,15 @@ class SettingsDS {
     var gamesEnabled : [String]
     var volume : Float
     var volumePre : Float
+    var locationEnabled : Bool
     
     init(){
         
         self.gamesEnabled = ["Trivia","TapRace","SimonSays"]
         self.volume = 4.0
         self.volumePre = 4.0
+        self.locationEnabled = false
+
     }
     
     func setVolume(vol : Float){
@@ -53,6 +56,16 @@ class SettingsDS {
     func getGamesSetting() -> [String] {
         return gamesEnabled
     }
+    
+    func setLocationSetting(status : Bool){
+                locationEnabled = status
+            }
+    
+        func getLocationSetting() -> Bool{
+                return locationEnabled
+           }
+    
+    
     
     func removeGame(game : String){
         if(gamesEnabled.contains(game)){

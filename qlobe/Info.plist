@@ -40,6 +40,8 @@
 	<false/>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleDefault</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>qLobe would like to use your location for region based trivia</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
