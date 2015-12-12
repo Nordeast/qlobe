@@ -497,6 +497,8 @@ class SimonSaysViewController: UIViewController {
             self.performSegueWithIdentifier("ScoreBoardFromSimonSays", sender: self)
 
         }
+        //continue playing the game
+        ROUND++
     }
     
     

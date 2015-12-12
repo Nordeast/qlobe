@@ -13,7 +13,7 @@ var triviaGameCount = 0
 //current round number
 var ROUND = 1
 //number of rounds the match will have, default = 10.
-var numberOfRoundsPerMatch = 2 // number of rounds is actually numberOfRoundsPerMatch - 1
+var numberOfRoundsPerMatch = 1 // number of rounds is actually numberOfRoundsPerMatch
 //because of off by one errors prevention
 
 class ScoreBoardViewController: UIViewController {
@@ -60,7 +60,8 @@ class ScoreBoardViewController: UIViewController {
     // MARK: Actions
     func quitGame(){
         // set the number of rounds in the match to the number at the time of quitting + 1 for off by one error
-        numberOfRoundsPerMatch = ROUND
+        //numberOfRoundsPerMatch = ROUND
+        
         roundAudio!.stop()
         // segue to the final results page
         performSegueWithIdentifier("GameOver", sender: self)
@@ -129,9 +130,6 @@ class ScoreBoardViewController: UIViewController {
     
     func ContinueToNextGame(){
         var segueDelay = 0.0
-        
-        //continue playing the game
-        ROUND++
         
         //Play sound effect for TapRace
         if(segues[rand] == "TapRace" && (settings.isMute() == false)){
@@ -358,7 +356,7 @@ class ScoreBoardViewController: UIViewController {
     
     func buttons(){
         //segue to the gameover view when the number of rounds are reached
-        if(ROUND >= numberOfRoundsPerMatch){
+        if(ROUND >= numberOfRoundsPerMatch + 1){
             roundAudio!.stop()
             performSegueWithIdentifier("GameOver", sender: self)
         }

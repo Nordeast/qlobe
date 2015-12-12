@@ -50,17 +50,17 @@
     func getRoundScore(round: Int) -> Int{
         let r = round
         // returns the players score in a certain round
-        if(r == 0){ // accounts for the case no rounds were played
-            return 0
-        }
+//        if(r == 0){ // accounts for the case no rounds were played
+//            return 0
+//        }
         return rounds[r].score
     }
     func getRoundGame(round: Int) -> String{
         let r = round
         // returns the game that was played in a certain round
-        if(r == 0){ // accounts for the case no rounds were played
-            return ""
-        }
+//        if(r == 0){ // accounts for the case no rounds were played
+//            return ""
+//        }
         return rounds[r].game
     }
     
