@@ -230,46 +230,42 @@ class SimonSaysViewController: UIViewController {
     
     func presentP1Move(){
         //Check which button to show from sequence, play corresponding sound and, change corresponding buttons Look
-        
+        playP1BtnSound()
         if(sequence[currPlay] == 1){
             self.P1RedButton.backgroundColor = UIColor(netHex: 0xe74c3c)
             
         }
-        if(sequence[currPlay] == 2){
+        else if(sequence[currPlay] == 2){
             self.P1YellowButton.backgroundColor = UIColor(netHex: 0xf1c40f)
             
         }
-        if(sequence[currPlay] == 3){
+        else if(sequence[currPlay] == 3){
             self.P1GreenButton.backgroundColor = UIColor(netHex: 0x27ae60)
             
         }
-        if(sequence[currPlay] == 4){
+        else if(sequence[currPlay] == 4){
             self.P1BlueButton.backgroundColor = UIColor(netHex: 0x2980b9)
             
-        }
-        if(currPlay == sequence.count - 1){
         }
         currPlay += 1
     }
     
     func presentP2Move(){
         //Check which button to show from sequence, play corresponding sound and, change corresponding buttons Look
-        
+        playP2BtnSound()
         if(sequence[currPlay] == 1){
             self.P2RedButton.backgroundColor = UIColor(netHex: 0xe74c3c)
         }
-        if(sequence[currPlay] == 2){
+        else if(sequence[currPlay] == 2){
             self.P2YellowButton.backgroundColor = UIColor(netHex: 0xf1c40f)
         }
-        if(sequence[currPlay] == 3){
+        else if(sequence[currPlay] == 3){
             
             self.P2GreenButton.backgroundColor = UIColor(netHex: 0x27ae60)
         }
-        if(sequence[currPlay] == 4){
+        else if(sequence[currPlay] == 4){
             
             self.P2BlueButton.backgroundColor = UIColor(netHex: 0x2980b9)
-        }
-        if(currPlay == sequence.count - 1){
         }
         currPlay += 1
     }
@@ -283,11 +279,11 @@ class SimonSaysViewController: UIViewController {
         if(presentPatternCount < plays){
             if(presentPatternCount == 0 || presentPatternCount % 2 == 0){
                 presentP1Move()
-                buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
+                buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
             }
             else{
                 presentP2Move()
-                buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
+                buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: Selector("clearButtons"), userInfo: nil, repeats: false)
             }
             presentPatternCount += 1
         }else{
@@ -357,17 +353,34 @@ class SimonSaysViewController: UIViewController {
     // MARK: Game Play //
     /////////////////////
     
+    // Button Sound effect
+    func playP1BtnSound(){
+        if(elev_sound!.playing){
+            elev_sound!.stop()
+            elev_sound!.currentTime = 0;
+        }
+        ping_sound!.play()
+    }
+    
+    func playP2BtnSound(){
+        if(ping_sound!.playing){
+            ping_sound!.stop()
+            ping_sound!.currentTime = 0;
+        }
+        elev_sound!.play()
+    }
+    
     //MARK: Player 2 button Actions
-    func P2PressBtn(inButton: UIButton, backgroundColor: UIColor){
+    func P2PressBtn(inButton: UIButton, backgroundColor: UIColor, btnColorIndex: Int){
         //Set background color of the button
         inButton.backgroundColor = backgroundColor
         
         if(!gameOver){
             if(turn == 2){
-                if(sequence[index] == 1){
-                    print("good job")
+                if(sequence[index] == btnColorIndex){
+                    //print("good job")
                     
-                    elev_sound!.play()
+                    playP2BtnSound()
                     
                     totalTaps += 1
                     reward = totalTaps * 25
@@ -408,29 +421,30 @@ class SimonSaysViewController: UIViewController {
     }
 
     @IBAction func P2RedButton(sender: AnyObject) {
-        P2PressBtn(P2RedButton, backgroundColor: UIColor(netHex: 0xc0392b))
+        P2PressBtn(P2RedButton, backgroundColor: UIColor(netHex: 0xc0392b), btnColorIndex: 1)
     }
     
     @IBAction func P2YellowButton(sender: AnyObject) {
-        P2PressBtn(P2YellowButton, backgroundColor: UIColor(netHex: 0xa4a200))
+        P2PressBtn(P2YellowButton, backgroundColor: UIColor(netHex: 0xa4a200), btnColorIndex: 2)
     }
     
     @IBAction func P2GreenButton(sender: AnyObject) {
-        P2PressBtn(P2GreenButton, backgroundColor: UIColor(netHex: 0x3d6451))
+        P2PressBtn(P2GreenButton, backgroundColor: UIColor(netHex: 0x3d6451), btnColorIndex: 3)
     }
     
     @IBAction func P2BlueButton(sender: AnyObject) {
-        P2PressBtn(P2BlueButton, backgroundColor: UIColor(netHex: 0x662a5b))
+        P2PressBtn(P2BlueButton, backgroundColor: UIColor(netHex: 0x662a5b), btnColorIndex: 4)
     }
     
     //MARK: Player 1 button Actions
-    func P1PressBtn(inButton: UIButton, backgroundColor: UIColor){
+    func P1PressBtn(inButton: UIButton, backgroundColor: UIColor, btnColorIndex: Int){
+        //Set background color of the button
+        inButton.backgroundColor = backgroundColor
         if(!gameOver){
             if(turn == 1){
-                if(sequence[index] == 1){
-                    print("good job")
-                    
-                    ping_sound!.play()
+                if(sequence[index] == btnColorIndex){
+                    //print("good job")
+                    playP1BtnSound()
                     
                     totalTaps += 1
                     reward = totalTaps * 25
@@ -466,19 +480,19 @@ class SimonSaysViewController: UIViewController {
     }
     
     @IBAction func P1RedButton(sender: AnyObject) {
-        P1PressBtn(P1RedButton, backgroundColor: UIColor(netHex: 0xc0392b))
+        P1PressBtn(P1RedButton, backgroundColor: UIColor(netHex: 0xc0392b), btnColorIndex: 1)
     }
     
     @IBAction func P1YellowButton(sender: AnyObject) {
-        P1PressBtn(P1YellowButton, backgroundColor: UIColor(netHex: 0xa4a200))
+        P1PressBtn(P1YellowButton, backgroundColor: UIColor(netHex: 0xa4a200), btnColorIndex: 2)
     }
     
     @IBAction func P1GreenButton(sender: AnyObject) {
-        P1PressBtn(P1GreenButton, backgroundColor: UIColor(netHex: 0x3d6451))
+        P1PressBtn(P1GreenButton, backgroundColor: UIColor(netHex: 0x3d6451), btnColorIndex: 3)
     }
     
     @IBAction func P1BlueButton(sender: AnyObject) {
-        P1PressBtn(P1BlueButton, backgroundColor: UIColor(netHex: 0x662a5b))
+        P1PressBtn(P1BlueButton, backgroundColor: UIColor(netHex: 0x662a5b), btnColorIndex: 4)
     }
     
     func randomDegrees()-> Int{
