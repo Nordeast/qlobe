@@ -55,7 +55,9 @@ class ScoreBoardViewController: UIViewController {
     @IBOutlet weak var muteBtnTop: UIButton!
     @IBOutlet weak var QuitButtonBottom: UIButton!
     @IBOutlet weak var QuitButtonTop: UIButton!
-
+    @IBOutlet weak var BlueSheepImage: UIImageView!
+    
+    @IBOutlet weak var RedSheepImage: UIImageView!
     
     // MARK: Actions
     func quitGame(){
@@ -63,9 +65,9 @@ class ScoreBoardViewController: UIViewController {
         roundAudio!.stop()
         // segue to the final results page
         performSegueWithIdentifier("GameOver", sender: self)
-   
+        
     }
-   
+    
     @IBAction func QuitButtonBottom(sender: AnyObject) {
         quitGame()
     }
@@ -190,6 +192,16 @@ class ScoreBoardViewController: UIViewController {
         displayLabelTop.alpha = 0
         QuitButtonTop.alpha = 0
         QuitButtonBottom.alpha = 0
+        P1ScoreNameBottom.alpha = 0
+        P1ScoreValueBottom.alpha = 0
+        P1ScoreNameTop.alpha = 0
+        P1ScoreValueTop.alpha = 0
+        P2ScoreNameBottom.alpha = 0
+        P2ScoreValueBottom.alpha = 0
+        P2ScoreNameTop.alpha = 0
+        P2ScoreValueTop.alpha = 0
+        RedSheepImage.alpha = 0
+        BlueSheepImage.alpha = 0
         
         //load the score
         displayScore()
@@ -212,10 +224,15 @@ class ScoreBoardViewController: UIViewController {
         displayLabelTop.fadeIn()
         ContinueButtonBottom.blinkingButton()
         
-        // show the score for 4 seconds then show the change game and continue buttons
-        _ = NSTimer.scheduledTimerWithTimeInterval(4, target: self, selector: "buttons",
-            userInfo: nil, repeats: false)
+        // fade in the sheep images but not all the way. Leave them semi transparent
+        UIView.animateWithDuration(1.0, delay: 0, options: [], animations: {
+            self.BlueSheepImage.alpha = 0.4
+            self.RedSheepImage.alpha = 0.4
+            },
+            completion: nil)
         
+        _ = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "buttons",
+            userInfo: nil, repeats: false)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -313,7 +330,7 @@ class ScoreBoardViewController: UIViewController {
         QuitButtonTop.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
         QuitButtonTop.titleLabel!.text = "Quit"
         
-       
+        
         
         // flip the buttons and labels that need to be flipped
         displayLabelTop.flipUpSideDown()
@@ -327,6 +344,7 @@ class ScoreBoardViewController: UIViewController {
         
         QuitButtonTop.flipUpSideDown()
         muteBtnTop.flipUpSideDown()
+        BlueSheepImage.flipUpSideDown()
         
         
         if(settings.isMute() == false){

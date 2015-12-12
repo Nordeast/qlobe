@@ -121,6 +121,10 @@ class GameOverViewController: UIViewController {
             // average score
             redString = redString + "\nAverage score: \(Player1.getAverageScore()) \n"
             blueString = blueString + "\nAverage score: \(Player2.getAverageScore()) \n"
+        }else{
+            // if no rounds have been played
+            redString = "No Rounds Played"
+            blueString = redString
         }
         redTextView.text = redString
         blueTextView.text = blueString
