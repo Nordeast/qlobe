@@ -59,13 +59,13 @@ class ScoreBoardViewController: UIViewController {
     
     // MARK: Actions
     func quitGame(){
-        // set the number of rounds in the match to the number at the time of quitting + 1 for off by one error
-        //numberOfRoundsPerMatch = ROUND
         
         roundAudio!.stop()
         // segue to the final results page
         performSegueWithIdentifier("GameOver", sender: self)
+   
     }
+   
     @IBAction func QuitButtonBottom(sender: AnyObject) {
         quitGame()
     }

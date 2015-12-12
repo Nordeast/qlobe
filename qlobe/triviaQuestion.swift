@@ -1,7 +1,10 @@
 
 import Foundation
+import Parse
 
 var triviaQuestions : [triviaQuestion] = []
+var triviaDuplicate : [triviaQuestion] = []     // this is a copy of the triviaQuestions, used in the case that all triviaQuestions have been used
+var locationTrivia : [triviaQuestion] = []      // this holds the questions based off location when location setting is turned on
 
 class triviaQuestion {
     
@@ -10,6 +13,7 @@ class triviaQuestion {
     var Answer : String
     var WrongAnswer : String
     var WrongAnswer2 : String
+    var location : PFGeoPoint
     
     init(){
         self.Key = 0
@@ -17,14 +21,16 @@ class triviaQuestion {
         self.Answer = ""
         self.WrongAnswer = ""
         self.WrongAnswer2 = ""
+        self.location = PFGeoPoint(latitude: 0, longitude: 0)
     }
     
-    init(Key : Int, Question : String, Answer : String, WrongAnswer : String, WrongAnswer2 : String){
+    init(Key : Int, Question : String, Answer : String, WrongAnswer : String, WrongAnswer2 : String, RelatedRegion : PFGeoPoint){
         self.Key = Key
         self.Question = Question
         self.Answer = Answer
         self.WrongAnswer = WrongAnswer
         self.WrongAnswer2 = WrongAnswer2
+        self.location = RelatedRegion
     }
     
     func getKey() -> Int {
