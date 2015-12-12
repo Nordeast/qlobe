@@ -1415,7 +1415,7 @@ Settings:
                                 <rect key="frame" x="20" y="20" width="560" height="40"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="0fS-N1-GwK"/>
+                                    <constraint firstAttribute="height" constant="40" id="K3e-vk-GiC"/>
                                 </constraints>
                                 <state key="normal" title="Continue"/>
                                 <connections>
@@ -1425,34 +1425,60 @@ Settings:
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ff-T8-Zqm">
                                 <rect key="frame" x="20" y="552" width="560" height="40"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="znc-h6-1xe"/>
-                                </constraints>
                                 <state key="normal" title="Continue"/>
                                 <connections>
                                     <action selector="ContinueBottom:" destination="Pfs-cB-y7I" eventType="touchUpInside" id="LSU-yY-03u"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lRt-gR-kZw">
+                                <rect key="frame" x="20" y="552" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="xBg-sE-pSx"/>
+                                    <constraint firstAttribute="height" constant="40" id="yba-9y-aAV"/>
+                                </constraints>
+                                <state key="normal" title="Fb" image="Fb"/>
+                                <connections>
+                                    <action selector="postToFaceBookBottom:" destination="Pfs-cB-y7I" eventType="touchUpInside" id="zk0-rC-RAK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lay-MK-O8W">
+                                <rect key="frame" x="540" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="XaV-b1-DSK"/>
+                                </constraints>
+                                <state key="normal" title="Fb" image="Fb"/>
+                                <connections>
+                                    <action selector="postToFaceBookTop:" destination="Pfs-cB-y7I" eventType="touchUpInside" id="tJy-WH-7so"/>
                                 </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="LDX-ZD-Xqb" secondAttribute="leading" id="0V1-LB-oET"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2Ff-T8-Zqm" secondAttribute="trailing" id="8oO-GC-6vn"/>
-                            <constraint firstItem="RFx-Zm-U50" firstAttribute="top" secondItem="qGy-tP-xGW" secondAttribute="bottom" id="ALv-A0-j2F"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RFx-Zm-U50" secondAttribute="trailing" id="Elr-wM-5Jc"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="RFx-Zm-U50" secondAttribute="leading" id="IlI-Dh-yYh"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="2Ff-T8-Zqm" secondAttribute="leading" id="NXE-pV-srf"/>
-                            <constraint firstItem="2Ff-T8-Zqm" firstAttribute="top" secondItem="LDX-ZD-Xqb" secondAttribute="bottom" constant="18" id="PQN-M5-1PX"/>
-                            <constraint firstItem="LDX-ZD-Xqb" firstAttribute="top" secondItem="RFx-Zm-U50" secondAttribute="bottom" constant="8" id="QmO-u9-PkU"/>
-                            <constraint firstItem="hP0-zW-CpW" firstAttribute="top" secondItem="2Ff-T8-Zqm" secondAttribute="bottom" constant="8" id="fhv-b3-adw"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="LDX-ZD-Xqb" secondAttribute="trailing" id="m5z-JN-DeZ"/>
+                            <constraint firstItem="RFx-Zm-U50" firstAttribute="trailing" secondItem="jKO-v3-QcC" secondAttribute="trailingMargin" id="45Q-n4-Bi5"/>
+                            <constraint firstItem="lay-MK-O8W" firstAttribute="top" secondItem="RFx-Zm-U50" secondAttribute="top" id="4YW-Gw-0Ji"/>
+                            <constraint firstItem="RFx-Zm-U50" firstAttribute="trailing" secondItem="lay-MK-O8W" secondAttribute="trailing" id="9S8-8f-wuO"/>
+                            <constraint firstItem="lRt-gR-kZw" firstAttribute="leading" secondItem="2Ff-T8-Zqm" secondAttribute="leading" id="EE5-gm-zkW"/>
+                            <constraint firstItem="LDX-ZD-Xqb" firstAttribute="leading" secondItem="jKO-v3-QcC" secondAttribute="leadingMargin" id="JeN-7Z-Lxg"/>
+                            <constraint firstItem="lRt-gR-kZw" firstAttribute="top" secondItem="LDX-ZD-Xqb" secondAttribute="bottom" constant="18" id="Lxg-xg-Pid"/>
+                            <constraint firstItem="hP0-zW-CpW" firstAttribute="top" secondItem="lRt-gR-kZw" secondAttribute="bottom" constant="8" symbolic="YES" id="OfL-F8-Rq7"/>
+                            <constraint firstItem="hP0-zW-CpW" firstAttribute="top" secondItem="2Ff-T8-Zqm" secondAttribute="bottom" constant="8" symbolic="YES" id="Qcw-eO-gZX"/>
+                            <constraint firstItem="lay-MK-O8W" firstAttribute="top" secondItem="qGy-tP-xGW" secondAttribute="bottom" id="TTa-ca-vVN"/>
+                            <constraint firstItem="lRt-gR-kZw" firstAttribute="top" secondItem="2Ff-T8-Zqm" secondAttribute="top" id="VfL-jg-TqL"/>
+                            <constraint firstItem="LDX-ZD-Xqb" firstAttribute="trailing" secondItem="lay-MK-O8W" secondAttribute="trailing" id="m1w-IA-Kfm"/>
+                            <constraint firstItem="LDX-ZD-Xqb" firstAttribute="top" secondItem="lay-MK-O8W" secondAttribute="bottom" constant="8" symbolic="YES" id="nyr-U6-b4j"/>
+                            <constraint firstItem="LDX-ZD-Xqb" firstAttribute="top" secondItem="RFx-Zm-U50" secondAttribute="bottom" constant="8" symbolic="YES" id="o3p-cv-3rm"/>
+                            <constraint firstItem="RFx-Zm-U50" firstAttribute="leading" secondItem="LDX-ZD-Xqb" secondAttribute="leading" id="tDY-z6-teK"/>
+                            <constraint firstItem="2Ff-T8-Zqm" firstAttribute="trailing" secondItem="LDX-ZD-Xqb" secondAttribute="trailing" id="vSU-BP-b5S"/>
+                            <constraint firstItem="LDX-ZD-Xqb" firstAttribute="leading" secondItem="lRt-gR-kZw" secondAttribute="leading" id="ywK-te-JuJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ContinueBottom" destination="2Ff-T8-Zqm" id="KS8-gS-6CS"/>
                         <outlet property="ContinueTop" destination="RFx-Zm-U50" id="aSm-gC-Yip"/>
                         <outlet property="GameOverView" destination="LDX-ZD-Xqb" id="FH3-Vz-zr7"/>
+                        <outlet property="fbBtnBottom" destination="lRt-gR-kZw" id="b6c-EQ-0w8"/>
+                        <outlet property="fbBtnTop" destination="lay-MK-O8W" id="Nhs-Ue-Qfc"/>
                         <segue destination="07e-RH-l9R" kind="presentation" identifier="ReturnToStartScreen" id="wty-Gw-f8p"/>
                     </connections>
                 </viewController>
@@ -1581,12 +1607,13 @@ Settings:
         </scene>
     </scenes>
     <resources>
+        <image name="Fb" width="256" height="256"/>
         <image name="qlobe_logo_smoke0@1x" width="516" height="441"/>
         <image name="sound_off" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4uc-M6-eu5"/>
         <segue reference="i8o-GK-aZj"/>
+        <segue reference="28S-l9-W5d"/>
         <segue reference="wty-Gw-f8p"/>
     </inferredMetricsTieBreakers>
 </document>

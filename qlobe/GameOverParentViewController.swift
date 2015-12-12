@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Social
 
 class GameOverParentViewController: UIViewController {
     var upsidedown = false
@@ -17,6 +18,9 @@ class GameOverParentViewController: UIViewController {
     @IBOutlet weak var GameOverView: UIView!
     @IBOutlet weak var ContinueTop: UIButton!
     @IBOutlet weak var ContinueBottom: UIButton!
+    
+    @IBOutlet weak var fbBtnBottom: UIButton!
+    @IBOutlet weak var fbBtnTop: UIButton!
     
     var gameOverAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("gameOver", ofType: "mp3")!))
     
@@ -47,6 +51,9 @@ class GameOverParentViewController: UIViewController {
         ContinueBottom.titleLabel!.font = UIFont(name: "Kankin", size: 25)!
         ContinueBottom.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
         ContinueBottom.titleLabel!.text = "Continue"
+        
+        // style the facebook button
+        fbBtnTop.flipUpSideDown()
         
         // Do any additional setup after loading the view.
         gameOverAudio?.volume = settings.getVolume()
@@ -80,20 +87,50 @@ class GameOverParentViewController: UIViewController {
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func takeScreenShot() -> UIImage{
+        print("screenshot")
+        
+        //Create the UIImage
+        UIGraphicsBeginImageContext(view!.frame.size)
+        view!.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        //Save it to the camera roll
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        
+        return image
     }
     
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    func postToFB(){
+        let image = takeScreenShot()
+        
+        //First we have to check if the user has their Facebook Application installed and if they're logged in.
+        if (SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook)) {
+            let fbShare:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+            
+            // Set initial text
+            fbShare.setInitialText("- post from qLobe")
+            fbShare.addImage(image)
+            
+            self.presentViewController(fbShare, animated: true, completion: nil)
+            
+        }
+        else
+        {
+            //If the user has not installed the Facebook app or is not logged in, we create a UIAlertController and notify the user that they need to Login to Facebook to share
+            let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
-    */
     
+    @IBAction func postToFaceBookBottom(sender: AnyObject) {
+        postToFB()
+    }
+
+    @IBAction func postToFaceBookTop(sender: AnyObject) {
+        postToFB()
+    }
 }

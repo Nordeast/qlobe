@@ -37,8 +37,8 @@ class SettingsTVC: UITableViewController{
     
     // MARK: actions
     @IBAction func NumberOfRoundsSlider(sender: AnyObject) {
-        numberOfRoundsPerMatch =  Int(round(NumberOfRoundsSlider.value)) + 1
-        ShowNumberOfRoundsLabel.text = "\(numberOfRoundsPerMatch - 1)"
+        numberOfRoundsPerMatch =  Int(round(NumberOfRoundsSlider.value))
+        ShowNumberOfRoundsLabel.text = "\(numberOfRoundsPerMatch)"
     }
     
     
@@ -111,8 +111,8 @@ class SettingsTVC: UITableViewController{
         volumeSetting.setValue(settings.getVolumePre(), animated: false)
         
         //Nuber of Rounds per match
-        NumberOfRoundsSlider.setValue(Float (numberOfRoundsPerMatch - 1 ), animated: false)
-        ShowNumberOfRoundsLabel.text = "\(numberOfRoundsPerMatch - 1)"
+        NumberOfRoundsSlider.setValue(Float (numberOfRoundsPerMatch), animated: false)
+        ShowNumberOfRoundsLabel.text = "\(numberOfRoundsPerMatch)"
         
         style()
     }

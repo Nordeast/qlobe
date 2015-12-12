@@ -515,7 +515,8 @@ class QuestionViewController: UIViewController {
             self.performSegueWithIdentifier("ScoreBoardFromTrivia", sender: self)
 
         }
-
+        //continue playing the game
+        ROUND++
     }
     
     /////////////////////

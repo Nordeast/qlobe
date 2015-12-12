@@ -109,14 +109,14 @@ class GameOverViewController: UIViewController {
         var blueString = ""
         // round, game, score
         for(var r = 0; r < Player1.getTotalRounds();  r++){
+            redString  = redString + "Round \(r+1): \(Player1.getRoundScore(r)) \n"
             blueString = blueString + "Round \(r+1): \(Player2.getRoundScore(r)) \n"
-            redString = redString + "Round: \(r+1): \(Player1.getRoundScore(r)) \n"
         }
         
         // total scores
         if(Player1.getTotalRounds() != 0){
-            redString = redString + "\ntotal score: \(Player1.getTotalPlayerScore()) \n"
-            blueString = blueString + "\ntotal score: \(Player2.getTotalPlayerScore()) \n"
+            redString = redString + "\nTotal score: \(Player1.getTotalPlayerScore()) \n"
+            blueString = blueString + "\nTotal score: \(Player2.getTotalPlayerScore()) \n"
             
             // average score
             redString = redString + "\nAverage score: \(Player1.getAverageScore()) \n"
@@ -126,15 +126,5 @@ class GameOverViewController: UIViewController {
         blueTextView.text = blueString
         
     }
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }
