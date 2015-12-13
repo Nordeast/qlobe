@@ -14,8 +14,8 @@ class GameOverViewController: UIViewController {
     
     
     @IBOutlet weak var winnerLabel: UILabel!
-    @IBOutlet weak var redPlayerLabel: UILabel!
-    @IBOutlet weak var bluePlayerLabel: UILabel!
+    //@IBOutlet weak var redPlayerLabel: UILabel!
+    //@IBOutlet weak var bluePlayerLabel: UILabel!
     @IBOutlet weak var redTextView: UITextView!
     @IBOutlet weak var blueTextView: UITextView!
     
@@ -66,15 +66,15 @@ class GameOverViewController: UIViewController {
         blueTextView.editable = false
         
         // set label styling
-        redPlayerLabel.font = UIFont(name: "Kankin", size: 25)
-        redPlayerLabel.textColor = UIColor(netHex: 0xe74c3c)
-        redPlayerLabel.textAlignment = NSTextAlignment.Center
-        redPlayerLabel.text = "Red"
-        
-        bluePlayerLabel.font = UIFont(name: "Kankin", size: 25)
-        bluePlayerLabel.textColor = UIColor(netHex: 0x2980b9)
-        bluePlayerLabel.textAlignment = NSTextAlignment.Center
-        bluePlayerLabel.text = "Blue"
+//        redPlayerLabel.font = UIFont(name: "Kankin", size: 25)
+//        redPlayerLabel.textColor = UIColor(netHex: 0xe74c3c)
+//        redPlayerLabel.textAlignment = NSTextAlignment.Center
+//        redPlayerLabel.text = "Red"
+//        
+//        bluePlayerLabel.font = UIFont(name: "Kankin", size: 25)
+//        bluePlayerLabel.textColor = UIColor(netHex: 0x2980b9)
+//        bluePlayerLabel.textAlignment = NSTextAlignment.Center
+//        bluePlayerLabel.text = "Blue"
         
         // winner label styling
         winnerLabel.font = UIFont(name: "Kankin", size: 40)

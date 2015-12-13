@@ -62,6 +62,8 @@ class QuestionViewController: UIViewController {
     var curQuestion = triviaQuestion()
     
     var countDownAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("trivia_countdown", ofType: "mp3")!))
+
+    var backgroundAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("triviaPlaying", ofType: "mp3")!))
     /////////////////////////
     // end class variables //
     /////////////////////////
@@ -495,6 +497,9 @@ class QuestionViewController: UIViewController {
         
         //account for volume settings
         countDownAudio?.volume = settings.getVolume()
+        backgroundAudio?.volume = settings.getVolume()
+        
+        backgroundAudio!.play()
         
         // check that the end of the trivia has not been reached
         if(triviaQuestions.count == 1){
@@ -526,14 +531,19 @@ class QuestionViewController: UIViewController {
         // segue to scoreboard view controller
         Player1.addScore(ROUND, game: "Trivia", score: Player1Score)
         Player2.addScore(ROUND, game: "Trivia", score: Player2Score)
-        if(ROUND == numberOfRoundsPerMatch){
+        
+        //continue playing the game
+        ROUND++
+        
+        // stop the background audio
+        backgroundAudio!.stop()
+        
+        if(ROUND-1 == numberOfRoundsPerMatch){
             performSegueWithIdentifier("TriviaGameOver", sender: self)
         }else{
             self.performSegueWithIdentifier("ScoreBoardFromTrivia", sender: self)
             
         }
-        //continue playing the game
-        ROUND++
     }
     
     /////////////////////

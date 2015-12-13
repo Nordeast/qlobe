@@ -422,17 +422,14 @@ class TapRaceViewController: UIViewController {
     }
     func segue(){
         // segue to scoreboard view controller
-        //print("Round #: \(ROUND) in \(numberOfRoundsPerMatch)")
-        if(ROUND == numberOfRoundsPerMatch){
+        ROUND++
+        
+        if(ROUND-1 == numberOfRoundsPerMatch){
             performSegueWithIdentifier("TapRaceGameOver", sender: self)
         }else{
             self.performSegueWithIdentifier("ScoreBoardFromTapRace", sender: self)
             
         }
-        
-        //continue playing the game
-        // end of the round so increment the round
-        ROUND++
     }
     
 
