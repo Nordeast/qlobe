@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     
     var picture = 0 // counter for the logo animation
     // array of the images in the animation
-    var images : [String] = [ "qlobe_logo_smoke0@1x.png", "qlobe_logo_smoke1@1x.png", "qlobe_logo_smoke2@1x.png", "qlobe_logo_smoke3@1x.png", "qlobe_logo_smoke4@1x.png", "qlobe_logo_smoke5@1x.png", "qlobe_logo_smoke6@1x.png", "qlobe_logo_smoke7@1x.png", "qlobe_logo_smoke8@1x.png", "qlobe_logo_smoke9@1x.png", "qlobe_logo_smoke10@1x.png", "qlobe_logo_smoke11@1x.png", "qlobe_logo_smoke12@1x.png", "qlobe_logo_smoke13@1x.png"]
+    var images : [String] = [ "qlobe_logo_smoke0.png", "qlobe_logo_smoke1.png", "qlobe_logo_smoke2.png", "qlobe_logo_smoke3.png", "qlobe_logo_smoke4.png", "qlobe_logo_smoke5.png", "qlobe_logo_smoke6.png", "qlobe_logo_smoke7.png", "qlobe_logo_smoke8.png", "qlobe_logo_smoke9.png", "qlobe_logo_smoke10.png", "qlobe_logo_smoke11.png", "qlobe_logo_smoke12.png", "qlobe_logo_smoke13.png"]
 
     //var menuAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("main_menu", ofType: "mp3")!))
 

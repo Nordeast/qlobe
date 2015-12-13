@@ -127,7 +127,6 @@ class GameOverParentViewController: UIViewController {
             AnimationView.alpha = 0
             // set the winner variablbe
             whoWon = 3
-            animateInfinitelyWithDelay(5, duration: 1)
             // fade in the results page and continue buttons
             ShowFinalGamResults.fadeIn()
             ContinueBottom.fadeIn()
