@@ -53,6 +53,10 @@ class triviaQuestion {
         return WrongAnswer2
     }
     
+    func getLocation() -> PFGeoPoint{
+               return location
+        }
+    
     func getRandomAnswerArray() -> [String]{
         // will randomize the order of the trivia questions answers
         

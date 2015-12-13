@@ -167,7 +167,7 @@ class SimonSaysViewController: UIViewController {
         P1BlueButton.layer.borderWidth = 4
         P1BlueButton.layer.borderColor = UIColor(netHex: 0x2980b9).CGColor
     }
-    
+
     func generateRandSequence(){
         //creates random sequence of 'notes'
         //the sequence is of 1,2,3,4 = red, yellow, green, blue respectivly
@@ -421,19 +421,19 @@ class SimonSaysViewController: UIViewController {
     }
     
     @IBAction func P2RedButton(sender: AnyObject) {
-        P2PressBtn(P2RedButton, backgroundColor: UIColor(netHex: 0xc0392b), btnColorIndex: 1)
+        P2PressBtn(P2RedButton, backgroundColor: UIColor(netHex: 0xe74c3c), btnColorIndex: 1)
     }
     
     @IBAction func P2YellowButton(sender: AnyObject) {
-        P2PressBtn(P2YellowButton, backgroundColor: UIColor(netHex: 0xa4a200), btnColorIndex: 2)
+        P2PressBtn(P2YellowButton, backgroundColor: UIColor(netHex: 0xf1c40f), btnColorIndex: 2)
     }
     
     @IBAction func P2GreenButton(sender: AnyObject) {
-        P2PressBtn(P2GreenButton, backgroundColor: UIColor(netHex: 0x3d6451), btnColorIndex: 3)
+        P2PressBtn(P2GreenButton, backgroundColor: UIColor(netHex: 0x27ae60), btnColorIndex: 3)
     }
     
     @IBAction func P2BlueButton(sender: AnyObject) {
-        P2PressBtn(P2BlueButton, backgroundColor: UIColor(netHex: 0x662a5b), btnColorIndex: 4)
+        P2PressBtn(P2BlueButton, backgroundColor: UIColor(netHex: 0x2980b9), btnColorIndex: 4)
     }
     
     //MARK: Player 1 button Actions
@@ -478,21 +478,21 @@ class SimonSaysViewController: UIViewController {
         buttonHoldTimer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self,
             selector: Selector("clearButtons"), userInfo: nil, repeats: false)
     }
-    
+
     @IBAction func P1RedButton(sender: AnyObject) {
-        P1PressBtn(P1RedButton, backgroundColor: UIColor(netHex: 0xc0392b), btnColorIndex: 1)
+        P1PressBtn(P1RedButton, backgroundColor: UIColor(netHex: 0xe74c3c), btnColorIndex: 1)
     }
     
     @IBAction func P1YellowButton(sender: AnyObject) {
-        P1PressBtn(P1YellowButton, backgroundColor: UIColor(netHex: 0xa4a200), btnColorIndex: 2)
+        P1PressBtn(P1YellowButton, backgroundColor: UIColor(netHex: 0xf1c40f), btnColorIndex: 2)
     }
     
     @IBAction func P1GreenButton(sender: AnyObject) {
-        P1PressBtn(P1GreenButton, backgroundColor: UIColor(netHex: 0x3d6451), btnColorIndex: 3)
+        P1PressBtn(P1GreenButton, backgroundColor: UIColor(netHex: 0x27ae60), btnColorIndex: 3)
     }
     
     @IBAction func P1BlueButton(sender: AnyObject) {
-        P1PressBtn(P1BlueButton, backgroundColor: UIColor(netHex: 0x662a5b), btnColorIndex: 4)
+        P1PressBtn(P1BlueButton, backgroundColor: UIColor(netHex: 0x2980b9), btnColorIndex: 4)
     }
     
     func randomDegrees()-> Int{

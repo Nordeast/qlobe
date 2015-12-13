@@ -29,6 +29,7 @@
 		9FC7F3501BFFE6B900C12689 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC7F34F1BFFE6B900C12689 /* HolderView.swift */; };
 		AC1A05D81BFFCD08000A6541 /* SimonSaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */; };
 		AC1A05DA1BFFCD39000A6541 /* airplanding.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC1A05D91BFFCD39000A6541 /* airplanding.wav */; };
+		AC2BC5CF1C1DE8630056D47B /* LocationDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2BC5CE1C1DE8630056D47B /* LocationDS.swift */; };
 		AC6C2EFF1C13A62E00EC759D /* elevatording.wav in Resources */ = {isa = PBXBuildFile; fileRef = AC6C2EFE1C13A62E00EC759D /* elevatording.wav */; };
 		AC961FE51BFFCA500099225B /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC961FE41BFFCA500099225B /* UIColorExtensions.swift */; };
 		ACE981691C17A06700C25DDE /* SettingsDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE981681C17A06700C25DDE /* SettingsDS.swift */; };
@@ -110,6 +111,7 @@
 		9FC7F34F1BFFE6B900C12689 /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
 		AC1A05D71BFFCD08000A6541 /* SimonSaysViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimonSaysViewController.swift; sourceTree = "<group>"; };
 		AC1A05D91BFFCD39000A6541 /* airplanding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = airplanding.wav; sourceTree = "<group>"; };
+		AC2BC5CE1C1DE8630056D47B /* LocationDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDS.swift; sourceTree = "<group>"; };
 		AC6C2EFE1C13A62E00EC759D /* elevatording.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = elevatording.wav; sourceTree = "<group>"; };
 		AC961FE41BFFCA500099225B /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		ACE981681C17A06700C25DDE /* SettingsDS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDS.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				D631330E1C18E3C800B46237 /* Rounds.swift */,
 				ACE981681C17A06700C25DDE /* SettingsDS.swift */,
 				9F4EFB6B1C1AA761008E469E /* Reachability.swift */,
+				AC2BC5CE1C1DE8630056D47B /* LocationDS.swift */,
 			);
 			name = ClassDefine;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				9FC7F34A1BFFE63E00C12689 /* OvalLayer.swift in Sources */,
 				9FC7F34C1BFFE63E00C12689 /* TriangleLayer.swift in Sources */,
 				D61B50D31BFC585200248DD9 /* AppDelegate.swift in Sources */,
+				AC2BC5CF1C1DE8630056D47B /* LocationDS.swift in Sources */,
 				D61B51351BFC61DC00248DD9 /* TapRaceViewController.swift in Sources */,
 				9FC7F34E1BFFE68100C12689 /* Colors.swift in Sources */,
 				D61B51311BFC60D400248DD9 /* ScoreBoardViewController.swift in Sources */,

@@ -59,7 +59,7 @@ class SettingsTVC: UITableViewController{
         if(locationSetting.on){
             
             //this will check user for location permission, and retrieve their long, lat position. (must have <key>NSLocationWhenInUseUsageDescription</key> in info.plist, with <String> pair)
-            
+            //43.071502, -89.406754 is the computer science building coordinates for testinb purposes
             PFGeoPoint.geoPointForCurrentLocationInBackground {
                 (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
                 if error == nil {
@@ -71,7 +71,7 @@ class SettingsTVC: UITableViewController{
                 }else{
                     print("There was an error in retrieving the position. Could be because GPS is turned off, bad connection, or for debugging purposes the simulator does not have a location specified.")
                     settings.setLocationSetting(false)
-                    self.locationSetting.setOn(false, animated: true)   //if there is an error in location, turn location setting off auto.
+  self.locationSetting.setOn(false, animated: true)   //if there is an error in getting location, turn location setting off auto.
                 }
             }
         }else{
@@ -81,18 +81,11 @@ class SettingsTVC: UITableViewController{
     }
     
     func generateLocationTrivia(){
-        //temp long and lat paramaters to test location setting
-        //this has been designed to look for questions about Computer Science if the user is in the CS Building
-        //note the labels here are contradictory because left long would imply that longitude goes up/down. This is
-        //just used by the way google maps orientated its self to me
-        let leftLong = -89.407391
-        let rightLong = -89.405714
-        let topLat = 43.072172
-        let botLat = 43.071041
         
-        if(Player1.getLocation().latitude >= botLat && Player1.getLocation().latitude <= topLat &&
-            Player1.getLocation().longitude >= leftLong && Player1.getLocation().longitude <= rightLong){
-                
+        
+        if(locationOptions[0].isEnclosed(Player1.getLocation())){
+                      print("enteredwejlkejfek")
+                        locationOptions[0].generateRelatedTrivia()
         }
     }
     

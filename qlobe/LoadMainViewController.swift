@@ -29,8 +29,11 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
     var loadingAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("startPage", ofType: "mp3")!))
     
     //create new pfQuery - This is the bridge between our app and Parse: "trivia" is our class name on Parse
+    let queryLocations: PFQuery = PFQuery(className: "triviaSpots")
     let queryTrivia: PFQuery = PFQuery(className:"Trivia")
     var didLoad = false
+    var triviaDidLoad = false
+    var placesDidLoad = false
     
     
     override func viewDidLoad() {
@@ -46,9 +49,9 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
         loadingAudio!.play()
         
         //retrieve data from parse query, and wait for animation to be loaded
-        _ = NSTimer.scheduledTimerWithTimeInterval(5.5, target: self, selector: "retrieveTrivia",
+        _ = NSTimer.scheduledTimerWithTimeInterval(5.5, target: self, selector: "retrieveParseData",
             userInfo: nil, repeats: false)
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,19 +59,7 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-//    func checkConnection() -> Bool{
-//        if(Reachability.isConnectedToNetwork() == false){
-//            self.didLoad = false
-//            print("No Internet!!")
-//            handleNetworkError()
-//            return false
-//        }
-//        else{
-//            return true
-//        }
-//    }
-//    
-    func retrieveTrivia() {
+    func retrieveParseData() {
         
         // check Internet Connection, if no internet, show alert
         if(Reachability.isConnectedToNetwork() == false){
@@ -82,7 +73,7 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
         
         //This CLOSURE gives access to all objects in "trivia" class using our queryTrivia Bridge
         queryTrivia.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error:NSError?) -> Void in
-                        
+            
             // Loop through the objects array
             for triviaObject in objects!{
                 
@@ -101,6 +92,7 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
                     
                     if(triviaQuestions.count == objects!.count){
                         self.didLoad = true
+                        self.triviaDidLoad = true
                     }
                     
                 }else{
@@ -109,16 +101,54 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
                 }
             }// end for
             
-            if(self.didLoad == true){
+            triviaDuplicate = triviaQuestions   // this is used to repeat questions after all have been gone through.
+            
+            if(self.didLoad == true && self.placesDidLoad == true && self.triviaDidLoad == true){
                 self.timerQuery.invalidate()
                 
                 self.performSegueWithIdentifier("finnishLoad", sender: self)
             }
-        }// end closure
+        }// end triviaQuery closure
         
-        triviaDuplicate = triviaQuestions   // this is used to repeat questions after all have been gone through.
+        queryLocations.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error:NSError?) -> Void in
+            
+            for locationObject in objects!{
+                
+                // Retrieve data for each object
+                let left : Double? = (locationObject as PFObject)["leftlong"] as? Double
+                let right : Double? = (locationObject as PFObject)["rightlong"] as? Double
+                let top : Double? = (locationObject as PFObject)["toplat"] as? Double
+                let bot : Double? = (locationObject as PFObject)["botlat"] as? Double
+                let name : String? = (locationObject as PFObject)["name"] as? String
+                let point : PFGeoPoint? = (locationObject as PFObject)["generalPoint"] as? PFGeoPoint
+                
+                //Check that items are not nil, and create new location to append to locationOptions global
+                if ( left != nil && right != nil && top != nil &&  bot != nil && name != nil && point != nil){
+                    
+                    let newPlace = LocationDS(top_lat: top!, bot_lat: bot!, right_long: right!, left_long: left!, name: name!, generalArea: point!)
+                    locationOptions.append(newPlace)
+                    
+                    if(locationOptions.count == objects!.count){
+                        self.didLoad = true
+                        self.placesDidLoad = true
+                    }
+                    
+                }else{
+                    print("Network Error")
+                    self.didLoad = false
+                }
+                
+            }// end for
+            
+            if(self.didLoad == true && self.placesDidLoad == true && self.triviaDidLoad == true){
+                self.timerQuery.invalidate()
+                
+                self.performSegueWithIdentifier("finnishLoad", sender: self)
+            }
+            
+        }// end location query closure
         
-    }// end retrieve trivias
+    }// end retrieve parse data
     
     
     // creat animation
@@ -165,13 +195,13 @@ class loadMainViewController: UIViewController, HolderViewDelegate{
         let settingAction: UIAlertAction = UIAlertAction(title: "Setting", style: .Cancel) { action -> Void in
             //Do some stuff
             UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
-            self.retrieveTrivia()
+            self.retrieveParseData()
         }
         actionSheetController.addAction(settingAction)
         
         //Create and an option action
         let retryAction: UIAlertAction = UIAlertAction(title: "Retry", style: .Default) { action -> Void in
-            self.retrieveTrivia()
+            self.retrieveParseData()
         }
         actionSheetController.addAction(retryAction)
         

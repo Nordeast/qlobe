@@ -206,10 +206,15 @@ class QuestionViewController: UIViewController {
     // helper functions //
     //////////////////////
     
-    //generates a random trivia object from global triviaQuestions
-    func getRandomTrivia() -> triviaQuestion{
-        randIndex = Int(arc4random_uniform(UInt32(triviaQuestions.count-1)))
-        return triviaQuestions[randIndex]
+    //generates a random trivia object from global triviaQuestions, or locationTrivia
+    func getRandomTrivia(locationSettingsON : Bool) -> triviaQuestion{
+        if(!locationSettingsON){
+            randIndex = Int(arc4random_uniform(UInt32(triviaQuestions.count-1)))
+            return triviaQuestions[randIndex]
+        }else{
+            randIndex = Int(arc4random_uniform(UInt32(locationTrivia.count-1)))
+            return locationTrivia[randIndex]
+        }
     }
     
     func randomizeStrings(answers: [String]) -> [String]{
@@ -226,7 +231,7 @@ class QuestionViewController: UIViewController {
     }
     
     func setButtonContent(){
-        curQuestion = getRandomTrivia()
+        curQuestion = getRandomTrivia(settings.getLocationSetting())
         
         // set question contents
         question.text = curQuestion.Question
@@ -311,7 +316,7 @@ class QuestionViewController: UIViewController {
         if(answerP2 == curQuestion.getAnswer()){
             Player2Score += (Player2AnsTime * 100)
         }
-
+        
         Player1ScoreValue.text =  "\(Player1Score)"
         Player2ScoreValue.text =  "\(Player2Score)"
     }
@@ -421,7 +426,11 @@ class QuestionViewController: UIViewController {
             updatePlayerScore()
             
             //remove current question from list so it wont be asked again (no repeats)
-            triviaQuestions.removeAtIndex(randIndex)
+            if(!settings.getLocationSetting()){
+                triviaQuestions.removeAtIndex(randIndex)
+            }else{
+                locationTrivia.removeAtIndex(randIndex)
+            }
             
             //segue to scoreboard for next random game after 5 rounds of trivia
             triviaGameCount += 1
@@ -487,6 +496,14 @@ class QuestionViewController: UIViewController {
         //account for volume settings
         countDownAudio?.volume = settings.getVolume()
         
+        // check that the end of the trivia has not been reached
+        if(triviaQuestions.count == 1){
+            triviaQuestions = triviaDuplicate
+        }else if(settings.getLocationSetting() == true && locationTrivia.count <= 1){
+            settings.setLocationSetting(false)
+        }
+        
+        
         // set the content of all buttons labels
         setButtonContent()
         
@@ -513,7 +530,7 @@ class QuestionViewController: UIViewController {
             performSegueWithIdentifier("TriviaGameOver", sender: self)
         }else{
             self.performSegueWithIdentifier("ScoreBoardFromTrivia", sender: self)
-
+            
         }
         //continue playing the game
         ROUND++
