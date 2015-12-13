@@ -39,6 +39,7 @@ class GameOverParentViewController: UIViewController {
     @IBOutlet weak var VictoryImage: UIImageView!
     @IBOutlet weak var fbBtnBottom: UIButton!
     @IBOutlet weak var fbBtnTop: UIButton!
+    @IBOutlet weak var blueSheepImage: UIImageView!
     
     var gameOverAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("gameOver", ofType: "mp3")!))
     
@@ -60,6 +61,7 @@ class GameOverParentViewController: UIViewController {
         view.backgroundColor = UIColor(netHex: 0x2c3e50)
         
         // style continue buttons they will take you to the start screen
+        blueSheepImage.flipUpSideDown()
         
         ContinueTop.titleLabel!.font = UIFont(name: "Kankin", size: 25)!
         ContinueTop.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)

@@ -68,7 +68,7 @@ class TapRaceViewController: UIViewController {
         // button that P1 taps
         // increase the tap count
         P1Taps++
-        print(P1Taps)
+        //print(P1Taps)
         // move the racer
         P1Animate()
     
@@ -401,8 +401,12 @@ class TapRaceViewController: UIViewController {
         UIView.animateWithDuration(1.0, delay: 0, options: [], animations: {
             self.readySetGo1.alpha = 1
             self.readySetGo2.alpha = 1
-            self.readySetGo1.text = "distance: \((self.P2Taps) * 200) ft"
-            self.readySetGo2.text = "distance: \((self.P1Taps) * 200) ft"
+            self.readySetGo1.textColor = UIColor(netHex: 0xe74c3c)
+            self.readySetGo2.textColor = UIColor(netHex: 0x2980b9)
+            self.readySetGo1.font = UIFont(name: "Kankin", size: 50.0)
+            self.readySetGo2.font = UIFont(name: "Kankin", size: 50.0)
+            self.readySetGo1.text = "distance: \((self.P1Taps) * 200) ft"
+            self.readySetGo2.text = "distance: \((self.P2Taps) * 200) ft"
             },
             completion: { _ in
                 self.readySetGo1.fadeOut(1.0, delay: 3, completion:
@@ -418,7 +422,7 @@ class TapRaceViewController: UIViewController {
     }
     func segue(){
         // segue to scoreboard view controller
-        print("Round #: \(ROUND) in \(numberOfRoundsPerMatch)")
+        //print("Round #: \(ROUND) in \(numberOfRoundsPerMatch)")
         if(ROUND == numberOfRoundsPerMatch){
             performSegueWithIdentifier("TapRaceGameOver", sender: self)
         }else{
