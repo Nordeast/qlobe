@@ -508,7 +508,7 @@ class SimonSaysViewController: UIViewController {
         //continue playing the game
         ROUND++
         
-        if(ROUND == numberOfRoundsPerMatch){
+        if(ROUND-1 == numberOfRoundsPerMatch){
             performSegueWithIdentifier("SimonSaysGameOver", sender: self)
         }else{
             self.performSegueWithIdentifier("ScoreBoardFromSimonSays", sender: self)

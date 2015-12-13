@@ -538,7 +538,7 @@ class QuestionViewController: UIViewController {
         // stop the background audio
         backgroundAudio!.stop()
         
-        if(ROUND == numberOfRoundsPerMatch){
+        if(ROUND-1 == numberOfRoundsPerMatch){
             performSegueWithIdentifier("TriviaGameOver", sender: self)
         }else{
             self.performSegueWithIdentifier("ScoreBoardFromTrivia", sender: self)

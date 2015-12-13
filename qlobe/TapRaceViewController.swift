@@ -424,7 +424,7 @@ class TapRaceViewController: UIViewController {
         // segue to scoreboard view controller
         ROUND++
         
-        if(ROUND == numberOfRoundsPerMatch){
+        if(ROUND-1 == numberOfRoundsPerMatch){
             performSegueWithIdentifier("TapRaceGameOver", sender: self)
         }else{
             self.performSegueWithIdentifier("ScoreBoardFromTapRace", sender: self)
