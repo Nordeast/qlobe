@@ -14,6 +14,7 @@ class HelpViewController: UIViewController {
     @IBOutlet weak var helpTextView: UITextView!
     @IBOutlet weak var backButton: UIButton!
     
+    @IBOutlet weak var HelpLabel: UILabel!
     // MARK: View setup functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,10 @@ class HelpViewController: UIViewController {
         backButton.titleLabel!.font = UIFont(name: "Kankin", size: 25)!
         backButton.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
         backButton.titleLabel!.text = "Back"
+        
+        HelpLabel.font = UIFont(name: "Kankin", size: 30)
+        HelpLabel.textColor = UIColor(netHex: 0xf1c40f)
+        HelpLabel.textAlignment = NSTextAlignment.Center
     }
     /*
     // MARK: - Navigation

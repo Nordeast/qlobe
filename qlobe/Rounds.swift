@@ -7,6 +7,7 @@
 //
 
 import Foundation
+// this is used to store the game that was played that round and the score the player recieved for that round
 
 struct Rounds{
     
