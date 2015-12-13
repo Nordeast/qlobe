@@ -256,14 +256,15 @@ class GameOverParentViewController: UIViewController {
         // fade the animation out and fade in the continue buttons and 
         // the final results
         if(showStats == 40){
-            
-            ShowFinalGamResults.fadeIn(3, delay: 0, completion: {_ in
-                self.animateInfinitelyWithDelay(5, duration: 1)
-                self.ContinueTop.fadeIn()
-                self.ContinueBottom.fadeIn()
+            AnimationView.fadeOut(1, delay: 0, completion: { _ in
+                
+                self.ShowFinalGamResults.fadeIn(3, delay: 0, completion: {_ in
+                    self.animateInfinitelyWithDelay(5, duration: 1)
+                    self.ContinueTop.fadeIn()
+                    self.ContinueBottom.fadeIn()
+                    
+                })
             })
-            AnimationView.fadeOut()
-            
             timer.invalidate()
         }
     }
