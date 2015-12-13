@@ -505,14 +505,15 @@ class SimonSaysViewController: UIViewController {
         
         backgroundAudio!.stop()
         
+        //continue playing the game
+        ROUND++
+        
         if(ROUND == numberOfRoundsPerMatch){
             performSegueWithIdentifier("SimonSaysGameOver", sender: self)
         }else{
             self.performSegueWithIdentifier("ScoreBoardFromSimonSays", sender: self)
             
         }
-        //continue playing the game
-        ROUND++
     }
     
     

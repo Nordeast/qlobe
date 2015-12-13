@@ -16,6 +16,7 @@
 		9F33645A1C19324C0035CB1C /* startPage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F3364561C19324C0035CB1C /* startPage.mp3 */; };
 		9F33645B1C19324C0035CB1C /* round.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F3364571C19324C0035CB1C /* round.mp3 */; };
 		9F4EFB6C1C1AA761008E469E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4EFB6B1C1AA761008E469E /* Reachability.swift */; };
+		9F655A5C1C1E15C300F24619 /* triviaPlaying.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F655A5B1C1E15C300F24619 /* triviaPlaying.mp3 */; };
 		9F7161161C1B49DA00E5B026 /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F7161151C1B49DA00E5B026 /* gameOver.mp3 */; };
 		9F7161181C1B49DF00E5B026 /* simonSaysStart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F7161171C1B49DF00E5B026 /* simonSaysStart.mp3 */; };
 		9F71611A1C1B49EA00E5B026 /* simonSaysPlaying.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F7161191C1B49EA00E5B026 /* simonSaysPlaying.mp3 */; };
@@ -98,6 +99,7 @@
 		9F3364561C19324C0035CB1C /* startPage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = startPage.mp3; sourceTree = "<group>"; };
 		9F3364571C19324C0035CB1C /* round.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = round.mp3; sourceTree = "<group>"; };
 		9F4EFB6B1C1AA761008E469E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		9F655A5B1C1E15C300F24619 /* triviaPlaying.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = triviaPlaying.mp3; sourceTree = "<group>"; };
 		9F7161151C1B49DA00E5B026 /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
 		9F7161171C1B49DF00E5B026 /* simonSaysStart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = simonSaysStart.mp3; sourceTree = "<group>"; };
 		9F7161191C1B49EA00E5B026 /* simonSaysPlaying.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = simonSaysPlaying.mp3; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				9F9CEEE21C03922900E2EB13 /* mk64_racestart.wav */,
 				9F04CAED1C03E9AD00F2B01B /* trivia_countdown.mp3 */,
 				9F04CAE91C03E26300F2B01B /* trivia.wav */,
+				9F655A5B1C1E15C300F24619 /* triviaPlaying.mp3 */,
 				AC6C2EFE1C13A62E00EC759D /* elevatording.wav */,
 				AC1A05D91BFFCD39000A6541 /* airplanding.wav */,
 				9F04CAEF1C03EC0B00F2B01B /* tapRace_background.mp3 */,
@@ -437,6 +440,7 @@
 			files = (
 				D63133191C19273200B46237 /* Kankin.ttf in Resources */,
 				D61B50DD1BFC585200248DD9 /* LaunchScreen.storyboard in Resources */,
+				9F655A5C1C1E15C300F24619 /* triviaPlaying.mp3 in Resources */,
 				9F04CAF21C03EF4500F2B01B /* tapRace_victory.mp3 in Resources */,
 				D61B50DA1BFC585200248DD9 /* Assets.xcassets in Resources */,
 				9F33645A1C19324C0035CB1C /* startPage.mp3 in Resources */,
