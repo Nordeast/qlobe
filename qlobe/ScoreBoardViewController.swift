@@ -13,7 +13,7 @@ var triviaGameCount = 0
 //current round number
 var ROUND = 1
 //number of rounds the match will have, default = 10.
-var numberOfRoundsPerMatch = 1 // number of rounds is actually numberOfRoundsPerMatch
+var numberOfRoundsPerMatch = 3 // number of rounds is actually numberOfRoundsPerMatch
 //because of off by one errors prevention
 
 class ScoreBoardViewController: UIViewController {
@@ -22,6 +22,8 @@ class ScoreBoardViewController: UIViewController {
     //var segues : [String] = ["TapRace"]
     //var segues : [String] = ["SimonSays"]
     var rand = 0
+    
+    var nextGamePressed = false
     
     var tapRaceAudio = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("mk64_racestart", ofType: "wav")!))
     
@@ -133,6 +135,8 @@ class ScoreBoardViewController: UIViewController {
     func ContinueToNextGame(){
         var segueDelay = 0.0
         
+        nextGamePressed = true
+        
         //Play sound effect for TapRace
         if(segues[rand] == "TapRace" && (settings.isMute() == false)){
             segueDelay = 5.0
@@ -150,6 +154,8 @@ class ScoreBoardViewController: UIViewController {
         ChangeGameButtonTop.enabled = false
         muteBtnBottom.enabled = false
         muteBtnTop.enabled = false
+        ContinueButtonBottom.enabled = false
+        ContinueButtonTop.enabled = false
         
         roundAudio!.stop()
         
@@ -159,11 +165,15 @@ class ScoreBoardViewController: UIViewController {
     }
     
     @IBAction func ContinueButtonTop(sender: AnyObject) {
-        ContinueToNextGame()
+        if(nextGamePressed == false){
+            ContinueToNextGame()
+        }
     }
     
     @IBAction func ContinueButtonBottom(sender: AnyObject) {
-        ContinueToNextGame()
+        if(nextGamePressed == false){
+            ContinueToNextGame()
+        }
     }
     
     
