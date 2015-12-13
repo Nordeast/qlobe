@@ -325,11 +325,13 @@ class ScoreBoardViewController: UIViewController {
         
         ChangeGameButtonBottom.titleLabel!.font = UIFont(name: "Kankin", size: 25)!
         ChangeGameButtonBottom.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        ChangeGameButtonBottom.titleLabel!.text = "Random game)"
+        //ChangeGameButtonBottom.titleLabel!.text = "Random game"
+        ChangeGameButtonBottom.setTitle( "Random game", forState: .Normal)
         
         ChangeGameButtonTop.titleLabel!.font = UIFont(name: "Kankin", size: 25)!
         ChangeGameButtonTop.setTitleColor(UIColor(netHex: 0xeeeeee), forState: UIControlState.Normal)
-        ChangeGameButtonTop.titleLabel!.text = "Random game"
+        //ChangeGameButtonTop.titleLabel!.text = "Random game"
+        ChangeGameButtonTop.setTitle( "Random game", forState: .Normal)
         
         
         QuitButtonBottom.titleLabel!.font = UIFont(name: "Kankin", size: 20)!
